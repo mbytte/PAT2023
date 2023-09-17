@@ -11,4 +11,11 @@
         <maven.compiler.target>16</maven.compiler.target>
     </properties>
     <name>PAT2023</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE124</version>
+        </dependency>
+    </dependencies>
 </project>
