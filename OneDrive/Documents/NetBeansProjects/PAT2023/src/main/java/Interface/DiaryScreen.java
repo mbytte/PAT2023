@@ -130,12 +130,13 @@ public class DiaryScreen extends javax.swing.JFrame
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_backButtonActionPerformed
     {//GEN-HEADEREND:event_backButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_homeButtonActionPerformed
     {//GEN-HEADEREND:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new UserScreen().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
 

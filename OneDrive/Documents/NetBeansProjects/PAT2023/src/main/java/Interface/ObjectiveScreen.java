@@ -105,17 +105,18 @@ public class ObjectiveScreen extends javax.swing.JFrame
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_homeButtonActionPerformed
     {//GEN-HEADEREND:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new UserScreen().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void hintButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_hintButtonActionPerformed
     {//GEN-HEADEREND:event_hintButtonActionPerformed
-        // TODO add your handling code here:
+        //adds information to the text area
     }//GEN-LAST:event_hintButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_closeButtonActionPerformed
     {//GEN-HEADEREND:event_closeButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_closeButtonActionPerformed
 
 

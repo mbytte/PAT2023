@@ -67,6 +67,13 @@ public class UserScreen extends javax.swing.JFrame
         exitButton.setForeground(new java.awt.Color(139, 118, 82));
         exitButton.setText("EXIT");
         exitButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        exitButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                exitButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 550, 250, 70));
 
         loadUserButton.setBackground(new java.awt.Color(15, 28, 33));
@@ -105,8 +112,13 @@ public class UserScreen extends javax.swing.JFrame
 
     private void newUserButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_newUserButtonActionPerformed
     {//GEN-HEADEREND:event_newUserButtonActionPerformed
-        // TODO add your handling code here:
+        new NewUserScreen().setVisible(true);
     }//GEN-LAST:event_newUserButtonActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_exitButtonActionPerformed
+    {//GEN-HEADEREND:event_exitButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_exitButtonActionPerformed
 
     /**
      * @param args the command line arguments

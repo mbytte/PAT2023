@@ -69,12 +69,33 @@ public class HallwayScreen extends javax.swing.JFrame
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 100, 40));
 
         diningButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\door.png")); // NOI18N
+        diningButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                diningButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(diningButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 350, 700));
 
         loungeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\door.png")); // NOI18N
+        loungeButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                loungeButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(loungeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 350, 700));
 
         seatingButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\door.png")); // NOI18N
+        seatingButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                seatingButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(seatingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 350, 700));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\plant.png")); // NOI18N
@@ -91,6 +112,24 @@ public class HallwayScreen extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void seatingButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_seatingButtonActionPerformed
+    {//GEN-HEADEREND:event_seatingButtonActionPerformed
+        this.dispose();
+        new SeatCompartmentsScreen().setVisible(true);
+    }//GEN-LAST:event_seatingButtonActionPerformed
+
+    private void diningButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_diningButtonActionPerformed
+    {//GEN-HEADEREND:event_diningButtonActionPerformed
+        this.dispose();
+        new DiningRoomScreen().setVisible(true);
+    }//GEN-LAST:event_diningButtonActionPerformed
+
+    private void loungeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_loungeButtonActionPerformed
+    {//GEN-HEADEREND:event_loungeButtonActionPerformed
+        this.dispose();
+        new LoungeScreen().setVisible(true);
+    }//GEN-LAST:event_loungeButtonActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

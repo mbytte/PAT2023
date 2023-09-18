@@ -156,22 +156,25 @@ public class FindingGameScreen extends javax.swing.JFrame
 
     private void infoButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_infoButtonActionPerformed
     {//GEN-HEADEREND:event_infoButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new ObjectiveScreen().setVisible(true);
     }//GEN-LAST:event_infoButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_backButtonActionPerformed
     {//GEN-HEADEREND:event_backButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new DiningRoomScreen().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_homeButtonActionPerformed
     {//GEN-HEADEREND:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new UserScreen().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void diaryButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_diaryButtonActionPerformed
     {//GEN-HEADEREND:event_diaryButtonActionPerformed
-        // TODO add your handling code here:
+        new DiaryScreen().setVisible(true);
     }//GEN-LAST:event_diaryButtonActionPerformed
 
     private void spriteButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_spriteButton2ActionPerformed

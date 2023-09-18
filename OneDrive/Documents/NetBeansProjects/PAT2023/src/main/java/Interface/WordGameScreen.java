@@ -268,22 +268,24 @@ public class WordGameScreen extends javax.swing.JFrame
 
     private void diaryButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_diaryButtonActionPerformed
     {//GEN-HEADEREND:event_diaryButtonActionPerformed
-        // TODO add your handling code here:
+        new DiaryScreen().setVisible(true);
     }//GEN-LAST:event_diaryButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_homeButtonActionPerformed
     {//GEN-HEADEREND:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new UserScreen().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void infoButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_infoButtonActionPerformed
     {//GEN-HEADEREND:event_infoButtonActionPerformed
-        // TODO add your handling code here:
+        new ObjectiveScreen().setVisible(true);
     }//GEN-LAST:event_infoButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_backButtonActionPerformed
     {//GEN-HEADEREND:event_backButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new DiningRoomScreen().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void riddle1TextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_riddle1TextFieldActionPerformed
