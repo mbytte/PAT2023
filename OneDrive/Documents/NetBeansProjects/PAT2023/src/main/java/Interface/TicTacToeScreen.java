@@ -36,6 +36,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         diaryButton = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
         infoButton = new javax.swing.JButton();
+        button1 = new javax.swing.JButton();
         button2 = new javax.swing.JButton();
         button3 = new javax.swing.JButton();
         button4 = new javax.swing.JButton();
@@ -43,8 +44,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         button6 = new javax.swing.JButton();
         button7 = new javax.swing.JButton();
         button8 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        button1 = new javax.swing.JButton();
+        button9 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
@@ -120,6 +120,10 @@ public class TicTacToeScreen extends javax.swing.JFrame
         });
         getContentPane().add(infoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 110, -1, 60));
 
+        button1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
+        button1.setBorder(null);
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 120, 120));
+
         button2.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button2.setBorder(null);
         getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, 120, 120));
@@ -148,13 +152,9 @@ public class TicTacToeScreen extends javax.swing.JFrame
         button8.setBorder(null);
         getContentPane().add(button8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 460, 120, 120));
 
-        jButton8.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
-        jButton8.setBorder(null);
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 120, 120));
-
-        button1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
-        button1.setBorder(null);
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 120, 120));
+        button9.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
+        button9.setBorder(null);
+        getContentPane().add(button9, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 120, 120));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\ticTacToeGrid.jpg")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 430, 430));
@@ -204,10 +204,10 @@ public class TicTacToeScreen extends javax.swing.JFrame
     private javax.swing.JButton button6;
     private javax.swing.JButton button7;
     private javax.swing.JButton button8;
+    private javax.swing.JButton button9;
     private javax.swing.JButton diaryButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton infoButton;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
