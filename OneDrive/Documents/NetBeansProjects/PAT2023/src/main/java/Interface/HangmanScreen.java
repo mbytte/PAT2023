@@ -30,6 +30,7 @@ public class HangmanScreen extends javax.swing.JFrame
     private void initComponents()
     {
 
+        wrongAnswersProgressBar = new javax.swing.JProgressBar();
         backButton = new javax.swing.JButton();
         diaryButton = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
@@ -45,6 +46,11 @@ public class HangmanScreen extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        wrongAnswersProgressBar.setBackground(new java.awt.Color(15, 28, 33));
+        wrongAnswersProgressBar.setForeground(new java.awt.Color(255, 51, 51));
+        wrongAnswersProgressBar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 3, true));
+        getContentPane().add(wrongAnswersProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 570, 560, 20));
 
         backButton.setBackground(new java.awt.Color(15, 28, 33));
         backButton.setFont(new java.awt.Font("High Tower Text", 1, 24)); // NOI18N
@@ -220,6 +226,7 @@ public class HangmanScreen extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JProgressBar wrongAnswersProgressBar;
     private javax.swing.JTextArea wrongLettersTextArea;
     // End of variables declaration//GEN-END:variables
 }

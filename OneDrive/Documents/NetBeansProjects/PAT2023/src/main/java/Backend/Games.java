@@ -5,7 +5,10 @@
  */
 package Backend;
 
+import Interface.ObjectiveScreen;
+import Interface.SpeechMiniScreen;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JButton;
 
 /**
@@ -184,9 +187,133 @@ public class Games
     }
     
     //toString
-    @Override
-    public String toString()
+    public String ticTacToeToString()
     {
         return "WINS : " + numWins + "\n\nDRAWS : " + numDraws + "\n\nLOSSES : " + numLoses;
+    }
+    
+    
+    
+    
+    //HANGMAN
+    //fields
+    private String[] correctWordArray = new String[8];
+    private String correctWordString = "";
+    private String[] usersWordArray = {"_", "_", "_", "_", "_", "_", "_", "_"};
+    private static final int CORRECT_WORD_LENGTH = 8; //final as all the words are 8 letter words
+    private String wrongLettersString = "";
+    private int numWrongAnswers = 0;
+    private int progressBarValue = 0;
+    private boolean closeScreen = false;
+    
+    //getters
+    //converts the userArray into a string and returns that string
+    public String getDisplayString()
+    {
+        //variables
+        String displayString = "";
+        //adding all the letters from the userArray into a string
+        for(int arrayPosition = 0; arrayPosition < CORRECT_WORD_LENGTH; arrayPosition++)
+        {
+           displayString += usersWordArray[arrayPosition] + " "; 
+        }
+        
+        return displayString;
+    }
+    
+    public String getWrongAnswers()
+    {
+        return wrongLettersString;
+    }
+    
+    public int getProgressBarValue()
+    {
+        return progressBarValue;
+    }
+    
+    //resets to original values
+    public void resetHangman()
+    {
+        //resets everything in the  user array
+        for(int arrayPos = 0; arrayPos < CORRECT_WORD_LENGTH; arrayPos++)
+        {
+            usersWordArray[arrayPos] = "_";
+        }
+ 
+        //resetting to original values
+        numWrongAnswers = 0;
+        wrongLettersString = "";
+    }
+    
+    //checks if the letter is a part of the word and updates the screen
+    public void letterCheck(String inputLetter)
+    {
+        //variables
+        int numRight = 0;
+        
+        //checks through each postion of the completedWordArray individually
+        for(int arrayPos = 0; arrayPos < CORRECT_WORD_LENGTH; arrayPos++)
+        {
+            //correct letter
+            if(correctWordArray[arrayPos].equals(inputLetter))
+            {
+                usersWordArray[arrayPos] = inputLetter;
+                numRight++;
+            }
+            
+        }
+        //wrong letter
+        if(numRight == 0)
+        {
+            wrongLettersString+=inputLetter + ", ";
+            numWrongAnswers++;
+            progressBarValue = numWrongAnswers*20;
+        }
+    }
+    
+    //randomly selects a word and assigns it
+    public void getWord()
+    {
+        //variables
+        String[] possibleWords = {"artistic", "bachelor", "mountain"};
+        int index = (int)(Math.random()*(3));
+        
+        //making the fields match this selected word
+        //string
+        correctWordString = possibleWords[index];
+        //array
+        for(int i = 0; i < CORRECT_WORD_LENGTH; i++)
+        {
+            correctWordArray[i] = correctWordString.charAt(i) + "";
+        }
+    }
+    
+    //checks if the user has user up all their chances
+    public void hangmanWinCheck()        
+    {
+        //win
+        if(Arrays.equals(correctWordArray, usersWordArray))
+        {
+            new SpeechMiniScreen().setVisible(true);
+            //setting the completed variable to true (for data sheet)
+            Diary.setCompletedHangman(true);
+            //closing the screen
+            closeScreen = true;
+            
+            //sets the user objects variable to be true and changes the information
+            currentUser.setMusicBoxTrue();
+            updateCurrentArrayList();
+            userManager.setUsers(currentArrayList);
+            userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+        }
+        
+        //lose
+        //the user only gets 5 chances
+        if(numWrongAnswers  == 5)
+        {
+            new SpeechMiniScreen().setVisible(true);
+            //closing the screen
+            closeScreen = true;
+        }
     }
 }
