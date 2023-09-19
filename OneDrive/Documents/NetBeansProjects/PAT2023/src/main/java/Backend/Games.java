@@ -328,12 +328,12 @@ public class Games
     public void selectRiddle()
     {
         //variables
-        String riddle1 = "";
-        String riddle1Ans = "";
-        String riddle2 = "";
-        String riddle2Ans = "";
-        String riddle3 = "";
-        String riddle3Ans = "";
+        String riddle1 = "What has to be broken before you can use it?";
+        String riddle1Ans = "egg";
+        String riddle2 = "I shave everyday, but I still have a beard. What am I?";
+        String riddle2Ans = "barber";
+        String riddle3 = "I am an odd number. Take away a letter and I become even. What number am I?";
+        String riddle3Ans = "seven";
         String[] riddles = {riddle1, riddle2, riddle3};
         String[] answers = {riddle1Ans, riddle2Ans, riddle3Ans};
         
