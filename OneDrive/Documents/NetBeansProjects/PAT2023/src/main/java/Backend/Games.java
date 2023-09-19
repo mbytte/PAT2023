@@ -8,6 +8,7 @@ package Backend;
 import Interface.SpeechMiniScreen;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -323,6 +324,7 @@ public class Games
     //fields
     private String riddle = "";
     private String riddleAnswer = "";
+    private boolean riddleChosen = false;
     
     //selecting a riddle
     public void selectRiddle()
@@ -343,5 +345,274 @@ public class Games
         //adding it to the fields
         riddle = riddles[index];
         riddleAnswer = answers[index];
+    }
+
+    //getters
+    public String getRiddle()
+    {
+        return riddle;
+    }
+
+    public boolean isRiddleChosen()
+    {
+        return riddleChosen;
+    }
+    
+    //checks if the answer is right
+    public void inputCheck(String userInput)
+    {
+        //right answer
+        if(userInput.equals(riddleAnswer))
+        {
+            new SpeechMiniScreen().setVisible(true);
+            //setting the completed variable to true (for data sheet)
+            Diary.setCompletedBrokenPicFrames(true);
+            //sets the user objects variable to be true
+            currentUser.setBrokenPicFramesTrue();
+            updateCurrentArrayList();
+            userManager.setUsers(currentArrayList);
+            userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+        }
+    }
+    
+    
+    
+    
+    //SLIDING PUZZLE
+    //fields
+    private static String[] currentPicOrder = new String[6];
+    private static String[] buttonOrder = {"button1", "button2", "button3", "button4", "button5", "button6"};
+    private boolean puzzleWin = false;
+    
+    //gets the current picture being presented on a specific jbutton
+    public String getPic(String screenStr)
+    {
+        //getting the screen number
+        int screenNumber = getButtonNumber(screenStr);
+        
+        //setting the image to screenIcon
+        String screenIcon = currentPicOrder[screenNumber];
+        
+        //returning screenIcon to be able to use the file paths of the images
+        return screenIcon;   
+    }
+    
+    
+    //getters
+    //gets the value of 'win'
+    public boolean isPuzzleWin()
+    {
+        return puzzleWin;
+    }
+    
+    //gets the current picture order
+    public String[] getCurrentPicOrder()
+    {
+        return currentPicOrder;
+    }   
+    
+    
+    //gets the button number 
+    public int getButtonNumber(String buttonStr)
+    {
+        int buttonNumber = 0;
+        //getting the screen number depending on which screen is in question
+        switch (buttonStr)
+        {
+            case "button1" -> buttonNumber = 1;
+            case "button2" -> buttonNumber = 2;
+            case "button3" -> buttonNumber = 3;
+            case "button4" -> buttonNumber = 4;
+            case "button5" -> buttonNumber = 5;
+            case "button6" -> buttonNumber = 6;
+            //no default because it will never be used
+        }
+        return buttonNumber;
+    }
+    
+    //finds what position the blank picture(pic2) is currently in
+    public int getBlankPicPos()
+    {
+        //variables
+        int blankPicPos = 0;
+        String blankPic = "/images/2.jpg";  //the blank picture is saved as "/images/2.jpg"
+        
+        //looking through all the positions in the ray to find which one is the blank picture
+        //loops 6 times because there are 6 positions
+        for(int i = 0; i < 6; i++)
+        {
+            if(blankPic.equals(currentPicOrder[i]))
+            {
+                blankPicPos = i;
+            }
+        }    
+        return blankPicPos;
+    }
+    
+    
+    //swaps two buttons' pictures
+    //helper method to framePicSwap
+    private void pictureSwap(JButton button1, JButton button2, String button1Str, String button2Str)
+    {    
+        //getting the image icons in those current buttons
+        String button1Icon = getPic(button1Str);
+        String button2Icon = getPic(button2Str);
+        
+        //setting the icons
+        button2.setIcon(new ImageIcon(getClass().getResource(button1Icon)));
+        button1.setIcon(new ImageIcon(getClass().getResource(button2Icon)));
+        
+        //setting the current image array to be updated according to what images are there
+        int btn1ScreenNumber = getButtonNumber(button1Str);
+        currentPicOrder[btn1ScreenNumber] = button2Icon;
+        int btn2ScreenNumber = getButtonNumber(button2Str);
+        currentPicOrder[btn2ScreenNumber] = button1Icon;
+    }
+    
+    //swaps the pics depending on which frame they are in
+    public void framePicSwap(int frameNum, int blankPicFrame, JButton frame0, JButton frame1, JButton frame2, JButton frame3, JButton frame4, JButton frame5)
+    {
+        //making a swappics object
+        Games swapPics = new Games();       
+        
+        //only swapping pics if the blank space is next to frame0 (frame1, frame3)
+        if(frameNum == 0)
+        {
+            switch (blankPicFrame)
+            {
+                case 1 -> //swapping the pictures
+                    swapPics.pictureSwap(frame0, frame1, buttonOrder[0], buttonOrder[1]);
+                case 3 -> //swapping the pictures
+                    swapPics.pictureSwap(frame0, frame3, buttonOrder[0], buttonOrder[3]);
+            }
+        }
+        
+        //only swapping pics if the blank space is next to frame1 (frame0, frame2, frame4)
+        if(frameNum == 1)
+        {        
+            switch (blankPicFrame)
+            {
+                case 0 -> //swapping the pictures
+                    swapPics.pictureSwap(frame1, frame0, buttonOrder[1], buttonOrder[0]);
+                case 2 -> //swapping the pictures
+                    swapPics.pictureSwap(frame1, frame2, buttonOrder[1], buttonOrder[2]);
+                case 4 -> //swapping the pictures
+                    swapPics.pictureSwap(frame1, frame4, buttonOrder[1], buttonOrder[4]);
+            }
+        }
+        
+        //only swapping pics if the blank space is next to frame2 (frame1, frame5)
+        if(frameNum == 2)
+        {           
+            switch (blankPicFrame)
+            {
+                case 1 -> //swapping the pictures
+                    swapPics.pictureSwap(frame2, frame1, buttonOrder[2], buttonOrder[1]);
+                case 5 -> //swapping the pictures
+                    swapPics.pictureSwap(frame2, frame5, buttonOrder[2], buttonOrder[5]);
+            }
+        }
+        
+        //only swapping pics if the blank space is next to frame3 (frame0, frame4)
+        if(frameNum == 3)
+        {            
+            switch (blankPicFrame)
+            {
+                case 0 -> //swapping the pictures
+                    swapPics.pictureSwap(frame3, frame0, buttonOrder[3], buttonOrder[0]);
+                case 4 -> //swapping the pictures
+                    swapPics.pictureSwap(frame3, frame4, buttonOrder[3], buttonOrder[4]);
+            }
+        }
+        
+        //only swapping pics if the blank space is next to frame4 (frame1, frame3, frame5)        
+        if(frameNum == 4)
+        {
+            switch (blankPicFrame)
+            {
+                case 1 -> //swapping the pictures
+                    swapPics.pictureSwap(frame4, frame1, buttonOrder[4], buttonOrder[1]);
+                case 3 -> //swapping the pictures
+                    swapPics.pictureSwap(frame4, frame3, buttonOrder[4], buttonOrder[3]);
+                case 5 -> //swapping the pictures
+                    swapPics.pictureSwap(frame4, frame5, buttonOrder[4], buttonOrder[5]);
+            }        
+        }
+        
+        //only swapping pics if the blank space is next to frame5 (frame2, frame4)
+        if(frameNum == 5)
+        {
+            switch (blankPicFrame)
+            {
+                case 2 -> //swapping the pictures
+                    swapPics.pictureSwap(frame5, frame2, buttonOrder[5], buttonOrder[2]);
+                case 4 -> //swapping the pictures
+                    swapPics.pictureSwap(frame5, frame4, buttonOrder[5], buttonOrder[4]);
+            }
+        }
+    }
+    
+    
+    //checks if the order that the user has arranged the pictures in is the exact way they are supposed to be arranged
+    public void puzzleWin()
+    {
+        //variables
+        //the order that the pictures should be arranged in in order for the player to win
+        String[] correctOrder = new String[6];
+        correctOrder[0] = "/images/0.jpg";
+        correctOrder[1] = "/images/1.jpg";
+        correctOrder[2] = "/images/2.jpg";
+        correctOrder[3] = "/images/3.jpg";
+        correctOrder[4] = "/images/4.jpg";
+        correctOrder[5] = "/images/5.jpg";
+        //changeable variable
+        int numCorrectPicPlace = 0;
+        
+        
+        //check to see if everything is the same
+        for(int i = 0; i < 6; i++)
+        {
+            if(currentPicOrder[i].equals(correctOrder[i]))
+            {
+                numCorrectPicPlace++;
+            }
+        }
+        
+        //winning screen displayed if all the pictures were in the same place
+        if(numCorrectPicPlace == 6)
+        {
+            new Interface.SpeechMiniScreen().setVisible(true);
+            //setting the completed variable to true (for data sheet)
+            Diary.setSlidingPuzzle(true);
+            //setting the win variable to true to be used to close the screen
+            puzzleWin = true;
+            //sets the user objects variable to be true
+            currentUser.setTornPicsTrue();
+            userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+        }
+    }
+    
+    
+    //creates a randomly sorted picture set up
+    public void createPicSetup()
+    {
+        //variables
+        ArrayList <String> picsInOrder = new ArrayList<String>(); //start in order
+        String[] picOrder = new String[6];
+        
+        //making the array list
+        for(int i = 1; i < 7; i++)
+        {
+            picsInOrder.add("resources/" + i + ".png");
+        }
+        
+        //assigning the new order to be solved
+        for(int i = 0; i < 6; i++)
+        {
+            //getting a random number within the length of he pics avaialble still
+            int index = (int)(Math.random()*(picsInOrder.size()));
+            //adding it to the pic order and removing that picture from the array
+            picOrder[i] = picsInOrder.get(index); 
+        }
     }
 }
