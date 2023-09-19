@@ -17,6 +17,16 @@ import javax.swing.JButton;
  */
 public class Games
 {
+    //class fields specific for the user
+    private UserManager userManager = new UserManager();
+    private ArrayList<User> currentArrayList = new ArrayList<User>;
+    private int currentUseIndexr;
+    private User currentUser;
+    private Diary diary;
+    
+    
+    
+    
     //TIC TAC TOE
     //fields
     private int numWins;
@@ -308,7 +318,7 @@ public class Games
         {
             new SpeechMiniScreen().setVisible(true);
             //setting the completed variable to true (for data sheet)
-            Diary.setCompletedHangman(true);
+            diary.setCompletedHangman(true);
             //closing the screen
             closeScreen = true;
             
@@ -381,7 +391,7 @@ public class Games
         {
             new SpeechMiniScreen().setVisible(true);
             //setting the completed variable to true (for data sheet)
-            Diary.setCompletedBrokenPicFrames(true);
+            diary.setCompletedBrokenPicFrames(true);
             //sets the user objects variable to be true
             currentUser.setBrokenPicFramesTrue();
             updateCurrentArrayList();
@@ -600,7 +610,7 @@ public class Games
         {
             new Interface.SpeechMiniScreen().setVisible(true);
             //setting the completed variable to true (for data sheet)
-            Diary.setSlidingPuzzle(true);
+            diary.setSlidingPuzzle(true);
             //setting the win variable to true to be used to close the screen
             puzzleWin = true;
             //sets the user objects variable to be true
@@ -651,7 +661,7 @@ public class Games
         {
             new SpeechMiniScreen().setVisible(true);
             //setting the completed variable to true (for data sheet)
-            Diary.setCompletedMapPuzzle(true);
+            diary.setCompletedMapPuzzle(true);
             //sets the user objects variable to be true
             currentUser.setBrokenPicFramesTrue();
             updateCurrentArrayList();
@@ -684,7 +694,7 @@ public class Games
         {
             new SpeechMiniScreen().setVisible(true);
             //setting the completed variable to true (for data sheet)
-            Diary.setCompletedMapPuzzle(true);
+            diary.setCompletedMapPuzzle(true);
             //sets the user objects variable to be true
             currentUser.setBrokenPicFramesTrue();
             updateCurrentArrayList();
@@ -712,11 +722,51 @@ public class Games
     {
         new SpeechMiniScreen().setVisible(true);
         //setting the completed variable to true (for data sheet)
-        Diary.setFoundCane(true);
+        diary.setFoundCane(true);
         //sets the user objects variable to be true
         currentUser.setBrokenPicFramesTrue();
         updateCurrentArrayList();
         userManager.setUsers(currentArrayList);
         userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+    }
+    
+    
+    
+    
+    //SPEAK TO ALL CHARACTERS TASK
+    //fields
+    private boolean speakToTommy;
+    private boolean speakToAstrid;
+    private boolean speakToMylan;
+    private boolean speakToCamila;
+    private boolean speakToEmile;
+    private boolean speakToAra;
+    private int numCharactersSpokenTo;
+    
+    
+    //setters
+    public void setSpeakToTommy()
+    {
+        speakToTommy = true;
+    }
+    public void setSpeakToAstrid()
+    {
+        speakToTommy = true;
+    }
+    public void setSpeakToMylan()
+    {
+        speakToTommy = true;
+    }
+    public void setSpeakToCamila()
+    {
+        speakToTommy = true;
+    }
+    public void setSpeakToEmile()
+    {
+        speakToTommy = true;
+    }
+    public void setSpeakToAra()
+    {
+        speakToTommy = true;
     }
 }
