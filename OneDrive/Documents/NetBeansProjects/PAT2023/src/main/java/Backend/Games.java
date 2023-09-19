@@ -25,6 +25,7 @@ public class Games
     private String[][] layout = new String[3][3];
     private ArrayList <String> openSpaces;
     
+    
     //checks if the button pressed is free to be used
     public boolean isButtonUsed(String buttonText)
     {
@@ -38,6 +39,7 @@ public class Games
             return true;
         }
     }
+    
     
     //adds an X component to the button
     public void addSymbol(JButton button, String symbol)
@@ -58,6 +60,7 @@ public class Games
             layout[buttonPos[0]][buttonPos[1]] = symbol;
         }
     }
+    
     
     //gets the button position
     public int[] getButtonPos(JButton button)
@@ -120,6 +123,7 @@ public class Games
         }
     }
     
+    
     //generates the AI's move
     public String computerMove()
     {
@@ -133,6 +137,7 @@ public class Games
         return buttonName;
     }
    
+    
     //resets the game
     public void resetTicTacToe()
     {
@@ -151,6 +156,7 @@ public class Games
         layout = new String[3][3];
         openSpaces = newAL;
     }
+    
     
     //checks if the round has been won and if the whole game is completed
     public boolean isTicTacToeWinCheck()
@@ -186,6 +192,7 @@ public class Games
         return false;
     }
     
+    
     //toString
     public String ticTacToeToString()
     {
@@ -205,6 +212,7 @@ public class Games
     private int numWrongAnswers = 0;
     private int progressBarValue = 0;
     private boolean closeScreen = false;
+    
     
     //getters
     //converts the userArray into a string and returns that string
@@ -231,6 +239,7 @@ public class Games
         return progressBarValue;
     }
     
+    
     //resets to original values
     public void resetHangman()
     {
@@ -244,6 +253,7 @@ public class Games
         numWrongAnswers = 0;
         wrongLettersString = "";
     }
+    
     
     //checks if the letter is a part of the word and updates the screen
     public void letterCheck(String inputLetter)
@@ -271,6 +281,7 @@ public class Games
         }
     }
     
+    
     //randomly selects a word and assigns it
     public void getWord()
     {
@@ -287,6 +298,7 @@ public class Games
             correctWordArray[i] = correctWordString.charAt(i) + "";
         }
     }
+    
     
     //checks if the user has user up all their chances
     public void hangmanWinCheck()        
@@ -326,6 +338,7 @@ public class Games
     private String riddleAnswer = "";
     private boolean riddleChosen = false;
     
+    
     //selecting a riddle
     public void selectRiddle()
     {
@@ -347,6 +360,7 @@ public class Games
         riddleAnswer = answers[index];
     }
 
+    
     //getters
     public String getRiddle()
     {
@@ -357,6 +371,7 @@ public class Games
     {
         return riddleChosen;
     }
+    
     
     //checks if the answer is right
     public void inputCheck(String userInput)
@@ -383,6 +398,7 @@ public class Games
     private static String[] currentPicOrder = new String[6];
     private static String[] buttonOrder = {"button1", "button2", "button3", "button4", "button5", "button6"};
     private boolean puzzleWin = false;
+    
     
     //gets the current picture being presented on a specific jbutton
     public String getPic(String screenStr)
@@ -429,6 +445,7 @@ public class Games
         }
         return buttonNumber;
     }
+    
     
     //finds what position the blank picture(pic2) is currently in
     public int getBlankPicPos()
@@ -614,5 +631,92 @@ public class Games
             //adding it to the pic order and removing that picture from the array
             picOrder[i] = picsInOrder.get(index); 
         }
+    }
+    
+    
+    
+    
+    //FIND MAP 
+    //fields
+    private int mapFragmentsLeft = 6;
+    
+    
+    //the user has found a fragment
+    public void fragmentFound()
+    {
+        mapFragmentsLeft--;
+        
+        //checking to see if the game has been won or not yet
+        if(mapFragmentsLeft == 0)
+        {
+            new SpeechMiniScreen().setVisible(true);
+            //setting the completed variable to true (for data sheet)
+            Diary.setCompletedMapPuzzle(true);
+            //sets the user objects variable to be true
+            currentUser.setBrokenPicFramesTrue();
+            updateCurrentArrayList();
+            userManager.setUsers(currentArrayList);
+            userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+        }
+    }
+    
+    //gets the number of fragments found
+    public int getNumFragmentsFound()
+    {
+        return 6-mapFragmentsLeft;
+    }
+    
+    
+    
+    
+    //FIND KEYS
+    //fields
+    private int keysLeft = 6;
+    
+    
+    //the user has found a fragment
+    public void keyFound()
+    {
+        keysLeft--;
+        
+        //checking to see if the game has been won or not yet
+        if(keysLeft == 0)
+        {
+            new SpeechMiniScreen().setVisible(true);
+            //setting the completed variable to true (for data sheet)
+            Diary.setCompletedMapPuzzle(true);
+            //sets the user objects variable to be true
+            currentUser.setBrokenPicFramesTrue();
+            updateCurrentArrayList();
+            userManager.setUsers(currentArrayList);
+            userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+        }
+    }
+    
+    //gets the number of fragments found
+    public int getNumKeysFound()
+    {
+        return 3-keysLeft;
+    }
+    
+    
+    
+    
+    //CANE GAME
+    //fields
+    private boolean caneFound;
+    
+    
+    //marks this task as complete
+    public void foundCane()
+    {
+        new SpeechMiniScreen().setVisible(true);
+        //setting the completed variable to true (for data sheet)
+        Diary.setFoundCane(true);
+        //sets the user objects variable to be true
+        currentUser.setBrokenPicFramesTrue();
+        updateCurrentArrayList();
+        userManager.setUsers(currentArrayList);
+        userManager.save(UserManager.getCurrentUserIndex(), currentUser);
     }
 }
