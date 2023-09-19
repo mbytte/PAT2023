@@ -5,7 +5,6 @@
  */
 package Backend;
 
-import Interface.ObjectiveScreen;
 import Interface.SpeechMiniScreen;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -315,5 +314,34 @@ public class Games
             //closing the screen
             closeScreen = true;
         }
+    }
+    
+    
+  
+    
+    //RIDDLE
+    //fields
+    private String riddle = "";
+    private String riddleAnswer = "";
+    
+    //selecting a riddle
+    public void selectRiddle()
+    {
+        //variables
+        String riddle1 = "";
+        String riddle1Ans = "";
+        String riddle2 = "";
+        String riddle2Ans = "";
+        String riddle3 = "";
+        String riddle3Ans = "";
+        String[] riddles = {riddle1, riddle2, riddle3};
+        String[] answers = {riddle1Ans, riddle2Ans, riddle3Ans};
+        
+        //getting a random index
+        int index = (int)(Math.random()*(3));
+        
+        //adding it to the fields
+        riddle = riddles[index];
+        riddleAnswer = answers[index];
     }
 }
