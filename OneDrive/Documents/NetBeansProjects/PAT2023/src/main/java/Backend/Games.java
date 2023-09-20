@@ -939,10 +939,12 @@ public class Games
             userManager.setUsers(currentArrayList);
             userManager.save(UserManager.getCurrentUserIndex(), currentUser);
         }
-        
-        
     }
     
     
-    
+    //changes the user array to fit whatever the user has changed
+    public void changeUserArray(int row, int col, int inputNum)
+    {
+        userSetup[row][col] = inputNum;
+    }
 }
