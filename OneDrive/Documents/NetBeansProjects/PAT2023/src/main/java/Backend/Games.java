@@ -19,7 +19,7 @@ public class Games
 {
     //class fields specific for the user
     private UserManager userManager = new UserManager();
-    private ArrayList<User> currentArrayList = new ArrayList<User>;
+    private ArrayList<User> currentArrayList = new ArrayList<User>();
     private int currentUseIndexr;
     private User currentUser;
     private Diary diary;
@@ -323,7 +323,7 @@ public class Games
             closeScreen = true;
             
             //sets the user objects variable to be true and changes the information
-            currentUser.setMusicBoxTrue();
+            currentUser.setCompletedHangmanTrue();
             updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(UserManager.getCurrentUserIndex(), currentUser);
@@ -393,7 +393,7 @@ public class Games
             //setting the completed variable to true (for data sheet)
             diary.setCompletedBrokenPicFrames(true);
             //sets the user objects variable to be true
-            currentUser.setBrokenPicFramesTrue();
+            currentUser.setCompletedRiddleTrue();
             updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(UserManager.getCurrentUserIndex(), currentUser);
@@ -614,7 +614,7 @@ public class Games
             //setting the win variable to true to be used to close the screen
             puzzleWin = true;
             //sets the user objects variable to be true
-            currentUser.setTornPicsTrue();
+            currentUser.setCompletedSlidingPuzzleTrue();
             userManager.save(UserManager.getCurrentUserIndex(), currentUser);
         }
     }
@@ -663,7 +663,7 @@ public class Games
             //setting the completed variable to true (for data sheet)
             diary.setCompletedMapPuzzle(true);
             //sets the user objects variable to be true
-            currentUser.setBrokenPicFramesTrue();
+            currentUser.setCompletedFindMapTrue();
             updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(UserManager.getCurrentUserIndex(), currentUser);
@@ -696,7 +696,7 @@ public class Games
             //setting the completed variable to true (for data sheet)
             diary.setCompletedMapPuzzle(true);
             //sets the user objects variable to be true
-            currentUser.setBrokenPicFramesTrue();
+            currentUser.setCompletedFindKeysTrue();
             updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(UserManager.getCurrentUserIndex(), currentUser);
@@ -724,7 +724,7 @@ public class Games
         //setting the completed variable to true (for data sheet)
         diary.setFoundCane(true);
         //sets the user objects variable to be true
-        currentUser.setBrokenPicFramesTrue();
+        currentUser.setCompletedFindCaneTrue();
         updateCurrentArrayList();
         userManager.setUsers(currentArrayList);
         userManager.save(UserManager.getCurrentUserIndex(), currentUser);
@@ -825,7 +825,7 @@ public class Games
                     //setting the completed variable to true (for data sheet)
                     diary.setFoundCane(true);
                     //sets the user objects variable to be true
-                    currentUser.setCrosswordTrue();
+                    currentUser.setCompletedCrosswordTrue();
                     updateCurrentArrayList();
                     userManager.setUsers(currentArrayList);
                     userManager.save(UserManager.getCurrentUserIndex(), currentUser);
@@ -934,7 +934,7 @@ public class Games
             //setting the completed variable to true (for data sheet)
             diary.setMagicSquareTrue(true);
             //sets the user objects variable to be true
-            currentUser.setMagicSquareTrue();
+            currentUser.setCompletedMagicSquareTrue();
             updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(UserManager.getCurrentUserIndex(), currentUser);
