@@ -947,4 +947,103 @@ public class Games
     {
         userSetup[row][col] = inputNum;
     }
+    
+    
+    
+    
+    //WORD GAME
+    //fields
+    private static String message = "";
+    private static String riddle1 = "A man is looking at a photograph of someone. His friend asks who it is. The man replies, “Brothers and sisters, I have none. But that man’s father is my father’s son.” Who was in the photograph?";
+    private static String riddle2 = "A sundial has the fewest moving parts of any timepiece. Which has the most?";
+    private static String riddle3 = "Your parents have six sons including you and each son has one sister. How many people are in the family?";
+    private static String ans1 = "his son";
+    private static String ans2 = "sundial";
+    private static String ans3 = "nine";
+    
+    
+    //getters
+    public static String getRiddle1()
+    {
+        return riddle1;
+    }
+
+    public static String getRiddle2()
+    {
+        return riddle2;
+    }
+
+    public static String getRiddle3()
+    {
+        return riddle3;
+    }
+    
+    
+    //checks if that specific riddle has been answered correctly or not
+    public boolean checkRiddle1Ans(String input)
+    {
+        if(ans1.equals(input))
+        {
+            //decrypts part of the message
+            String decrypted = "diufbaouvbaskdjnvsjdnv"; //change this to be what you want
+            message = decrypted + message.substring(9); //number should be from the next index after the length of the decrypted message
+            
+            return true;
+        }
+        
+        return false;
+    }
+    
+    public boolean checkRiddle2Ans(String input)
+    {
+        if(ans1.equals(input))
+        {
+            //decrypts part of the message
+            String decrypted = "diufbaouvbaskdjnvsjdnv"; //change this to be what you want
+            message = message.substring(0) + decrypted + message.substring(9); //number should be from the next index after the length of the decrypted message
+            
+            return true;
+        }
+        
+        return false;
+    }
+    
+    public boolean checkRiddle3Ans(String input)
+    {
+        if(ans1.equals(input))
+        {
+            //decrypts part of the message
+            String decrypted = "diufbaouvbaskdjnvsjdnv"; //change this to be what you want
+            message = message.substring(9)  + decrypted; //number should be from the next index after the length of the decrypted message
+            
+            return true;
+        }
+        
+        return false;
+    }
+    
+    
+    //checks if the game has been win or not
+    public boolean wordGameWinCheck()
+    {
+        //variables
+        boolean letterFound = true;
+        int i = 0;
+        
+        //running the loop until an incorrect character is found
+        while(letterFound)
+        {
+            char currentLetter = message.charAt(i);
+            if(currentLetter == '*')
+            {
+                //letter is incorrect
+                letterFound = false;
+                break;
+            }
+            
+            i++;
+        }
+        
+        return letterFound;
+    }
 }
