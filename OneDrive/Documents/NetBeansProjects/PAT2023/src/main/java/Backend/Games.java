@@ -747,26 +747,155 @@ public class Games
     //setters
     public void setSpeakToTommy()
     {
-        speakToTommy = true;
+        //checking if the task has already been conpleted or not
+        if(speakToTommy == false)
+        {
+            speakToTommy = true;
+            numCharactersSpokenTo++;
+        }
     }
     public void setSpeakToAstrid()
     {
-        speakToTommy = true;
+        //checking if the task has already been conpleted or not
+        if(speakToTommy == false)
+        {
+            speakToTommy = true;
+            numCharactersSpokenTo++;
+        }
     }
     public void setSpeakToMylan()
     {
-        speakToTommy = true;
+        //checking if the task has already been conpleted or not
+        if(speakToTommy == false)
+        {
+            speakToTommy = true;
+            numCharactersSpokenTo++;
+        }
     }
     public void setSpeakToCamila()
     {
-        speakToTommy = true;
+        //checking if the task has already been conpleted or not
+        if(speakToTommy == false)
+        {
+            speakToTommy = true;
+            numCharactersSpokenTo++;
+        }
     }
     public void setSpeakToEmile()
     {
-        speakToTommy = true;
+        //checking if the task has already been conpleted or not
+        if(speakToTommy == false)
+        {
+            speakToTommy = true;
+            numCharactersSpokenTo++;
+        }
     }
     public void setSpeakToAra()
     {
         speakToTommy = true;
+    }
+    
+    
+    
+    
+    //CROSSWORD
+    //fields
+    private String crosswordPicturePathway = "";
+    private String crosswordHintPathway = "";
+    private String[] crosswordAnswers = new String[5];
+    private int numCorrectAnswers = 0;
+    private ArrayList<String> answeredQuestions = new ArrayList<String>();
+    
+    
+    //checks if the answer inputted was correct
+    public boolean checkAnswer(int questionNumber, String ans)
+    {
+        //checks if the question has already been answered or not
+        if(!answeredQuestions.contains(ans))
+        {
+            if(crosswordAnswers[questionNumber-1].equals(ans))
+            {
+                answeredQuestions.add(ans);
+                numCorrectAnswers++;
+                
+                //checking if the game is won
+                if(checkGameWin())
+                {
+                    new SpeechMiniScreen().setVisible(true);
+                    //setting the completed variable to true (for data sheet)
+                    diary.setFoundCane(true);
+                    //sets the user objects variable to be true
+                    currentUser.setCrosswordTrue();
+                    updateCurrentArrayList();
+                    userManager.setUsers(currentArrayList);
+                    userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+                }
+                
+                return true; //this will then be used to make the answer block either red or green in the UI
+            }
+            
+            else
+            {
+                return false;
+            }
+        }    
+        
+        //this means that the answer has been inputted beforehand and is currently green
+        return true;
+    }
+    
+    
+    private boolean checkGameWin()
+    {
+        if(numCorrectAnswers == 5)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    
+    //gets a random crossword
+    public void setCrossword()
+    {
+        //variables
+        String[] crosswordPaths = {}; 
+        int index = (int) Math.round(Math.random()*(1));
+        
+        //getting the crosswords
+        if(index == 0)
+        {
+            crosswordPicturePathway = "";
+            crosswordHintPathway = "";           
+            crosswordAnswers[0] = "";
+            crosswordAnswers[1] = "";
+            crosswordAnswers[2] = "";
+            crosswordAnswers[3] = "";
+            crosswordAnswers[4] = "";
+        }
+        
+        else
+        {
+            crosswordPicturePathway = "";
+            crosswordHintPathway = "";           
+            crosswordAnswers[0] = "";
+            crosswordAnswers[1] = "";
+            crosswordAnswers[2] = "";
+            crosswordAnswers[3] = "";
+            crosswordAnswers[4] = "";
+        }
+    }
+    
+    
+    //getters
+    public String getCrosswordPicturePathway()
+    {
+        return crosswordPicturePathway;
+    }
+
+    public String getCrosswordAnswerPathway()
+    {
+        return crosswordHintPathway;
     }
 }

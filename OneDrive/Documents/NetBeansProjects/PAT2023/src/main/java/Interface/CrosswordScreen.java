@@ -46,7 +46,11 @@ public class CrosswordScreen extends javax.swing.JFrame
         answerTextField2 = new javax.swing.JTextField();
         answerTextField4 = new javax.swing.JTextField();
         answerTextField5 = new javax.swing.JTextField();
-        answerButton = new javax.swing.JButton();
+        checkButton1 = new javax.swing.JButton();
+        checkButton2 = new javax.swing.JButton();
+        checkButton3 = new javax.swing.JButton();
+        checkButton4 = new javax.swing.JButton();
+        checkButton5 = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -204,19 +208,75 @@ public class CrosswordScreen extends javax.swing.JFrame
         });
         getContentPane().add(answerTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 360, 50));
 
-        answerButton.setBackground(new java.awt.Color(15, 28, 33));
-        answerButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        answerButton.setForeground(new java.awt.Color(139, 118, 82));
-        answerButton.setText("ANSWER");
-        answerButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-        answerButton.addActionListener(new java.awt.event.ActionListener()
+        checkButton1.setBackground(new java.awt.Color(15, 28, 33));
+        checkButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        checkButton1.setForeground(new java.awt.Color(139, 118, 82));
+        checkButton1.setText("CHECK");
+        checkButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        checkButton1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                answerButtonActionPerformed(evt);
+                checkButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(answerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 540, 110, 70));
+        getContentPane().add(checkButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 140, 80, 40));
+
+        checkButton2.setBackground(new java.awt.Color(15, 28, 33));
+        checkButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        checkButton2.setForeground(new java.awt.Color(139, 118, 82));
+        checkButton2.setText("CHECK");
+        checkButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        checkButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                checkButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 220, 80, 40));
+
+        checkButton3.setBackground(new java.awt.Color(15, 28, 33));
+        checkButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        checkButton3.setForeground(new java.awt.Color(139, 118, 82));
+        checkButton3.setText("CHECK");
+        checkButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        checkButton3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                checkButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 300, 80, 40));
+
+        checkButton4.setBackground(new java.awt.Color(15, 28, 33));
+        checkButton4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        checkButton4.setForeground(new java.awt.Color(139, 118, 82));
+        checkButton4.setText("CHECK");
+        checkButton4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        checkButton4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                checkButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 390, 80, 40));
+
+        checkButton5.setBackground(new java.awt.Color(15, 28, 33));
+        checkButton5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        checkButton5.setForeground(new java.awt.Color(139, 118, 82));
+        checkButton5.setText("CHECK");
+        checkButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        checkButton5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                checkButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 470, 80, 40));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\redBackground.png")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -330, 1400, 1200));
@@ -271,15 +331,34 @@ public class CrosswordScreen extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_answerTextField5ActionPerformed
 
-    private void answerButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerButtonActionPerformed
-    {//GEN-HEADEREND:event_answerButtonActionPerformed
+    private void checkButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_checkButton1ActionPerformed
+    {//GEN-HEADEREND:event_checkButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_answerButtonActionPerformed
+    }//GEN-LAST:event_checkButton1ActionPerformed
+
+    private void checkButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_checkButton2ActionPerformed
+    {//GEN-HEADEREND:event_checkButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkButton2ActionPerformed
+
+    private void checkButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_checkButton3ActionPerformed
+    {//GEN-HEADEREND:event_checkButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkButton3ActionPerformed
+
+    private void checkButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_checkButton4ActionPerformed
+    {//GEN-HEADEREND:event_checkButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkButton4ActionPerformed
+
+    private void checkButton5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_checkButton5ActionPerformed
+    {//GEN-HEADEREND:event_checkButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkButton5ActionPerformed
 
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton answerButton;
     private javax.swing.JTextField answerTextField;
     private javax.swing.JTextField answerTextField1;
     private javax.swing.JTextField answerTextField2;
@@ -287,6 +366,11 @@ public class CrosswordScreen extends javax.swing.JFrame
     private javax.swing.JTextField answerTextField5;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel background;
+    private javax.swing.JButton checkButton1;
+    private javax.swing.JButton checkButton2;
+    private javax.swing.JButton checkButton3;
+    private javax.swing.JButton checkButton4;
+    private javax.swing.JButton checkButton5;
     private javax.swing.JButton diaryButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton infoButton;

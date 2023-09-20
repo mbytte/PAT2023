@@ -13,8 +13,8 @@ public class Test
 {
     public static void main(String[] args)
     {
-        int randPos = (int)(Math.random()*(4-0 + 1)+0);
-        System.out.println(randPos);
+        int index = (int) Math.round(Math.random()*(1));
+        System.out.println(index);
     }
             
             
