@@ -898,4 +898,51 @@ public class Games
     {
         return crosswordHintPathway;
     }
+    
+    
+    
+    
+    //MAGIC  SQUARE
+    //fields
+    private static int[][] correctSetup = {{3, 14, 15, 2},{8, 9, 12, 5},{10, 7, 6, 11},{13, 4, 1, 16}};
+    private static int[][] userSetup = {{3, 14, 0, 2},{0, 9, 0, 0},{10, 0, 6, 0},{0, 4, 0, 0}};
+    
+    
+    //checks if the answers are correct
+    public void checkAnswers()
+    {
+        //variables
+        int numCorrectAnswers = 0;
+        
+        //running through the rows
+        for(int i = 0; i < 4; i++)
+        {
+            //running through the data in the row
+            for(int j = 0; j < 4; j++)
+            {
+                if(correctSetup[i][j] == userSetup[i][j])
+                {
+                    numCorrectAnswers++;
+                }
+            }
+        }
+        
+        //everything is correct and the game has been won
+        if(numCorrectAnswers == 16)
+        {
+            new SpeechMiniScreen().setVisible(true);
+            //setting the completed variable to true (for data sheet)
+            diary.setMagicSquareTrue(true);
+            //sets the user objects variable to be true
+            currentUser.setMagicSquareTrue();
+            updateCurrentArrayList();
+            userManager.setUsers(currentArrayList);
+            userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+        }
+        
+        
+    }
+    
+    
+    
 }
