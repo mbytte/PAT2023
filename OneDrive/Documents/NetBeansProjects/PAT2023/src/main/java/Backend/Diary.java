@@ -12,35 +12,46 @@ package Backend;
 public class Diary
 {
     //fields
-    private static String selectedClue;
-    private static String selectedCharacter;
+    private String selectedClue;
+    private String selectedCharacter;
+    private User currentUser;
+
+    
+    //makes a diary object for a particular user
+    public Diary(User currentUser)
+    {
+        this.currentUser = currentUser;
+    }
     
     
     //setters
-    public static void setSelectedClue(String clue)
+    public void setSelectedClue(String clue)
     {
-        Diary.selectedClue = selectedClue;
+        selectedClue = clue;
     }
 
-    public static void setSelectedCharacter(String character)
+    public void setSelectedCharacter(String character)
     {
-        Diary.selectedCharacter = selectedCharacter;
+        selectedCharacter = character;
     }
     
     
     //getters
-    public static String getClueData()
+    public String getClueData(String game)
     {
         //checks if the clue has been obtained
+        
         //connects to the database if yes
         //gets the information
         //returns the clue
         //returns "no data found" if clue has not been found
+            
         return selectedClue;
     }
 
-    public static String getCharacterData()
+    public String getCharacterData()
     {
+        
         return selectedCharacter;
     }
     
