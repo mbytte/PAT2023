@@ -30,7 +30,6 @@ public class UserManager
     {
         //connect to the database 
         //create a list of users using the User contructor and adding them into the arraylist of user
-        
     }
     
     

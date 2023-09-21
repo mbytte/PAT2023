@@ -5,6 +5,9 @@
  */
 package Backend;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author megan
@@ -37,16 +40,142 @@ public class Diary
     
     
     //getters
-    public String getClueData(String game)
+    public String getClueData() throws SQLException
     {
-        //checks if the clue has been obtained
+        //getting the game that the user wants
+        if(selectedClue.equals("Picture"))
+        {
+            //checking if the clue has been obtained
+            if(currentUser.isCompletedMagicSquare())
+            {
+                //running a query to obtain the data from the database
+                UserManager userManager = new UserManager();
+                ResultSet result = userManager.query("");
+                
+                //converting it into a String and returning it
+                return result.getString("Clue"); 
+            }
+        }
         
-        //connects to the database if yes
-        //gets the information
-        //returns the clue
-        //returns "no data found" if clue has not been found
+        else if(selectedClue.equals("Knife"))
+        {
+            //checking if the clue has been obtained
+            if(currentUser.isInvestigatedKnife())
+            {
+                //running a query to obtain the data from the database
+                UserManager userManager = new UserManager();
+                ResultSet result = userManager.query("");
+                
+                //converting it into a String and returning it
+                return result.getString("Clue");
+            }
+        }
             
-        return selectedClue;
+        else if(selectedClue.equals("Fire Iron"))
+        {
+            //checking if the clue has been obtained
+            if(currentUser.isInvestigatedFireIron())
+            {
+                //running a query to obtain the data from the database
+                UserManager userManager = new UserManager();
+                ResultSet result = userManager.query("");
+                
+                //converting it into a String and returning it
+                return result.getString("Clue");
+            }
+        }
+        
+        else if(selectedClue.equals("Tommy"))
+        {
+            //checking if the clue has been obtained
+            if(currentUser.isInvestigatedKnife())
+            {
+                //running a query to obtain the data from the database
+                UserManager userManager = new UserManager();
+                ResultSet result = userManager.query("");
+                
+                //converting it into a String and returning it
+                return result.getString("Clue");
+                
+            }
+        }
+        
+        else if(selectedClue.equals("Astrid"))
+        {
+            //checking if the clue has been obtained
+            if(currentUser.isInvestigatedKnife())
+            {
+                //running a query to obtain the data from the database
+                UserManager userManager = new UserManager();
+                ResultSet result = userManager.query("");
+                
+                //converting it into a String and returning it
+                return result.getString("Clue");
+                
+            }
+        }
+        
+        else if(selectedClue.equals("Mylan"))
+        {
+            //checking if the clue has been obtained
+            if(currentUser.isInvestigatedKnife())
+            {
+                //running a query to obtain the data from the database
+                UserManager userManager = new UserManager();
+                ResultSet result = userManager.query("");
+                
+                //converting it into a String and returning it
+                return result.getString("Clue");
+                
+            }
+        }
+        
+        else if(selectedClue.equals("Camila"))
+        {
+            //checking if the clue has been obtained
+            if(currentUser.isInvestigatedKnife())
+            {
+                //running a query to obtain the data from the database
+                UserManager userManager = new UserManager();
+                ResultSet result = userManager.query("");
+                
+                //converting it into a String and returning it
+                return result.getString("Clue");
+                
+            }
+        }
+        
+        else if(selectedClue.equals("Emile"))
+        {
+            //checking if the clue has been obtained
+            if(currentUser.isInvestigatedKnife())
+            {
+                //running a query to obtain the data from the database
+                UserManager userManager = new UserManager();
+                ResultSet result = userManager.query("");
+                
+                //converting it into a String and returning it
+                return result.getString("Clue");
+                
+            }
+        }
+        
+        else if(selectedClue.equals("Ara"))
+        {
+            //checking if the clue has been obtained
+            if(currentUser.isInvestigatedKnife())
+            {
+                //running a query to obtain the data from the database
+                UserManager userManager = new UserManager();
+                ResultSet result = userManager.query("");
+                
+                //converting it into a String and returning it
+                return result.getString("Clue");
+                
+            }
+        }
+        
+        return "No data found";
     }
 
     public String getCharacterData()

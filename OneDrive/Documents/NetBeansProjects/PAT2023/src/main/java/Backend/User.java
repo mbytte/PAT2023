@@ -25,10 +25,12 @@ public class User
     private boolean completedSpeakingToCharacters;
     private boolean completedTicTacToe;
     private boolean completedWordGame;
+    private boolean investigatedKnife;
+    private boolean investigatedFireIron;
 
     
     //creates a user object
-    public User(String username, boolean completedCrossword, boolean completedFinalReveal, boolean completedFindCane, boolean completedFindKeys, boolean completedFindMap, boolean completedHangman, boolean completedMagicSquare, boolean completedRiddle, boolean completedSlidingPuzzle, boolean completedSpeakingToCharacters, boolean completedTicTacToe, boolean completedWordGame)
+    public User(String username, boolean completedCrossword, boolean completedFinalReveal, boolean completedFindCane, boolean completedFindKeys, boolean completedFindMap, boolean completedHangman, boolean completedMagicSquare, boolean completedRiddle, boolean completedSlidingPuzzle, boolean completedSpeakingToCharacters, boolean completedTicTacToe, boolean completedWordGame, boolean investigatedKnife, boolean investigatedFireIron)
     {
         this.username = username;
         this.completedCrossword = completedCrossword;
@@ -43,7 +45,10 @@ public class User
         this.completedSpeakingToCharacters = completedSpeakingToCharacters;
         this.completedTicTacToe = completedTicTacToe;
         this.completedWordGame = completedWordGame;
+        this.investigatedKnife = investigatedKnife;
+        this.investigatedFireIron = investigatedFireIron;
     }
+    
     
     
     //getters
@@ -111,6 +116,16 @@ public class User
     {
         return completedWordGame;
     }
+
+    public boolean isInvestigatedKnife()
+    {
+        return investigatedKnife;
+    }
+
+    public boolean isInvestigatedFireIron()
+    {
+        return investigatedFireIron;
+    }
     
     
     //setters
@@ -173,5 +188,16 @@ public class User
     {
         this.completedWordGame = true;
     }
+
+    public void setInvestigatedKnifeTrue()
+    {
+        this.investigatedKnife = true;
+    }
+
+    public void setInvestigatedFireIronTrue()
+    {
+        this.investigatedFireIron = true;
+    }
+    
     
 }
