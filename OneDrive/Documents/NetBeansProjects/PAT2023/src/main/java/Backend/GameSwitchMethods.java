@@ -106,7 +106,7 @@ public class GameSwitchMethods
             //changing it into a string
             try
             {
-                output = results.getString("Objective");
+                output = results.getString("Data");
             } catch (SQLException ex)
             {
                 Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
