@@ -18,8 +18,8 @@ import java.util.logging.Logger;
 public class UserManager
 {
     //fields
-   private static final String driver  = "com.mysql.cj.jdbc.Driver";
-   private static final String url = "jdbc:mysql://102.130.115.69.3306/meganldb";
+   private static final String driver = "com.mysql.cj.jdbc.Driver";
+   private static final String url = "jdbc:mysql://102.130.115.69:3306/meganlDB";
    private static final String username = "meganl";
    private static final String password = "Reddam2021";
    private ArrayList<User> users;
@@ -31,6 +31,9 @@ public class UserManager
     //constructs a usermanager object
     public UserManager() 
     {
+        //instantiating
+        users = new ArrayList<User>();
+        
        try
        {
            //connect to the database
@@ -38,15 +41,15 @@ public class UserManager
            Statement stmt = connection.createStatement();
            
            //getting all the users and applying to the fields
-           ResultSet allUsers = stmt.executeQuery("SELECT * FROM tblUsers");
-           numUsers = stmt.getFetchSize();
+           ResultSet allUsers = stmt.executeQuery("SELECT * FROM tblUsers;");
+           //numUsers = stmt.getFetchSize();
            
            //making user objects and putting them into a Array list
-           while(!allUsers.isAfterLast())
+           while(allUsers.next())
            {
-               //moving to the next row
-               
+               //moving to the next row              
                allUsers.next();
+               
                //getting all the data for the user in that row
                int userID = allUsers.getInt("UserID");
                String username = allUsers.getString("Username");
@@ -68,6 +71,7 @@ public class UserManager
                //adding the user to the array list
                User user = new User(userID, username, completedCrossword, completedFinalReveal, completedFindCane, completedFindKeys, completedFindMap, completedHangman, completedMagicSquare, completedRiddle, completedSlidingPuzzle, completedSpeakingToCharacters, completedTicTacToe, completedWordGame, investigatedKnife, investigatedFireIron);
                users.add(user);
+               numUsers++;
            }
            
            //closing the connection
@@ -89,7 +93,7 @@ public class UserManager
         //connecting to the database 
         try
         {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName(driver);
 
             //Registering drivers using DriverManager
             Connection con = DriverManager.getConnection(url, username, password);
@@ -99,6 +103,7 @@ public class UserManager
  
         catch (SQLException | ClassNotFoundException e)
         {
+            System.out.println("not found");
             System.out.println(e);
             return null;
         }
@@ -116,10 +121,38 @@ public class UserManager
         Statement stmt = connection.createStatement();
         ResultSet results = stmt.executeQuery(qry);
         
+        //closing connecion
+        connection.close();
+        
         //returning it as a string
         return results;
     }
     
+    
+    //updates, inserts or deletes from the db
+    public void update(String qry) throws SQLException
+    {
+        //creating the connection
+        Connection connection = createConnection();
+        
+        //creating a result set by running qry
+        Statement stmt = connection.createStatement();
+        stmt.executeUpdate(qry);
+        
+        //closing connecion
+        connection.close();
+    }
+    
+    
+    //updates, inserts or deletes from the db
+    public void insert(String qry) throws SQLException
+    {
+        //creating the connection
+        Connection connection = createConnection();
+        PreparedStatement statement = connection.prepareStatement(qry);
+        statement.executeUpdate();
+        statement.close();
+    }
     
     //creates the user and adds it to the db
     public void createUser(String username) throws SQLException
@@ -128,7 +161,7 @@ public class UserManager
         int userID = lastUserID + 1;
         
         //adding to the db
-        query("INSERT INTO tblUsers (UserID, Username, Crossword, FinalReveal, FindCane, FindKeys, FindMap, Hangman, MagicSquare, Riddle, SlidingPuzzle, SpeakToCharacters, TicTacToe, WordGame, Knife, FireIron) VALUES (" + userID + ", " + username + " , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);");
+        insert("INSERT INTO tblUsers VALUES (" + userID + ", " + username + " , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);");
 
     }
     

@@ -5,13 +5,18 @@
  */
 package Interface;
 
+import Backend.UserManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author megan
  */
 public class NewUserScreen extends javax.swing.JFrame
 {
-
+    
     /**
      * Creates new form NewUserScreen
      */
@@ -97,7 +102,17 @@ public class NewUserScreen extends javax.swing.JFrame
 
     private void createUserButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_createUserButtonActionPerformed
     {//GEN-HEADEREND:event_createUserButtonActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            UserManager users = new UserManager();
+            users.createUser(usernameTextField.getText());
+            new UserScreen().setVisible(true);
+            this.dispose();
+            
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(NewUserScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_createUserButtonActionPerformed
 
 
