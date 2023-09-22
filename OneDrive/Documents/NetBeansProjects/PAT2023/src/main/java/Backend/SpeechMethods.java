@@ -21,7 +21,7 @@ public class SpeechMethods
     
     
     //gets the speech needed from the database
-    public void setSpeech(String col)
+    public void setSpeech(String col) throws SQLException
     {
         //running a query to fetch the data
         UserManager userManager = new UserManager();

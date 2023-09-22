@@ -6,6 +6,7 @@
 package Backend;
 
 import Interface.SpeechMiniScreen;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.ImageIcon;
@@ -15,7 +16,7 @@ import javax.swing.JButton;
  *
  * @author megan
  */
-public class Games
+public class Games 
 {
     //class fields specific for the user
     private UserManager userManager = new UserManager();
@@ -24,7 +25,12 @@ public class Games
     private User currentUser = userManager.getSelectedUser(currentUserIndex);
     private Diary diary = new Diary(currentUser);
     
-    
+    //updates the current array list to comply with the new info
+    private void updateCurrentArrayList()
+    {
+        currentArrayList.remove(currentUserIndex);
+        currentArrayList.add(currentUserIndex, currentUser);
+    }
     
     
     //TIC TAC TOE
@@ -311,7 +317,7 @@ public class Games
     
     
     //checks if the user has user up all their chances
-    public void hangmanWinCheck()        
+    public void hangmanWinCheck() throws SQLException        
     {
         //win
         if(Arrays.equals(correctWordArray, usersWordArray))
@@ -321,10 +327,10 @@ public class Games
             closeScreen = true;
             
             //sets the user objects variable to be true and changes the information
-            currentUser.setCompletedHangmanTrue(); //NEED A SAVE FUNCTION TTO OCCUR AFTER THIS
+            currentUser.setCompletedHangmanTrue();            
             updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
-            userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+            userManager.save(currentUser.getUserID(), "Hangman", 1);
         }
         
         //lose
@@ -382,19 +388,18 @@ public class Games
     
     
     //checks if the answer is right
-    public void inputCheck(String userInput)
+    public void inputCheck(String userInput) throws SQLException
     {
         //right answer
         if(userInput.equals(riddleAnswer))
         {
             new SpeechMiniScreen().setVisible(true);
-            //setting the completed variable to true (for data sheet)
-            diary.setCompletedBrokenPicFrames(true);
+            
             //sets the user objects variable to be true
             currentUser.setCompletedRiddleTrue();
             updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
-            userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+            userManager.save(currentUser.getUserID(), "Riddle", 1);
         }
     }
     
@@ -579,7 +584,7 @@ public class Games
     
     
     //checks if the order that the user has arranged the pictures in is the exact way they are supposed to be arranged
-    public void puzzleWin()
+    public void puzzleWin() throws SQLException
     {
         //variables
         //the order that the pictures should be arranged in in order for the player to win
@@ -607,13 +612,12 @@ public class Games
         if(numCorrectPicPlace == 6)
         {
             new Interface.SpeechMiniScreen().setVisible(true);
-            //setting the completed variable to true (for data sheet)
-            diary.setSlidingPuzzle(true);
+
             //setting the win variable to true to be used to close the screen
             puzzleWin = true;
             //sets the user objects variable to be true
             currentUser.setCompletedSlidingPuzzleTrue();
-            userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+            userManager.save(currentUser.getUserID(), "SlidingPuzzle", 1);
         }
     }
     
@@ -650,7 +654,7 @@ public class Games
     
     
     //the user has found a fragment
-    public void fragmentFound()
+    public void fragmentFound() throws SQLException
     {
         mapFragmentsLeft--;
         
@@ -658,13 +662,12 @@ public class Games
         if(mapFragmentsLeft == 0)
         {
             new SpeechMiniScreen().setVisible(true);
-            //setting the completed variable to true (for data sheet)
-            diary.setCompletedMapPuzzle(true);
+            
             //sets the user objects variable to be true
             currentUser.setCompletedFindMapTrue();
             updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
-            userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+            userManager.save(currentUser.getUserID(), "FindMap", 1);
         }
     }
     
@@ -683,7 +686,7 @@ public class Games
     
     
     //the user has found a fragment
-    public void keyFound()
+    public void keyFound() throws SQLException
     {
         keysLeft--;
         
@@ -691,13 +694,12 @@ public class Games
         if(keysLeft == 0)
         {
             new SpeechMiniScreen().setVisible(true);
-            //setting the completed variable to true (for data sheet)
-            diary.setCompletedMapPuzzle(true);
+            
             //sets the user objects variable to be true
             currentUser.setCompletedFindKeysTrue();
             updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
-            userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+            userManager.save(currentUser.getUserID(), "FindKeys", 1);
         }
     }
     
@@ -716,16 +718,15 @@ public class Games
     
     
     //marks this task as complete
-    public void foundCane()
+    public void foundCane() throws SQLException
     {
         new SpeechMiniScreen().setVisible(true);
-        //setting the completed variable to true (for data sheet)
-        diary.setFoundCane(true);
+        
         //sets the user objects variable to be true
         currentUser.setCompletedFindCaneTrue();
         updateCurrentArrayList();
         userManager.setUsers(currentArrayList);
-        userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+        userManager.save(currentUser.getUserID(), "FindCane", 1);
     }
     
     
@@ -806,7 +807,7 @@ public class Games
     
     
     //checks if the answer inputted was correct
-    public boolean checkAnswer(int questionNumber, String ans)
+    public boolean checkAnswer(int questionNumber, String ans) throws SQLException
     {
         //checks if the question has already been answered or not
         if(!answeredQuestions.contains(ans))
@@ -820,13 +821,12 @@ public class Games
                 if(checkGameWin())
                 {
                     new SpeechMiniScreen().setVisible(true);
-                    //setting the completed variable to true (for data sheet)
-                    diary.setFoundCane(true);
+
                     //sets the user objects variable to be true
                     currentUser.setCompletedCrosswordTrue();
                     updateCurrentArrayList();
                     userManager.setUsers(currentArrayList);
-                    userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+                    userManager.save(currentUser.getUserID(), "Crossword", 1);
                 }
                 
                 return true; //this will then be used to make the answer block either red or green in the UI
@@ -907,7 +907,7 @@ public class Games
     
     
     //checks if the answers are correct
-    public void checkAnswers()
+    public void checkAnswers() throws SQLException
     {
         //variables
         int numCorrectAnswers = 0;
@@ -929,13 +929,12 @@ public class Games
         if(numCorrectAnswers == 16)
         {
             new SpeechMiniScreen().setVisible(true);
-            //setting the completed variable to true (for data sheet)
-            diary.setMagicSquareTrue(true);
+            
             //sets the user objects variable to be true
             currentUser.setCompletedMagicSquareTrue();
             updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
-            userManager.save(UserManager.getCurrentUserIndex(), currentUser);
+            userManager.save(currentUser.getUserID(), "MagicSquare", 1);
         }
     }
     
@@ -1022,7 +1021,7 @@ public class Games
     
     
     //checks if the game has been win or not
-    public boolean wordGameWinCheck()
+    public boolean wordGameWinCheck() throws SQLException
     {
         //variables
         boolean letterFound = true;
@@ -1040,6 +1039,18 @@ public class Games
             }
             
             i++;
+        }
+        
+        //checks if all riddles have been answered correctly
+        if(i == message.length()-1)
+        {
+            new SpeechMiniScreen().setVisible(true);
+            
+            //sets the user objects variable to be true
+            currentUser.setCompletedMagicSquareTrue();
+            updateCurrentArrayList();
+            userManager.setUsers(currentArrayList);
+            userManager.save(currentUser.getUserID(), "WordGame", 1);
         }
         
         return letterFound;

@@ -5,8 +5,10 @@
  */
 package Backend;
 
-import java.sql.ResultSet;
+import java.sql.* ;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -27,36 +29,107 @@ public class UserManager
     
     
     //constructs a usermanager object
-    public UserManager()
+    public UserManager() 
     {
-        //connect to the database 
-        //create a list of users using the User contructor and adding them into the arraylist of user
-        //lastUserID will be set to the value of the most recent user added to the db (can use this value when 
-        
-        //gets the lastUserID in the dbb
-        User lastUser = users.get(numUsers-1);
-        lastUserID = lastUser.getUserID();
+       try
+       {
+           //connect to the database
+           Connection connection = createConnection();
+           Statement stmt = connection.createStatement();
+           
+           //getting all the users and applying to the fields
+           ResultSet allUsers = stmt.executeQuery("SELECT * FROM tblUsers");
+           numUsers = stmt.getFetchSize();
+           
+           //making user objects and putting them into a Array list
+           while(!allUsers.isAfterLast())
+           {
+               //moving to the next row
+               
+               allUsers.next();
+               //getting all the data for the user in that row
+               int userID = allUsers.getInt("UserID");
+               String username = allUsers.getString("Username");
+               boolean completedCrossword = allUsers.getBoolean("Crossword");
+               boolean completedFinalReveal = allUsers.getBoolean("Crossword");
+               boolean completedFindCane = allUsers.getBoolean("Crossword");
+               boolean completedFindKeys = allUsers.getBoolean("Crossword");
+               boolean completedFindMap = allUsers.getBoolean("Crossword");
+               boolean completedHangman = allUsers.getBoolean("Crossword");
+               boolean completedMagicSquare = allUsers.getBoolean("Crossword");
+               boolean completedRiddle = allUsers.getBoolean("Crossword");
+               boolean completedSlidingPuzzle = allUsers.getBoolean("Crossword");
+               boolean completedSpeakingToCharacters = allUsers.getBoolean("Crossword");
+               boolean completedTicTacToe = allUsers.getBoolean("Crossword");
+               boolean completedWordGame = allUsers.getBoolean("Crossword");
+               boolean investigatedKnife = allUsers.getBoolean("Crossword");
+               boolean investigatedFireIron = allUsers.getBoolean("Crossword");
+               
+               //adding the user to the array list
+               User user = new User(userID, username, completedCrossword, completedFinalReveal, completedFindCane, completedFindKeys, completedFindMap, completedHangman, completedMagicSquare, completedRiddle, completedSlidingPuzzle, completedSpeakingToCharacters, completedTicTacToe, completedWordGame, investigatedKnife, investigatedFireIron);
+               users.add(user);
+           }
+           
+           //closing the connection
+           connection.close();
+           
+           //gets the lastUserID in the db
+           User lastUser = users.get(numUsers-1);
+           lastUserID = lastUser.getUserID();
+       } catch (SQLException ex)
+       {
+           Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
+       }
+    }
+    
+    
+    //creates a connection to the database
+    public Connection createConnection()
+    {
+        //connecting to the database 
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+
+            //Registering drivers using DriverManager
+            Connection con = DriverManager.getConnection(url, username, password);
+
+            return con;
+         }
+ 
+        catch (SQLException | ClassNotFoundException e)
+        {
+            System.out.println(e);
+            return null;
+        }
     }
     
     
     //runs a MySQL query 
-    public ResultSet query(String qry)
+    //this can be used even when the query returns no results (updates, inserts, deletes)
+    public ResultSet query(String qry) throws SQLException
     {
+        //creating the connection
+        Connection connection = createConnection();
         
+        //creating a result set by running qry
+        Statement stmt = connection.createStatement();
+        ResultSet results = stmt.executeQuery(qry);
+        
+        //returning it as a string
+        return results;
     }
     
-    
-    //updates the database
-    public void update(String qry)
-    {
-        
-    }
     
     //creates the user and adds it to the db
-    public void createUser(User user)
+    public void createUser(String username) throws SQLException
     {
-        query("");
-        //use the lastUserID field to get the primary key value into the database
+        //getting the value for the UserID
+        int userID = lastUserID + 1;
+        
+        //adding to the db
+        query("INSERT INTO tblUsers (UserID, Username, Crossword, FinalReveal, FindCane, FindKeys, FindMap, Hangman, MagicSquare, Riddle, SlidingPuzzle, SpeakToCharacters, TicTacToe, WordGame, Knife, FireIron) VALUES (" + userID + ", " + username + " , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);");
+
     }
     
     
@@ -77,20 +150,24 @@ public class UserManager
     
     
     //deletes a user from the database
-    public void delete(int userIndex)
+    public void delete(int userIndex) throws SQLException
     {
+        //variables
+        int userID = users.get(userIndex).getUserID();
+        
         //removing from the current list
         users.remove(userIndex);
+        setUsers(users);
         
         //removing from the db
-        query(""); //use selectedIndex to delete 
+        query("DELETE FROM tblUsers WHERE UserID = " + userID); 
     }
     
     
     //saves the changed information to the database
-    public void save(int selectedIndex, String field, String value)
+    public void save(int userID, String field, int value) throws SQLException
     {
-        query("");
+        query("UPDATE tblUsers SET " + field + " = " + value + "WHERE UserID = " + userID);
     }
     
     
@@ -118,5 +195,9 @@ public class UserManager
     public static void setCurrentUserIndex(int index)
     {
         currentUserIndex = index;
+    }
+    public void setLastUserID(int lastUserID)
+    {
+        this.lastUserID = lastUserID;
     }
 }

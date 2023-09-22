@@ -91,7 +91,7 @@ public class GameSwitchMethods
     
     
     //gets whatever info is needed for this game
-    public String getData(String infoNeeded)
+    public String getData(String infoNeeded) throws SQLException
     {
         if(findingMapSelected)
         {
