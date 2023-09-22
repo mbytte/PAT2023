@@ -20,9 +20,9 @@ public class Games
     //class fields specific for the user
     private UserManager userManager = new UserManager();
     private ArrayList<User> currentArrayList = new ArrayList<User>();
-    private int currentUseIndexr;
-    private User currentUser;
-    private Diary diary;
+    private int currentUserIndex = UserManager.getCurrentUserIndex();
+    private User currentUser = userManager.getSelectedUser(currentUserIndex);
+    private Diary diary = new Diary(currentUser);
     
     
     
@@ -317,13 +317,11 @@ public class Games
         if(Arrays.equals(correctWordArray, usersWordArray))
         {
             new SpeechMiniScreen().setVisible(true);
-            //setting the completed variable to true (for data sheet)
-            diary.setCompletedHangman(true);
             //closing the screen
             closeScreen = true;
             
             //sets the user objects variable to be true and changes the information
-            currentUser.setCompletedHangmanTrue();
+            currentUser.setCompletedHangmanTrue(); //NEED A SAVE FUNCTION TTO OCCUR AFTER THIS
             updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(UserManager.getCurrentUserIndex(), currentUser);

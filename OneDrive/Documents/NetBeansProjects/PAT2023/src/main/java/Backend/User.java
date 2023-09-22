@@ -12,6 +12,7 @@ package Backend;
 public class User
 {
     //fields
+    private int userID;
     private String username;
     private boolean completedCrossword;
     private boolean completedFinalReveal;
@@ -30,8 +31,9 @@ public class User
 
     
     //creates a user object
-    public User(String username, boolean completedCrossword, boolean completedFinalReveal, boolean completedFindCane, boolean completedFindKeys, boolean completedFindMap, boolean completedHangman, boolean completedMagicSquare, boolean completedRiddle, boolean completedSlidingPuzzle, boolean completedSpeakingToCharacters, boolean completedTicTacToe, boolean completedWordGame, boolean investigatedKnife, boolean investigatedFireIron)
+    public User(int userID, String username, boolean completedCrossword, boolean completedFinalReveal, boolean completedFindCane, boolean completedFindKeys, boolean completedFindMap, boolean completedHangman, boolean completedMagicSquare, boolean completedRiddle, boolean completedSlidingPuzzle, boolean completedSpeakingToCharacters, boolean completedTicTacToe, boolean completedWordGame, boolean investigatedKnife, boolean investigatedFireIron)
     {
+        this.userID = userID;
         this.username = username;
         this.completedCrossword = completedCrossword;
         this.completedFinalReveal = completedFinalReveal;
@@ -52,6 +54,11 @@ public class User
     
     
     //getters
+    public int getUserID()
+    {
+        return userID;
+    }
+
     public String getUsername()
     {
         return username;
@@ -198,6 +205,4 @@ public class User
     {
         this.investigatedFireIron = true;
     }
-    
-    
 }

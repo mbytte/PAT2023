@@ -23,6 +23,7 @@ public class UserManager
    private ArrayList<User> users;
    private static int currentUserIndex;
    private int numUsers;
+   private int lastUserID; //will use this value when adding to the db
     
     
     //constructs a usermanager object
@@ -30,6 +31,11 @@ public class UserManager
     {
         //connect to the database 
         //create a list of users using the User contructor and adding them into the arraylist of user
+        //lastUserID will be set to the value of the most recent user added to the db (can use this value when 
+        
+        //gets the lastUserID in the dbb
+        User lastUser = users.get(numUsers-1);
+        lastUserID = lastUser.getUserID();
     }
     
     
@@ -46,32 +52,11 @@ public class UserManager
         
     }
     
-    
-    //Runs a specific query that obtains all the users
-    public ArrayList<User> getUsers()
-    {
-        
-    }
-    
-    
-    //sets the users field to a new value
-    public void setUsers(ArrayList<User> users)
-    {
-        
-    }
-    
-    
-    //sets the relevant field
-    public static void UserIndex(int index)
-    {
-        
-    }
-    
-    
     //creates the user and adds it to the db
     public void createUser(User user)
     {
-        //use the numUsers field to get the primary key value into the databse
+        query("");
+        //use the lastUserID field to get the primary key value into the database
     }
     
     
@@ -83,8 +68,8 @@ public class UserManager
                
         //adding the list of names to the array list
         for(User user : users)
-        {
-            names.add(user.getUsername());
+        { 
+            names.add(user.getUserID() + ". " + user.getUsername());
         }
         
         return names;
@@ -92,8 +77,12 @@ public class UserManager
     
     
     //deletes a user from the database
-    public void delete(String username)
+    public void delete(int userIndex)
     {
+        //removing from the current list
+        users.remove(userIndex);
+        
+        //removing from the db
         query(""); //use selectedIndex to delete 
     }
     
@@ -101,6 +90,33 @@ public class UserManager
     //saves the changed information to the database
     public void save(int selectedIndex, String field, String value)
     {
-        
+        query("");
+    }
+    
+    
+    //getters
+    public ArrayList<User> getUsers()
+    {
+        return users;
+    }
+    public static int getCurrentUserIndex()
+    {
+        return currentUserIndex;
+    }
+    public User getSelectedUser(int selectedIndex)
+    {
+        User currentUser = users.get(selectedIndex);
+        return currentUser;
+    }
+    
+    
+    //setters
+    public void setUsers(ArrayList<User> users)
+    {
+        this.users = users;
+    }
+    public static void setCurrentUserIndex(int index)
+    {
+        currentUserIndex = index;
     }
 }
