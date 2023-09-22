@@ -78,14 +78,23 @@ public class UserManager
     //gets a list of all the users' usernames
     public ArrayList<String> getListNames()
     {
+        //creating a list of the names
+        ArrayList<String> names = new ArrayList<>();
+               
+        //adding the list of names to the array list
+        for(User user : users)
+        {
+            names.add(user.getUsername());
+        }
         
+        return names;
     }
     
     
     //deletes a user from the database
-    public void delete(int selectedIndex)
+    public void delete(String username)
     {
-        
+        query(""); //use selectedIndex to delete 
     }
     
     
