@@ -33,9 +33,9 @@ public class UserScreen extends javax.swing.JFrame
         listModel.addAll(usersNames);
         userList.setModel(listModel);
         
-        //setting it to be in the centre of the screen
-        setLocationRelativeTo (null);  
         
+        //setting it to be in the centre of the screen
+        setLocationRelativeTo (null);        
     }
 
     /**
@@ -207,7 +207,7 @@ public class UserScreen extends javax.swing.JFrame
             //opens the game and closes this screen
             //get the user that was selected
             UserManager uM = new UserManager();
-            if(!uM.getSelectedUser(userList.getSelectedIndex()).isCompletedFirstReveal())
+            if(!uM.getSelectedUser().isCompletedFirstReveal())
             {
                 new SceneScreen().setVisible(true); // will change when there is a new room to go to
                 this.dispose();

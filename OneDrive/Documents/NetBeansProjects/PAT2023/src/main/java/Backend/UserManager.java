@@ -71,9 +71,6 @@ public class UserManager
                numUsers++;
            }
            
-           //closing the connection
-           connection.close();
-           
            //gets the lastUserID in the db
            User lastUser = users.get(numUsers-1);
            lastUserID = lastUser.getUserID();
@@ -108,7 +105,6 @@ public class UserManager
     
     
     //runs a MySQL query 
-    //this can be used even when the query returns no results (updates, inserts, deletes)
     public ResultSet query(String qry) throws SQLException
     {
         //creating the connection
@@ -117,9 +113,6 @@ public class UserManager
         //creating a result set by running qry
         Statement stmt = connection.createStatement();
         ResultSet results = stmt.executeQuery(qry);
-        
-        //closing connecion
-        connection.close();
         
         //returning it as a string
         return results;
@@ -147,6 +140,8 @@ public class UserManager
         //creating the connection
         Connection connection = createConnection();
         PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        
+        //setting the values into each column
         statement.setInt(1, userID);
         statement.setString(2, username);
         statement.setBoolean(3, false);
@@ -166,6 +161,8 @@ public class UserManager
         statement.setBoolean(17, false);
         
         statement.executeUpdate();
+        
+        //closing the connection
         statement.close();
     }
     
@@ -178,7 +175,6 @@ public class UserManager
         
         String sql = "INSERT INTO tblUsers (UserID, Username, Crossword, FinalReveal, FirstReveal, FindCane, FindKeys, FindMap, Hangman, MagicSquare, Riddle, SlidingPuzzle, SpeakToCharacters, TicTacToe, WordGame, Knife, FireIron) " + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         insert(userID, username, sql);
-
     }
     
     
@@ -216,6 +212,10 @@ public class UserManager
         
         //removing from the db
         statement.execute();
+        
+        //closing the connection
+        statement.close();
+        connection.close();
     }
     
     
@@ -235,9 +235,9 @@ public class UserManager
     {
         return currentUserIndex;
     }
-    public User getSelectedUser(int selectedIndex)
+    public User getSelectedUser()
     {
-        User currentUser = users.get(selectedIndex);
+        User currentUser = users.get(currentUserIndex);
         return currentUser;
     }
     

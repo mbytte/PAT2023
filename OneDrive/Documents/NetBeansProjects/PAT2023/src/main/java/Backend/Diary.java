@@ -7,6 +7,7 @@ package Backend;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,9 +22,10 @@ public class Diary
 
     
     //makes a diary object for a particular user
-    public Diary(User currentUser)
+    public Diary()
     {
-        this.CURRENT_USER = currentUser;
+        UserManager userManager = new UserManager();
+        this.CURRENT_USER = userManager.getSelectedUser();
     }
     
     
@@ -39,7 +41,48 @@ public class Diary
     }
     
     
-    //getters
+    //gets a list of all the clue names
+    public ArrayList<String> getListClues() throws SQLException
+    {
+        //Variables
+        ArrayList<String> listNames = new ArrayList<>();
+        
+        //making a connection to the db and retrieving the clues
+        UserManager userManager = new UserManager();
+        ResultSet names = userManager.query("SELECT ClueName FROM tblClues");
+        
+        while(names.next())
+        {
+            listNames.add(names.getString("ClueName"));
+        }
+        
+        return listNames;
+    }
+    
+    
+    //gets a list of all the character names
+    public ArrayList<String> getCharacterList() throws SQLException
+    {
+        //Variables
+        ArrayList<String> listNames = new ArrayList<>();
+        
+        //making a connection to the db and retrieving the clues
+        UserManager userManager = new UserManager();
+        ResultSet names = userManager.query("SELECT Name FROM tblCharacters");
+        
+        while(names.next())
+        {
+            listNames.add(names.getString("Name"));
+        }
+        
+        //closing the connection
+        names.close();
+        
+        return listNames;
+    }
+    
+    
+    //gets the information tied to that clue
     public String getClueData(String dataNeeded) throws SQLException
     {
         //getting the game that the user wants
@@ -70,59 +113,59 @@ public class Diary
             }
         }
         
-        else if(selectedClue.equals("Tommy"))
+        else if(selectedClue.equals("Tommy Winters"))
         {
             //checking if the clue has been obtained
             if(CURRENT_USER.isInvestigatedKnife())
             {
-                return getData("Clue", "Tommy");
+                return getData("Clue", "Tommy Winters");
                 
             }
         }
         
-        else if(selectedClue.equals("Astrid"))
+        else if(selectedClue.equals("Astrid Berg"))
         {
             //checking if the clue has been obtained
             if(CURRENT_USER.isInvestigatedKnife())
             {
-                return getData("Clue", "Astrid");
+                return getData("Clue", "Astrid Berg");
                 
             }
         }
         
-        else if(selectedClue.equals("Mylan"))
+        else if(selectedClue.equals("Mylan Morea"))
         {
             //checking if the clue has been obtained
             if(CURRENT_USER.isInvestigatedKnife())
             {
-                return getData("Clue", "Mylan");              
+                return getData("Clue", "Mylan Morea");              
             }
         }
         
-        else if(selectedClue.equals("Camila"))
+        else if(selectedClue.equals("Camila Morea"))
         {
             //checking if the clue has been obtained
             if(CURRENT_USER.isInvestigatedKnife())
             {
-                return getData("Clue", "Camila");              
+                return getData("Clue", "CamilaMorea");              
             }
         }
         
-        else if(selectedClue.equals("Emile"))
+        else if(selectedClue.equals("Emile Beaufoy"))
         {
             //checking if the clue has been obtained
             if(CURRENT_USER.isInvestigatedKnife())
             {
-                return getData("Clue", "Emile");
+                return getData("Clue", "Emile Beaufoy");
             }
         }
         
-        else if(selectedClue.equals("Ara"))
+        else if(selectedClue.equals("Ara Bozoyan"))
         {
             //checking if the clue has been obtained
             if(CURRENT_USER.isInvestigatedKnife())
             {
-                return getData("Clue", "Ara");
+                return getData("Clue", "Ara Bozoyan");
             }
         }
         
@@ -172,11 +215,11 @@ public class Diary
         if(dataNeeded.equals("CharInfo"))
         {
             //variables
-            String character = subject;
+            String character = subject; //needs to be the full name of the character as that's what they are stored as in the db
             
             //running a query to get the data from the database
             UserManager userManager = new UserManager();
-            ResultSet result = userManager.query(""); //add in the character variable and "CharInfo"
+            ResultSet result = userManager.query("SELECT CharInfo FROM tblCharacters WHERE Name = " + character);
                 
             //converting it into a String and returning it
             return result.getString("CharInfo");
@@ -190,7 +233,7 @@ public class Diary
             
             //running a query to get the data from the database
             UserManager userManager = new UserManager();
-            ResultSet result = userManager.query(""); //add in the character variable and "Motive"
+            ResultSet result = userManager.query("SELECT Motive FROM tblCharacters WHERE Name = " + character);
                 
             //converting it into a String and returning it
             return result.getString("Motive");
@@ -204,7 +247,7 @@ public class Diary
             
             //running a query to get the data from the database
             UserManager userManager = new UserManager();
-            ResultSet result = userManager.query(""); //add in the clue variable and "Motive"
+            ResultSet result = userManager.query("SELECT Info FROM tblClues WHERE ClueName = " + clue); 
                 
             //converting it into a String and returning it
             return result.getString("Info");

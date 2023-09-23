@@ -5,6 +5,12 @@
  */
 package Interface;
 
+import Backend.Diary;
+import Backend.UserManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author megan
@@ -15,9 +21,22 @@ public class DiaryScreen extends javax.swing.JFrame
     /**
      * Creates new form DiaryScreen
      */
-    public DiaryScreen()
+    public DiaryScreen() throws SQLException
     {
         initComponents();
+        
+        //populating the lists
+        UserManager userManager = new UserManager();
+        Diary diary = new Diary();
+       ArrayList<String> clueNames = diary.getListClues();
+        DefaultListModel listModel1 = new DefaultListModel();
+        listModel1.addAll(clueNames);
+        clueList.setModel(listModel1);
+        
+        ArrayList<String> characterNames = diary.getCharacterList();
+        DefaultListModel listModel2 = new DefaultListModel();
+        listModel2.addAll(characterNames);
+        characterList.setModel(listModel2);
     }
 
     /**
@@ -34,10 +53,10 @@ public class DiaryScreen extends javax.swing.JFrame
         homeButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         map = new javax.swing.JLabel();
-        characterList = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        cluesList = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        characterList = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        clueList = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         diary = new javax.swing.JLabel();
@@ -79,33 +98,47 @@ public class DiaryScreen extends javax.swing.JFrame
         map.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         getContentPane().add(map, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 480, 220));
 
-        jList1.setBackground(new java.awt.Color(221, 222, 222));
-        jList1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-        jList1.setFont(new java.awt.Font("Felix Titling", 0, 18)); // NOI18N
-        jList1.setForeground(new java.awt.Color(15, 28, 33));
-        jList1.setModel(new javax.swing.AbstractListModel<String>()
+        characterList.setBackground(new java.awt.Color(221, 222, 222));
+        characterList.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        characterList.setFont(new java.awt.Font("Felix Titling", 0, 18)); // NOI18N
+        characterList.setForeground(new java.awt.Color(15, 28, 33));
+        characterList.setModel(new javax.swing.AbstractListModel<String>()
         {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        characterList.setViewportView(jList1);
+        characterList.addListSelectionListener(new javax.swing.event.ListSelectionListener()
+        {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt)
+            {
+                characterListValueChanged(evt);
+            }
+        });
+        jScrollPane3.setViewportView(characterList);
 
-        getContentPane().add(characterList, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 210, 250));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 210, 210));
 
-        jList2.setBackground(new java.awt.Color(221, 222, 222));
-        jList2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-        jList2.setFont(new java.awt.Font("Felix Titling", 0, 18)); // NOI18N
-        jList2.setForeground(new java.awt.Color(15, 28, 33));
-        jList2.setModel(new javax.swing.AbstractListModel<String>()
+        clueList.setBackground(new java.awt.Color(221, 222, 222));
+        clueList.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        clueList.setFont(new java.awt.Font("Felix Titling", 0, 18)); // NOI18N
+        clueList.setForeground(new java.awt.Color(15, 28, 33));
+        clueList.setModel(new javax.swing.AbstractListModel<String>()
         {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        cluesList.setViewportView(jList2);
+        clueList.addListSelectionListener(new javax.swing.event.ListSelectionListener()
+        {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt)
+            {
+                clueListValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(clueList);
 
-        getContentPane().add(cluesList, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 210, 250));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 210, 210));
 
         jTextArea1.setEditable(false);
         jTextArea1.setBackground(new java.awt.Color(222, 222, 222));
@@ -139,19 +172,29 @@ public class DiaryScreen extends javax.swing.JFrame
         new UserScreen().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
+    private void clueListValueChanged(javax.swing.event.ListSelectionEvent evt)//GEN-FIRST:event_clueListValueChanged
+    {//GEN-HEADEREND:event_clueListValueChanged
+        
+    }//GEN-LAST:event_clueListValueChanged
+
+    private void characterListValueChanged(javax.swing.event.ListSelectionEvent evt)//GEN-FIRST:event_characterListValueChanged
+    {//GEN-HEADEREND:event_characterListValueChanged
+       
+    }//GEN-LAST:event_characterListValueChanged
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel background;
-    private javax.swing.JScrollPane characterList;
-    private javax.swing.JScrollPane cluesList;
+    private javax.swing.JList<String> characterList;
+    private javax.swing.JList<String> clueList;
     private javax.swing.JLabel diary;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel map;
     // End of variables declaration//GEN-END:variables
