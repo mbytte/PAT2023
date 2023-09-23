@@ -5,6 +5,13 @@
  */
 package Interface;
 
+import Backend.UserManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author megan
@@ -18,6 +25,17 @@ public class UserScreen extends javax.swing.JFrame
     public UserScreen()
     {
         initComponents();
+        
+        //populating the list with the users
+        UserManager users = new UserManager();
+        ArrayList<String> usersNames = users.getListNames();
+        DefaultListModel listModel = new DefaultListModel();
+        listModel.addAll(usersNames);
+        userList.setModel(listModel);
+        
+        //setting it to be in the centre of the screen
+        setLocationRelativeTo (null);  
+        
     }
 
     /**
@@ -37,7 +55,10 @@ public class UserScreen extends javax.swing.JFrame
         loadUserButton = new javax.swing.JButton();
         newUserButton = new javax.swing.JButton();
         deleteUserButton = new javax.swing.JButton();
+        selectUserMessage = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -81,6 +102,13 @@ public class UserScreen extends javax.swing.JFrame
         loadUserButton.setForeground(new java.awt.Color(139, 118, 82));
         loadUserButton.setText("LOAD USER");
         loadUserButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        loadUserButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                loadUserButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(loadUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 380, 250, 70));
 
         newUserButton.setBackground(new java.awt.Color(15, 28, 33));
@@ -102,10 +130,34 @@ public class UserScreen extends javax.swing.JFrame
         deleteUserButton.setForeground(new java.awt.Color(139, 118, 82));
         deleteUserButton.setText("DELETE USER ");
         deleteUserButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        deleteUserButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                deleteUserButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(deleteUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 290, 250, 70));
+
+        selectUserMessage.setBackground(new java.awt.Color(48, 29, 39));
+        selectUserMessage.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        selectUserMessage.setForeground(new java.awt.Color(250, 0, 0));
+        selectUserMessage.setToolTipText("");
+        selectUserMessage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(selectUserMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 180, 20));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\A-1920s-style-sleeper-train-with-an-image-size-of-1920x1080.png")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -30, 1920, 1020));
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>()
+        {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -113,12 +165,60 @@ public class UserScreen extends javax.swing.JFrame
     private void newUserButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_newUserButtonActionPerformed
     {//GEN-HEADEREND:event_newUserButtonActionPerformed
         new NewUserScreen().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_newUserButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_exitButtonActionPerformed
     {//GEN-HEADEREND:event_exitButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void deleteUserButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_deleteUserButtonActionPerformed
+    {//GEN-HEADEREND:event_deleteUserButtonActionPerformed
+        try
+        {
+            UserManager userArray = new UserManager();
+            userArray.delete(userList.getSelectedIndex());
+            
+            //refreshing the list
+            UserManager users = new UserManager();
+            ArrayList<String> usersNames = users.getListNames();
+            DefaultListModel listModel = new DefaultListModel();
+            listModel.addAll(usersNames);
+            userList.setModel(listModel);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(UserScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_deleteUserButtonActionPerformed
+
+    private void loadUserButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_loadUserButtonActionPerformed
+    {//GEN-HEADEREND:event_loadUserButtonActionPerformed
+        //checking if a user was selected
+        if(userList.isSelectionEmpty())
+        {
+            selectUserMessage.setText("Please select a user");
+            selectUserMessage.setOpaque(true);
+        } else
+        {
+            //getting the selected index of the user
+            UserManager.setCurrentUserIndex(userList.getSelectedIndex());
+            
+            //opens the game and closes this screen
+            //get the user that was selected
+            UserManager uM = new UserManager();
+            if(!uM.getSelectedUser(userList.getSelectedIndex()).isCompletedFirstReveal())
+            {
+                new SceneScreen().setVisible(true); // will change when there is a new room to go to
+                this.dispose();
+            }
+            else
+            {
+                new HallwayScreen().setVisible(true); // will change when there is a new room to go to
+                this.dispose();
+            }
+        }    
+    }//GEN-LAST:event_loadUserButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,9 +269,12 @@ public class UserScreen extends javax.swing.JFrame
     private javax.swing.JLabel background;
     private javax.swing.JButton deleteUserButton;
     private javax.swing.JButton exitButton;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton loadUserButton;
     private javax.swing.JButton newUserButton;
+    private javax.swing.JLabel selectUserMessage;
     private javax.swing.JLabel title;
     private javax.swing.JList<String> userList;
     // End of variables declaration//GEN-END:variables

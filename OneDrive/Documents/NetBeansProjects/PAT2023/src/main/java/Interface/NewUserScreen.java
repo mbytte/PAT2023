@@ -23,6 +23,8 @@ public class NewUserScreen extends javax.swing.JFrame
     public NewUserScreen()
     {
         initComponents();
+        //setting it to be in the centre of the screen
+        setLocationRelativeTo (null);  
     }
 
     /**
@@ -41,12 +43,13 @@ public class NewUserScreen extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         createUserButton = new javax.swing.JButton();
         background = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         title.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\title.png")); // NOI18N
-        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 560, -1));
+        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 560, -1));
 
         backButton.setBackground(new java.awt.Color(15, 28, 33));
         backButton.setFont(new java.awt.Font("High Tower Text", 1, 24)); // NOI18N
@@ -60,18 +63,20 @@ public class NewUserScreen extends javax.swing.JFrame
                 backButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 90, 50));
+        getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 90, 50));
 
         usernameTextField.setBackground(new java.awt.Color(15, 28, 33));
         usernameTextField.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
         usernameTextField.setForeground(new java.awt.Color(139, 118, 82));
         usernameTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-        getContentPane().add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 520, 80));
+        getContentPane().add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 520, 80));
 
+        jLabel1.setBackground(new java.awt.Color(15, 28, 33));
         jLabel1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(139, 118, 82));
         jLabel1.setText("USERNAME:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 160, 70));
+        jLabel1.setOpaque(true);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 160, 40));
 
         createUserButton.setBackground(new java.awt.Color(15, 28, 33));
         createUserButton.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
@@ -85,12 +90,16 @@ public class NewUserScreen extends javax.swing.JFrame
                 createUserButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(createUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 480, 170, 50));
+        getContentPane().add(createUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 450, 170, 50));
 
         background.setBackground(new java.awt.Color(15, 28, 33));
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\trainTicket.png")); // NOI18N
         background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(15, 28, 33), 10, true));
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 580));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 1220, 650));
+
+        jLabel2.setBackground(new java.awt.Color(139, 118, 82));
+        jLabel2.setOpaque(true);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -105,7 +114,7 @@ public class NewUserScreen extends javax.swing.JFrame
         try
         {
             UserManager users = new UserManager();
-            users.createUser(usernameTextField.getText());
+            users.createUser(usernameTextField.getText());           
             new UserScreen().setVisible(true);
             this.dispose();
             
@@ -121,6 +130,7 @@ public class NewUserScreen extends javax.swing.JFrame
     private javax.swing.JLabel background;
     private javax.swing.JButton createUserButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel title;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables

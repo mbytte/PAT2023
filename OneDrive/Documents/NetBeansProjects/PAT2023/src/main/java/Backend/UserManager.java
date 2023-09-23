@@ -42,34 +42,31 @@ public class UserManager
            
            //getting all the users and applying to the fields
            ResultSet allUsers = stmt.executeQuery("SELECT * FROM tblUsers;");
-           //numUsers = stmt.getFetchSize();
            
            //making user objects and putting them into a Array list
            while(allUsers.next())
-           {
-               //moving to the next row              
-               allUsers.next();
-               
+           {        
                //getting all the data for the user in that row
                int userID = allUsers.getInt("UserID");
                String username = allUsers.getString("Username");
                boolean completedCrossword = allUsers.getBoolean("Crossword");
-               boolean completedFinalReveal = allUsers.getBoolean("Crossword");
-               boolean completedFindCane = allUsers.getBoolean("Crossword");
-               boolean completedFindKeys = allUsers.getBoolean("Crossword");
-               boolean completedFindMap = allUsers.getBoolean("Crossword");
-               boolean completedHangman = allUsers.getBoolean("Crossword");
-               boolean completedMagicSquare = allUsers.getBoolean("Crossword");
-               boolean completedRiddle = allUsers.getBoolean("Crossword");
-               boolean completedSlidingPuzzle = allUsers.getBoolean("Crossword");
-               boolean completedSpeakingToCharacters = allUsers.getBoolean("Crossword");
-               boolean completedTicTacToe = allUsers.getBoolean("Crossword");
-               boolean completedWordGame = allUsers.getBoolean("Crossword");
-               boolean investigatedKnife = allUsers.getBoolean("Crossword");
-               boolean investigatedFireIron = allUsers.getBoolean("Crossword");
+               boolean completedFinalReveal = allUsers.getBoolean("FinalReveal");
+               boolean completedFirstReveal = allUsers.getBoolean("FirstReveal");
+               boolean completedFindCane = allUsers.getBoolean("FindCane");
+               boolean completedFindKeys = allUsers.getBoolean("FindKeys");
+               boolean completedFindMap = allUsers.getBoolean("FindMap");
+               boolean completedHangman = allUsers.getBoolean("Hangman");
+               boolean completedMagicSquare = allUsers.getBoolean("MagicSquare");
+               boolean completedRiddle = allUsers.getBoolean("Riddle");
+               boolean completedSlidingPuzzle = allUsers.getBoolean("SlidingPuzzle");
+               boolean completedSpeakingToCharacters = allUsers.getBoolean("SpeakToCharacters");
+               boolean completedTicTacToe = allUsers.getBoolean("TicTacToe");
+               boolean completedWordGame = allUsers.getBoolean("WordGame");
+               boolean investigatedKnife = allUsers.getBoolean("Knife");
+               boolean investigatedFireIron = allUsers.getBoolean("FireIron");
                
                //adding the user to the array list
-               User user = new User(userID, username, completedCrossword, completedFinalReveal, completedFindCane, completedFindKeys, completedFindMap, completedHangman, completedMagicSquare, completedRiddle, completedSlidingPuzzle, completedSpeakingToCharacters, completedTicTacToe, completedWordGame, investigatedKnife, investigatedFireIron);
+               User user = new User(userID, username, completedCrossword, completedFinalReveal, completedFirstReveal, completedFindCane, completedFindKeys, completedFindMap, completedHangman, completedMagicSquare, completedRiddle, completedSlidingPuzzle, completedSpeakingToCharacters, completedTicTacToe, completedWordGame, investigatedKnife, investigatedFireIron);
                users.add(user);
                numUsers++;
            }
@@ -144,15 +141,34 @@ public class UserManager
     }
     
     
-    //updates, inserts or deletes from the db
-    public void insert(String qry) throws SQLException
+    //inserts a new user into the database
+    private void insert(int userID, String username, String sql) throws SQLException
     {
         //creating the connection
         Connection connection = createConnection();
-        PreparedStatement statement = connection.prepareStatement(qry);
+        PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        statement.setInt(1, userID);
+        statement.setString(2, username);
+        statement.setBoolean(3, false);
+        statement.setBoolean(4, false);
+        statement.setBoolean(5, false);
+        statement.setBoolean(6, false);
+        statement.setBoolean(7, false);
+        statement.setBoolean(8, false);
+        statement.setBoolean(9, false);
+        statement.setBoolean(10, false);
+        statement.setBoolean(11, false);
+        statement.setBoolean(12, false);
+        statement.setBoolean(13, false);
+        statement.setBoolean(14, false);
+        statement.setBoolean(15, false);
+        statement.setBoolean(16, false);
+        statement.setBoolean(17, false);
+        
         statement.executeUpdate();
         statement.close();
     }
+    
     
     //creates the user and adds it to the db
     public void createUser(String username) throws SQLException
@@ -160,8 +176,8 @@ public class UserManager
         //getting the value for the UserID
         int userID = lastUserID + 1;
         
-        //adding to the db
-        insert("INSERT INTO tblUsers VALUES (" + userID + ", " + username + " , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);");
+        String sql = "INSERT INTO tblUsers (UserID, Username, Crossword, FinalReveal, FirstReveal, FindCane, FindKeys, FindMap, Hangman, MagicSquare, Riddle, SlidingPuzzle, SpeakToCharacters, TicTacToe, WordGame, Knife, FireIron) " + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        insert(userID, username, sql);
 
     }
     
@@ -170,7 +186,7 @@ public class UserManager
     public ArrayList<String> getListNames()
     {
         //creating a list of the names
-        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> names = new ArrayList<String>();
                
         //adding the list of names to the array list
         for(User user : users)
@@ -192,8 +208,14 @@ public class UserManager
         users.remove(userIndex);
         setUsers(users);
         
+        String qry = "DELETE FROM tblUsers WHERE UserID = " + userID; 
+        
+        //creating the connection
+        Connection connection = createConnection();
+        PreparedStatement statement = connection.prepareStatement(qry);
+        
         //removing from the db
-        query("DELETE FROM tblUsers WHERE UserID = " + userID); 
+        statement.execute();
     }
     
     

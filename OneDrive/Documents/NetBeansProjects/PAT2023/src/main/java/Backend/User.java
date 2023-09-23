@@ -16,6 +16,7 @@ public class User
     private String username;
     private boolean completedCrossword;
     private boolean completedFinalReveal;
+    private boolean completedFirstReveal;
     private boolean completedFindCane;
     private boolean completedFindKeys;
     private boolean completedFindMap;
@@ -31,12 +32,13 @@ public class User
 
     
     //creates a user object
-    public User(int userID, String username, boolean completedCrossword, boolean completedFinalReveal, boolean completedFindCane, boolean completedFindKeys, boolean completedFindMap, boolean completedHangman, boolean completedMagicSquare, boolean completedRiddle, boolean completedSlidingPuzzle, boolean completedSpeakingToCharacters, boolean completedTicTacToe, boolean completedWordGame, boolean investigatedKnife, boolean investigatedFireIron)
+    public User(int userID, String username, boolean completedCrossword, boolean completedFinalReveal, boolean completedFirstReveal, boolean completedFindCane, boolean completedFindKeys, boolean completedFindMap, boolean completedHangman, boolean completedMagicSquare, boolean completedRiddle, boolean completedSlidingPuzzle, boolean completedSpeakingToCharacters, boolean completedTicTacToe, boolean completedWordGame, boolean investigatedKnife, boolean investigatedFireIron)
     {
         this.userID = userID;
         this.username = username;
         this.completedCrossword = completedCrossword;
         this.completedFinalReveal = completedFinalReveal;
+        this.completedFirstReveal = completedFirstReveal;
         this.completedFindCane = completedFindCane;
         this.completedFindKeys = completedFindKeys;
         this.completedFindMap = completedFindMap;
@@ -72,6 +74,11 @@ public class User
     public boolean isCompletedFinalReveal()
     {
         return completedFinalReveal;
+    }
+
+    public boolean isCompletedFirstReveal()
+    {
+        return completedFirstReveal;
     }
 
     public boolean isCompletedFindCane()
@@ -142,6 +149,11 @@ public class User
     }
 
     public void setCompletedFinalRevealTrue()
+    {
+        this.completedFinalReveal = true;
+    }
+    
+    public void setCompletedFirstRevealTrue()
     {
         this.completedFinalReveal = true;
     }
