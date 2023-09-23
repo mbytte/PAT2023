@@ -47,25 +47,39 @@ public class DiningRoomScreen extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tommyWintersButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\tommyWinters.jpg")); // NOI18N
+        tommyWintersButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\tommyWinters.png")); // NOI18N
+        tommyWintersButton.setBorder(null);
+        tommyWintersButton.setOpaque(false);
         getContentPane().add(tommyWintersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 250, 130, 360));
 
         emileBeaufoyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\emileBeaufoyFullShot.png")); // NOI18N
-        getContentPane().add(emileBeaufoyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 300, 70, 110));
+        emileBeaufoyButton.setBorder(null);
+        emileBeaufoyButton.setOpaque(false);
+        getContentPane().add(emileBeaufoyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 290, 70, 110));
 
         araBozoyanButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\araBozoyanFullShot.png")); // NOI18N
+        araBozoyanButton.setBorder(null);
+        araBozoyanButton.setOpaque(false);
         getContentPane().add(araBozoyanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, 90, 130));
 
         camilaMoreaButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\camilaMoreaFullShot.png")); // NOI18N
-        getContentPane().add(camilaMoreaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 350, 100, 140));
+        camilaMoreaButton.setBorder(null);
+        camilaMoreaButton.setOpaque(false);
+        getContentPane().add(camilaMoreaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 100, 140));
 
         mylanMoreaButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mylanMoreaFullShot.png")); // NOI18N
+        mylanMoreaButton.setBorder(null);
+        mylanMoreaButton.setOpaque(false);
         getContentPane().add(mylanMoreaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 140, 200));
 
         astridBergButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\astridBergFullShot.png")); // NOI18N
+        astridBergButton.setBorder(null);
+        astridBergButton.setOpaque(false);
         getContentPane().add(astridBergButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 300, 60, 160));
 
-        swordsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\swords.jpg")); // NOI18N
+        swordsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\swords.png")); // NOI18N
+        swordsButton.setBorder(null);
+        swordsButton.setOpaque(false);
         getContentPane().add(swordsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 230, 100, 130));
 
         backButton.setBackground(new java.awt.Color(15, 28, 33));
@@ -113,8 +127,10 @@ public class DiningRoomScreen extends javax.swing.JFrame
         keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.jpg")); // NOI18N
         getContentPane().add(keyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 650, 30, 20));
 
-        boxButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\box.jpg")); // NOI18N
-        getContentPane().add(boxButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 70, 50));
+        boxButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\box.png")); // NOI18N
+        boxButton.setBorder(null);
+        boxButton.setOpaque(false);
+        getContentPane().add(boxButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, 90, 70));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\diningRoomBackground.jpg")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -30, 1490, 750));

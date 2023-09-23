@@ -48,7 +48,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="640" y="90" width="100" height="40"/>
+          <AbsoluteConstraints x="630" y="10" width="100" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -75,7 +75,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1090" y="90" width="100" height="40"/>
+          <AbsoluteConstraints x="1080" y="10" width="100" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -102,14 +102,14 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="170" y="90" width="100" height="40"/>
+          <AbsoluteConstraints x="160" y="10" width="100" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="diningButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\door.png"/>
+          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\door - Copy.png"/>
         </Property>
       </Properties>
       <Events>
@@ -117,14 +117,14 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="510" y="0" width="350" height="700"/>
+          <AbsoluteConstraints x="510" y="60" width="350" height="640"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="loungeButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\door.png"/>
+          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\door - Copy.png"/>
         </Property>
       </Properties>
       <Events>
@@ -132,14 +132,14 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="960" y="0" width="350" height="700"/>
+          <AbsoluteConstraints x="960" y="60" width="350" height="640"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="seatingButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\door.png"/>
+          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\door - Copy.png"/>
         </Property>
       </Properties>
       <Events>
@@ -147,7 +147,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="40" y="0" width="350" height="700"/>
+          <AbsoluteConstraints x="40" y="60" width="350" height="640"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -159,7 +159,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="850" y="380" width="150" height="320"/>
+          <AbsoluteConstraints x="850" y="390" width="150" height="320"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -171,19 +171,49 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="390" y="380" width="150" height="320"/>
+          <AbsoluteConstraints x="390" y="390" width="150" height="320"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="walkingStickButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\walking stick.jpg"/>
+          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\walking_stick.png"/>
         </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1290" y="390" width="100" height="320"/>
+          <AbsoluteConstraints x="880" y="360" width="100" height="320"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\woodPanel.jpg"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="jLabel6"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="310" width="1200" height="770"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\woodPanel.jpg"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="jLabel7"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="760" y="310" width="650" height="780"/>
         </Constraint>
       </Constraints>
     </Component>

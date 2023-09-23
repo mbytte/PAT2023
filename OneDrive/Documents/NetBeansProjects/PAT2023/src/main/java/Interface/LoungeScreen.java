@@ -84,11 +84,13 @@ public class LoungeScreen extends javax.swing.JFrame
         });
         getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 30, 110, 70));
 
-        fireIronButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\fireplaceFork.jpg")); // NOI18N
-        getContentPane().add(fireIronButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 50, 430));
+        fireIronButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\fireIron.png")); // NOI18N
+        fireIronButton.setOpaque(false);
+        getContentPane().add(fireIronButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, -30, 50, 430));
 
         knifeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\knife.png")); // NOI18N
-        getContentPane().add(knifeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 70, 70));
+        knifeButton.setOpaque(false);
+        getContentPane().add(knifeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 640, 70, 70));
 
         picButton.setOpaque(false);
         getContentPane().add(picButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 110, 90));

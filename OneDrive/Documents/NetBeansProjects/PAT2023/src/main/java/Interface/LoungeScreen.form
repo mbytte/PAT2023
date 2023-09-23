@@ -117,12 +117,13 @@
     <Component class="javax.swing.JButton" name="fireIronButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\fireplaceFork.jpg"/>
+          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\fireIron.png"/>
         </Property>
+        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="310" y="0" width="50" height="430"/>
+          <AbsoluteConstraints x="370" y="-30" width="50" height="430"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -131,10 +132,11 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\knife.png"/>
         </Property>
+        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="530" width="70" height="70"/>
+          <AbsoluteConstraints x="110" y="640" width="70" height="70"/>
         </Constraint>
       </Constraints>
     </Component>

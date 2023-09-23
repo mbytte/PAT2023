@@ -39,6 +39,8 @@ public class HallwayScreen extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         walkingStickButton = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,7 +52,7 @@ public class HallwayScreen extends javax.swing.JFrame
         jLabel3.setText("DINING");
         jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         jLabel3.setOpaque(true);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, 100, 40));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 100, 40));
 
         jLabel4.setBackground(new java.awt.Color(15, 28, 33));
         jLabel4.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
@@ -58,7 +60,7 @@ public class HallwayScreen extends javax.swing.JFrame
         jLabel4.setText("LOUNGE");
         jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         jLabel4.setOpaque(true);
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 90, 100, 40));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 10, 100, 40));
 
         jLabel5.setBackground(new java.awt.Color(15, 28, 33));
         jLabel5.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
@@ -66,9 +68,9 @@ public class HallwayScreen extends javax.swing.JFrame
         jLabel5.setText("SEATING");
         jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         jLabel5.setOpaque(true);
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 100, 40));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 100, 40));
 
-        diningButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\door.png")); // NOI18N
+        diningButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\door - Copy.png")); // NOI18N
         diningButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -76,9 +78,9 @@ public class HallwayScreen extends javax.swing.JFrame
                 diningButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(diningButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 350, 700));
+        getContentPane().add(diningButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 350, 640));
 
-        loungeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\door.png")); // NOI18N
+        loungeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\door - Copy.png")); // NOI18N
         loungeButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -86,9 +88,9 @@ public class HallwayScreen extends javax.swing.JFrame
                 loungeButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(loungeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 350, 700));
+        getContentPane().add(loungeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 60, 350, 640));
 
-        seatingButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\door.png")); // NOI18N
+        seatingButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\door - Copy.png")); // NOI18N
         seatingButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -96,16 +98,26 @@ public class HallwayScreen extends javax.swing.JFrame
                 seatingButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(seatingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 350, 700));
+        getContentPane().add(seatingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 350, 640));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\plant.png")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 380, 150, 320));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 390, 150, 320));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\plant.png")); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 150, 320));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 150, 320));
 
-        walkingStickButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\walking stick.jpg")); // NOI18N
-        getContentPane().add(walkingStickButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 390, 100, 320));
+        walkingStickButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\walking_stick.png")); // NOI18N
+        walkingStickButton.setBorder(null);
+        walkingStickButton.setOpaque(false);
+        getContentPane().add(walkingStickButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 360, 100, 320));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\woodPanel.jpg")); // NOI18N
+        jLabel6.setText("jLabel6");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 1200, 770));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\woodPanel.jpg")); // NOI18N
+        jLabel7.setText("jLabel7");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 310, 650, 780));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\whiteBackground.jpg")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -30, 1490, 750));
@@ -140,6 +152,8 @@ public class HallwayScreen extends javax.swing.JFrame
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JButton loungeButton;
     private javax.swing.JButton seatingButton;
     private javax.swing.JButton walkingStickButton;

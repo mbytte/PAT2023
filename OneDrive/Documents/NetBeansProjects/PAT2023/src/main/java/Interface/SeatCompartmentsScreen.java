@@ -89,8 +89,9 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
         letterButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\letter.jpg")); // NOI18N
         getContentPane().add(letterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 410, 100, 50));
 
-        tornPicButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\tornPic.jpg")); // NOI18N
+        tornPicButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\tornPic.png")); // NOI18N
         tornPicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tornPicButton.setOpaque(false);
         getContentPane().add(tornPicButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 630, 150, 120));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\seatingBackground.jpg")); // NOI18N
