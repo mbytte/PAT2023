@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author megan
@@ -33,9 +37,9 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
         backButton = new javax.swing.JButton();
         diaryButton = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
-        keyButton = new javax.swing.JButton();
         letterButton = new javax.swing.JButton();
-        tornPicButton = new javax.swing.JButton();
+        keyButton = new javax.swing.JButton();
+        keyFoundMessage = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,16 +87,28 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
         });
         getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 30, 110, 70));
 
-        keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.jpg")); // NOI18N
-        getContentPane().add(keyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 30, 20));
-
         letterButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\letter.jpg")); // NOI18N
-        getContentPane().add(letterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 410, 100, 50));
+        letterButton.setBorder(null);
+        letterButton.setBorderPainted(false);
+        letterButton.setContentAreaFilled(false);
+        letterButton.setFocusPainted(false);
+        letterButton.setOpaque(false);
+        getContentPane().add(letterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 380, 120, 70));
 
-        tornPicButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\tornPic.png")); // NOI18N
-        tornPicButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tornPicButton.setOpaque(false);
-        getContentPane().add(tornPicButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 630, 150, 120));
+        keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.png")); // NOI18N
+        keyButton.setBorder(null);
+        keyButton.setContentAreaFilled(false);
+        keyButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                keyButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(keyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 50, 40));
+
+        keyFoundMessage.setBackground(new java.awt.Color(139, 118, 82));
+        getContentPane().add(keyFoundMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 100, 20));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\seatingBackground.jpg")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-270, -450, 1760, 1200));
@@ -108,7 +124,13 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
 
     private void diaryButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_diaryButtonActionPerformed
     {//GEN-HEADEREND:event_diaryButtonActionPerformed
-        new DiaryScreen().setVisible(true);
+        try
+        {
+            new DiaryScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_diaryButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_homeButtonActionPerformed
@@ -117,13 +139,22 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
         new UserScreen().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
+    private void keyButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_keyButtonActionPerformed
+    {//GEN-HEADEREND:event_keyButtonActionPerformed
+        //setting the message 
+        keyButton.setIcon(null);
+        remove(keyButton);
+        keyFoundMessage.setText("KEY FOUND!");
+        keyFoundMessage.setOpaque(true);
+    }//GEN-LAST:event_keyButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel background;
     private javax.swing.JButton diaryButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton keyButton;
+    private javax.swing.JLabel keyFoundMessage;
     private javax.swing.JButton letterButton;
-    private javax.swing.JButton tornPicButton;
     // End of variables declaration//GEN-END:variables
 }

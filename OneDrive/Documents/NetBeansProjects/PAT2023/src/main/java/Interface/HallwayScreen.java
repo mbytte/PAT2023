@@ -38,6 +38,7 @@ public class HallwayScreen extends javax.swing.JFrame
         seatingButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        walkingStickFoundMessage = new javax.swing.JLabel();
         walkingStickButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -106,10 +107,23 @@ public class HallwayScreen extends javax.swing.JFrame
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\plant.png")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 150, 320));
 
+        walkingStickFoundMessage.setBackground(new java.awt.Color(139, 118, 82));
+        getContentPane().add(walkingStickFoundMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 330, 100, 20));
+
         walkingStickButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\walking_stick.png")); // NOI18N
         walkingStickButton.setBorder(null);
+        walkingStickButton.setBorderPainted(false);
+        walkingStickButton.setContentAreaFilled(false);
+        walkingStickButton.setFocusPainted(false);
         walkingStickButton.setOpaque(false);
-        getContentPane().add(walkingStickButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 360, 100, 320));
+        walkingStickButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                walkingStickButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(walkingStickButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, 100, 320));
 
         jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\woodPanel.jpg")); // NOI18N
         jLabel6.setText("jLabel6");
@@ -143,6 +157,14 @@ public class HallwayScreen extends javax.swing.JFrame
         new LoungeScreen().setVisible(true);
     }//GEN-LAST:event_loungeButtonActionPerformed
 
+    private void walkingStickButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_walkingStickButtonActionPerformed
+    {//GEN-HEADEREND:event_walkingStickButtonActionPerformed
+        walkingStickButton.setIcon(null);
+        remove(walkingStickButton);
+        walkingStickFoundMessage.setText("CANE FOUND!");
+        walkingStickFoundMessage.setOpaque(true);
+    }//GEN-LAST:event_walkingStickButtonActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
@@ -157,5 +179,6 @@ public class HallwayScreen extends javax.swing.JFrame
     private javax.swing.JButton loungeButton;
     private javax.swing.JButton seatingButton;
     private javax.swing.JButton walkingStickButton;
+    private javax.swing.JLabel walkingStickFoundMessage;
     // End of variables declaration//GEN-END:variables
 }

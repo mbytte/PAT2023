@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author megan
@@ -40,8 +44,9 @@ public class DiningRoomScreen extends javax.swing.JFrame
         backButton = new javax.swing.JButton();
         diaryButton = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
-        keyButton = new javax.swing.JButton();
         boxButton = new javax.swing.JButton();
+        keyButton = new javax.swing.JButton();
+        keyFoundMessage = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,36 +54,56 @@ public class DiningRoomScreen extends javax.swing.JFrame
 
         tommyWintersButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\tommyWinters.png")); // NOI18N
         tommyWintersButton.setBorder(null);
+        tommyWintersButton.setBorderPainted(false);
+        tommyWintersButton.setContentAreaFilled(false);
+        tommyWintersButton.setFocusPainted(false);
         tommyWintersButton.setOpaque(false);
         getContentPane().add(tommyWintersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 250, 130, 360));
 
         emileBeaufoyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\emileBeaufoyFullShot.png")); // NOI18N
         emileBeaufoyButton.setBorder(null);
+        emileBeaufoyButton.setBorderPainted(false);
+        emileBeaufoyButton.setContentAreaFilled(false);
+        emileBeaufoyButton.setFocusPainted(false);
         emileBeaufoyButton.setOpaque(false);
         getContentPane().add(emileBeaufoyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 290, 70, 110));
 
         araBozoyanButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\araBozoyanFullShot.png")); // NOI18N
         araBozoyanButton.setBorder(null);
+        araBozoyanButton.setBorderPainted(false);
+        araBozoyanButton.setContentAreaFilled(false);
+        araBozoyanButton.setFocusPainted(false);
         araBozoyanButton.setOpaque(false);
-        getContentPane().add(araBozoyanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, 90, 130));
+        getContentPane().add(araBozoyanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 90, 130));
 
         camilaMoreaButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\camilaMoreaFullShot.png")); // NOI18N
         camilaMoreaButton.setBorder(null);
+        camilaMoreaButton.setBorderPainted(false);
+        camilaMoreaButton.setContentAreaFilled(false);
+        camilaMoreaButton.setFocusPainted(false);
         camilaMoreaButton.setOpaque(false);
-        getContentPane().add(camilaMoreaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 100, 140));
+        getContentPane().add(camilaMoreaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 330, 100, 140));
 
-        mylanMoreaButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mylanMoreaFullShot.png")); // NOI18N
+        mylanMoreaButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mylanMoreaFullShot2.png")); // NOI18N
         mylanMoreaButton.setBorder(null);
+        mylanMoreaButton.setBorderPainted(false);
+        mylanMoreaButton.setContentAreaFilled(false);
+        mylanMoreaButton.setFocusPainted(false);
         mylanMoreaButton.setOpaque(false);
-        getContentPane().add(mylanMoreaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 140, 200));
+        getContentPane().add(mylanMoreaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 140, 150));
 
         astridBergButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\astridBergFullShot.png")); // NOI18N
         astridBergButton.setBorder(null);
+        astridBergButton.setBorderPainted(false);
+        astridBergButton.setContentAreaFilled(false);
+        astridBergButton.setFocusPainted(false);
         astridBergButton.setOpaque(false);
         getContentPane().add(astridBergButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 300, 60, 160));
 
         swordsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\swords.png")); // NOI18N
         swordsButton.setBorder(null);
+        swordsButton.setBorderPainted(false);
+        swordsButton.setContentAreaFilled(false);
         swordsButton.setOpaque(false);
         getContentPane().add(swordsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 230, 100, 130));
 
@@ -124,13 +149,29 @@ public class DiningRoomScreen extends javax.swing.JFrame
         });
         getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 30, 110, 70));
 
-        keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.jpg")); // NOI18N
-        getContentPane().add(keyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 650, 30, 20));
-
         boxButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\box.png")); // NOI18N
         boxButton.setBorder(null);
+        boxButton.setBorderPainted(false);
+        boxButton.setContentAreaFilled(false);
+        boxButton.setFocusPainted(false);
         boxButton.setOpaque(false);
         getContentPane().add(boxButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, 90, 70));
+
+        keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.png")); // NOI18N
+        keyButton.setBorder(null);
+        keyButton.setBorderPainted(false);
+        keyButton.setContentAreaFilled(false);
+        keyButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                keyButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(keyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 560, 50, 40));
+
+        keyFoundMessage.setBackground(new java.awt.Color(139, 118, 82));
+        getContentPane().add(keyFoundMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 550, 100, 20));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\diningRoomBackground.jpg")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -30, 1490, 750));
@@ -146,7 +187,13 @@ public class DiningRoomScreen extends javax.swing.JFrame
 
     private void diaryButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_diaryButtonActionPerformed
     {//GEN-HEADEREND:event_diaryButtonActionPerformed
-        new DiaryScreen().setVisible(true);
+        try
+        {
+            new DiaryScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(DiningRoomScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_diaryButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_homeButtonActionPerformed
@@ -154,6 +201,14 @@ public class DiningRoomScreen extends javax.swing.JFrame
         this.dispose();
         new UserScreen().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void keyButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_keyButtonActionPerformed
+    {//GEN-HEADEREND:event_keyButtonActionPerformed
+        //setting the message 
+        remove(keyButton);
+        keyFoundMessage.setText("KEY FOUND!");
+        keyFoundMessage.setOpaque(true);
+    }//GEN-LAST:event_keyButtonActionPerformed
 
     
 
@@ -168,6 +223,7 @@ public class DiningRoomScreen extends javax.swing.JFrame
     private javax.swing.JButton emileBeaufoyButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton keyButton;
+    private javax.swing.JLabel keyFoundMessage;
     private javax.swing.JButton mylanMoreaButton;
     private javax.swing.JButton swordsButton;
     private javax.swing.JButton tommyWintersButton;

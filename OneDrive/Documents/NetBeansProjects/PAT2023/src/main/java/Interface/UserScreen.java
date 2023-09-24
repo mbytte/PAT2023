@@ -139,7 +139,7 @@ public class UserScreen extends javax.swing.JFrame
         });
         getContentPane().add(deleteUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 290, 250, 70));
 
-        selectUserMessage.setBackground(new java.awt.Color(48, 29, 39));
+        selectUserMessage.setBackground(new java.awt.Color(139, 118, 82));
         selectUserMessage.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         selectUserMessage.setForeground(new java.awt.Color(250, 0, 0));
         selectUserMessage.setToolTipText("");

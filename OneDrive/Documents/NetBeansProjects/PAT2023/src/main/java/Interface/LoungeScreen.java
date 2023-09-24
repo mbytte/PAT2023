@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author megan
@@ -37,6 +41,7 @@ public class LoungeScreen extends javax.swing.JFrame
         knifeButton = new javax.swing.JButton();
         picButton = new javax.swing.JButton();
         keyButton = new javax.swing.JButton();
+        keyFoundMessage = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,18 +90,38 @@ public class LoungeScreen extends javax.swing.JFrame
         getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 30, 110, 70));
 
         fireIronButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\fireIron.png")); // NOI18N
+        fireIronButton.setBorder(null);
+        fireIronButton.setBorderPainted(false);
+        fireIronButton.setContentAreaFilled(false);
+        fireIronButton.setFocusPainted(false);
         fireIronButton.setOpaque(false);
         getContentPane().add(fireIronButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, -30, 50, 430));
 
         knifeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\knife.png")); // NOI18N
+        knifeButton.setBorder(null);
+        knifeButton.setBorderPainted(false);
+        knifeButton.setContentAreaFilled(false);
+        knifeButton.setFocusPainted(false);
         knifeButton.setOpaque(false);
         getContentPane().add(knifeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 640, 70, 70));
 
         picButton.setOpaque(false);
         getContentPane().add(picButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 110, 90));
 
-        keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.jpg")); // NOI18N
-        getContentPane().add(keyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 510, 30, 20));
+        keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.png")); // NOI18N
+        keyButton.setBorder(null);
+        keyButton.setContentAreaFilled(false);
+        keyButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                keyButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(keyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 500, 50, 40));
+
+        keyFoundMessage.setBackground(new java.awt.Color(139, 118, 82));
+        getContentPane().add(keyFoundMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 480, 100, 20));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\loungeBackground.jpeg")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -30, 1490, 750));
@@ -118,8 +143,22 @@ public class LoungeScreen extends javax.swing.JFrame
 
     private void diaryButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_diaryButtonActionPerformed
     {//GEN-HEADEREND:event_diaryButtonActionPerformed
-        new DiaryScreen().setVisible(true);
+        try
+        {
+            new DiaryScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(LoungeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_diaryButtonActionPerformed
+
+    private void keyButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_keyButtonActionPerformed
+    {//GEN-HEADEREND:event_keyButtonActionPerformed
+        //setting the message 
+        remove(keyButton);
+        keyFoundMessage.setText("KEY FOUND!");
+        keyFoundMessage.setOpaque(true);
+    }//GEN-LAST:event_keyButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -129,6 +168,7 @@ public class LoungeScreen extends javax.swing.JFrame
     private javax.swing.JButton fireIronButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton keyButton;
+    private javax.swing.JLabel keyFoundMessage;
     private javax.swing.JButton knifeButton;
     private javax.swing.JButton picButton;
     // End of variables declaration//GEN-END:variables
