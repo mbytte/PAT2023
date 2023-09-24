@@ -9,6 +9,8 @@ import Backend.Diary;
 import Backend.UserManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 /**
@@ -28,15 +30,17 @@ public class DiaryScreen extends javax.swing.JFrame
         //populating the lists
         UserManager userManager = new UserManager();
         Diary diary = new Diary();
-       ArrayList<String> clueNames = diary.getListClues();
-        DefaultListModel listModel1 = new DefaultListModel();
-        listModel1.addAll(clueNames);
-        clueList.setModel(listModel1);
         
         ArrayList<String> characterNames = diary.getCharacterList();
         DefaultListModel listModel2 = new DefaultListModel();
         listModel2.addAll(characterNames);
         characterList.setModel(listModel2);
+        
+        ArrayList<String> clueNames = diary.getListClues();
+        DefaultListModel listModel1 = new DefaultListModel();
+        listModel1.addAll(clueNames);
+        listModel1.addAll(characterNames);
+        clueList.setModel(listModel1);
     }
 
     /**
@@ -58,7 +62,7 @@ public class DiaryScreen extends javax.swing.JFrame
         jScrollPane2 = new javax.swing.JScrollPane();
         clueList = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        infoTextArea = new javax.swing.JTextArea();
         diary = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
@@ -140,15 +144,16 @@ public class DiaryScreen extends javax.swing.JFrame
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 210, 210));
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(222, 222, 222));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Felix Titling", 0, 18)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(15, 28, 33));
-        jTextArea1.setRows(5);
-        jTextArea1.setWrapStyleWord(true);
-        jTextArea1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-        jScrollPane1.setViewportView(jTextArea1);
+        infoTextArea.setEditable(false);
+        infoTextArea.setBackground(new java.awt.Color(222, 222, 222));
+        infoTextArea.setColumns(20);
+        infoTextArea.setFont(new java.awt.Font("Felix Titling", 0, 18)); // NOI18N
+        infoTextArea.setForeground(new java.awt.Color(15, 28, 33));
+        infoTextArea.setLineWrap(true);
+        infoTextArea.setRows(5);
+        infoTextArea.setWrapStyleWord(true);
+        infoTextArea.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        jScrollPane1.setViewportView(infoTextArea);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 140, 420, 490));
 
@@ -174,12 +179,32 @@ public class DiaryScreen extends javax.swing.JFrame
 
     private void clueListValueChanged(javax.swing.event.ListSelectionEvent evt)//GEN-FIRST:event_clueListValueChanged
     {//GEN-HEADEREND:event_clueListValueChanged
-        
+        try
+        {
+            //creating a diary object
+            Diary diary = new Diary();
+            
+            //getting the information
+            infoTextArea.setText(diary.getClueData(clueList.getSelectedValue()));
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(DiaryScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_clueListValueChanged
 
     private void characterListValueChanged(javax.swing.event.ListSelectionEvent evt)//GEN-FIRST:event_characterListValueChanged
     {//GEN-HEADEREND:event_characterListValueChanged
-       
+       try
+        {
+            //creating a diary object
+            Diary diary = new Diary();
+            
+            //getting the information
+            infoTextArea.setText(diary.getCharacterData(characterList.getSelectedValue()));
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(DiaryScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_characterListValueChanged
 
 
@@ -191,11 +216,11 @@ public class DiaryScreen extends javax.swing.JFrame
     private javax.swing.JList<String> clueList;
     private javax.swing.JLabel diary;
     private javax.swing.JButton homeButton;
+    private javax.swing.JTextArea infoTextArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel map;
     // End of variables declaration//GEN-END:variables
 }

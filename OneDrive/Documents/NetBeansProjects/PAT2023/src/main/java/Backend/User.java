@@ -29,10 +29,13 @@ public class User
     private boolean completedWordGame;
     private boolean investigatedKnife;
     private boolean investigatedFireIron;
+    private boolean investigatedLetter;
+    private boolean investigatedSwords;
+
 
     
     //creates a user object
-    public User(int userID, String username, boolean completedCrossword, boolean completedFinalReveal, boolean completedFirstReveal, boolean completedFindCane, boolean completedFindKeys, boolean completedFindMap, boolean completedHangman, boolean completedMagicSquare, boolean completedRiddle, boolean completedSlidingPuzzle, boolean completedSpeakingToCharacters, boolean completedTicTacToe, boolean completedWordGame, boolean investigatedKnife, boolean investigatedFireIron)
+    public User(int userID, String username, boolean completedCrossword, boolean completedFinalReveal, boolean completedFirstReveal, boolean completedFindCane, boolean completedFindKeys, boolean completedFindMap, boolean completedHangman, boolean completedMagicSquare, boolean completedRiddle, boolean completedSlidingPuzzle, boolean completedSpeakingToCharacters, boolean completedTicTacToe, boolean completedWordGame, boolean investigatedKnife, boolean investigatedFireIron, boolean investigatedLetter, boolean investigatedSwords)
     {
         this.userID = userID;
         this.username = username;
@@ -51,6 +54,8 @@ public class User
         this.completedWordGame = completedWordGame;
         this.investigatedKnife = investigatedKnife;
         this.investigatedFireIron = investigatedFireIron;
+        this.investigatedLetter = investigatedLetter;
+        this.investigatedSwords = investigatedSwords;
     }
     
     
@@ -140,6 +145,17 @@ public class User
     {
         return investigatedFireIron;
     }
+
+    public boolean isInvestigatedLetter()
+    {
+        return investigatedLetter;
+    }
+
+    public boolean isInvestigatedSwords()
+    {
+        return investigatedSwords;
+    }
+    
     
     
     //setters
@@ -216,5 +232,15 @@ public class User
     public void setInvestigatedFireIronTrue()
     {
         this.investigatedFireIron = true;
+    }
+    
+    public void setInvestigatedLetterTrue()
+    {
+        this.investigatedLetter = true;
+    }
+    
+    public void setInvestigatedSwordsTrue()
+    {
+        this.investigatedSwords = true;
     }
 }

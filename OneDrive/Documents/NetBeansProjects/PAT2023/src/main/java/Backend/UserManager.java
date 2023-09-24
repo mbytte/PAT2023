@@ -64,9 +64,11 @@ public class UserManager
                boolean completedWordGame = allUsers.getBoolean("WordGame");
                boolean investigatedKnife = allUsers.getBoolean("Knife");
                boolean investigatedFireIron = allUsers.getBoolean("FireIron");
+               boolean investigatedLetter = allUsers.getBoolean("Letter");
+               boolean investigatedSwords = allUsers.getBoolean("Swords");
                
                //adding the user to the array list
-               User user = new User(userID, username, completedCrossword, completedFinalReveal, completedFirstReveal, completedFindCane, completedFindKeys, completedFindMap, completedHangman, completedMagicSquare, completedRiddle, completedSlidingPuzzle, completedSpeakingToCharacters, completedTicTacToe, completedWordGame, investigatedKnife, investigatedFireIron);
+               User user = new User(userID, username, completedCrossword, completedFinalReveal, completedFirstReveal, completedFindCane, completedFindKeys, completedFindMap, completedHangman, completedMagicSquare, completedRiddle, completedSlidingPuzzle, completedSpeakingToCharacters, completedTicTacToe, completedWordGame, investigatedKnife, investigatedFireIron, investigatedLetter, investigatedSwords);
                users.add(user);
                numUsers++;
            }
@@ -159,6 +161,8 @@ public class UserManager
         statement.setBoolean(15, false);
         statement.setBoolean(16, false);
         statement.setBoolean(17, false);
+        statement.setBoolean(18, false);
+        statement.setBoolean(19, false);
         
         statement.executeUpdate();
         
@@ -173,7 +177,7 @@ public class UserManager
         //getting the value for the UserID
         int userID = lastUserID + 1;
         
-        String sql = "INSERT INTO tblUsers (UserID, Username, Crossword, FinalReveal, FirstReveal, FindCane, FindKeys, FindMap, Hangman, MagicSquare, Riddle, SlidingPuzzle, SpeakToCharacters, TicTacToe, WordGame, Knife, FireIron) " + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO tblUsers (UserID, Username, Crossword, FinalReveal, FirstReveal, FindCane, FindKeys, FindMap, Hangman, MagicSquare, Riddle, SlidingPuzzle, SpeakToCharacters, TicTacToe, WordGame, Knife, FireIron, Letter, Swords) " + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         insert(userID, username, sql);
     }
     

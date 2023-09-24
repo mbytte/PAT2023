@@ -950,7 +950,7 @@ public class Games
     
     //WORD GAME
     //fields
-    private static String message = "";
+    private static String message = "Ah, Nicolas. You have cracked my secret message! Good! One can never be too careful. When you get to France come visit me. I am curious of all the new supplies you have found through your source. You have a talent my boy. It is time for you to show it to the world. Looking forward to seeing you, Claude. P.S. Burn this when you are done reading";
     private static String riddle1 = "A man is looking at a photograph of someone. His friend asks who it is. The man replies, “Brothers and sisters, I have none. But that man’s father is my father’s son.” Who was in the photograph?";
     private static String riddle2 = "A sundial has the fewest moving parts of any timepiece. Which has the most?";
     private static String riddle3 = "Your parents have six sons including you and each son has one sister. How many people are in the family?";

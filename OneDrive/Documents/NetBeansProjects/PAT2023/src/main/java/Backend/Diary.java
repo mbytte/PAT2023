@@ -16,8 +16,6 @@ import java.util.ArrayList;
 public class Diary
 {
     //fields
-    private String selectedClue;
-    private String selectedCharacter;
     private final User CURRENT_USER;
 
     
@@ -30,15 +28,15 @@ public class Diary
     
     
     //setters
-    public void setSelectedClue(String clue)
-    {
-        selectedClue = clue;
-    }
-
-    public void setSelectedCharacter(String character)
-    {
-        selectedCharacter = character;
-    }
+//    public void setSelectedClue(String clue)
+//    {
+//        selectedClue = clue;
+//    }
+//
+//    public void setSelectedCharacter(String character)
+//    {
+//        selectedCharacter = character;
+//    }
     
     
     //gets a list of all the clue names
@@ -83,7 +81,7 @@ public class Diary
     
     
     //gets the information tied to that clue
-    public String getClueData(String dataNeeded) throws SQLException
+    public String getClueData(String selectedClue) throws SQLException
     {
         //getting the game that the user wants
         if(selectedClue.equals("Picture"))
@@ -109,16 +107,43 @@ public class Diary
             //checking if the clue has been obtained
             if(CURRENT_USER.isInvestigatedFireIron())
             {
-                return getData("Clue", "Fire Iron");
+                return getData("Clue", "FireIron");
+            }
+        }
+        
+        else if(selectedClue.equals("Letter"))
+        {
+            //checking if the clue has been obtained
+            if(CURRENT_USER.isInvestigatedLetter())
+            {
+                return getData("Clue", "Letter");
+            }
+        }
+        
+        else if(selectedClue.equals("Secret message"))
+        {
+            //checking if the clue has been obtained
+            if(CURRENT_USER.isCompletedWordGame())
+            {
+                return getData("Clue", "SecretMessage");
+            }
+        }
+        
+        else if(selectedClue.equals("Swords"))
+        {
+            //checking if the clue has been obtained
+            if(CURRENT_USER.isInvestigatedSwords())
+            {
+                return getData("Clue", "Swords");
             }
         }
         
         else if(selectedClue.equals("Tommy Winters"))
         {
             //checking if the clue has been obtained
-            if(CURRENT_USER.isInvestigatedKnife())
+            if(CURRENT_USER.isCompletedCrossword())
             {
-                return getData("Clue", "Tommy Winters");
+                return getData("Motive", "Tommy Winters");
                 
             }
         }
@@ -126,9 +151,9 @@ public class Diary
         else if(selectedClue.equals("Astrid Berg"))
         {
             //checking if the clue has been obtained
-            if(CURRENT_USER.isInvestigatedKnife())
+            if(CURRENT_USER.isCompletedHangman())
             {
-                return getData("Clue", "Astrid Berg");
+                return getData("Motive", "Astrid Berg");
                 
             }
         }
@@ -136,36 +161,36 @@ public class Diary
         else if(selectedClue.equals("Mylan Morea"))
         {
             //checking if the clue has been obtained
-            if(CURRENT_USER.isInvestigatedKnife())
+            if(CURRENT_USER.isCompletedTicTacToe())
             {
-                return getData("Clue", "Mylan Morea");              
+                return getData("Motive", "Mylan Morea");              
             }
         }
         
         else if(selectedClue.equals("Camila Morea"))
         {
             //checking if the clue has been obtained
-            if(CURRENT_USER.isInvestigatedKnife())
+            if(CURRENT_USER.isCompletedFindKeys())
             {
-                return getData("Clue", "CamilaMorea");              
+                return getData("Motive", "Camila Morea");              
             }
         }
         
         else if(selectedClue.equals("Emile Beaufoy"))
         {
             //checking if the clue has been obtained
-            if(CURRENT_USER.isInvestigatedKnife())
+            if(CURRENT_USER.isCompletedFindMap() && CURRENT_USER.isCompletedSlidingPuzzle())
             {
-                return getData("Clue", "Emile Beaufoy");
+                return getData("Motive", "Emile Beaufoy");
             }
         }
         
         else if(selectedClue.equals("Ara Bozoyan"))
         {
             //checking if the clue has been obtained
-            if(CURRENT_USER.isInvestigatedKnife())
+            if(CURRENT_USER.isCompletedFindCane())
             {
-                return getData("Clue", "Ara Bozoyan");
+                return getData("Motive", "Ara Bozoyan");
             }
         }
         
@@ -175,37 +200,39 @@ public class Diary
 
     
     //gets the character data that is requested
-    public String getCharacterData(String dataNeeded) throws SQLException
+    public String getCharacterData(String selectedCharacter) throws SQLException
     {
-        if(selectedCharacter.equals("Tommy"))
-        {
-            return getData("CharInfo", "Tommy");
-        }
-        
-        else if(selectedCharacter.equals("Astrid"))
-        {
-            return getData("CharInfo", "Astrid");
-        }
-        
-        else if(selectedCharacter.equals("Mylan"))
-        {
-            return getData("CharInfo", "Mylan");
-        }
-        
-        else if(selectedCharacter.equals("Camila"))
-        {
-            return getData("CharInfo", "Camila");
-        }
-        
-        else if(selectedCharacter.equals("Emile"))
-        {
-            return getData("CharInfo", "Emile");
-        }
-        
-        else //this is for Ara
-        {
-            return getData("CharInfo", "Ara");
-        }
+        return getData("CharInfo", selectedCharacter);
+   
+//        if(selectedCharacter.equals("Tommy Winters"))
+//        {
+//            return getData("CharInfo", "Tommy Winters");
+//        }
+//        
+//        else if(selectedCharacter.equals("Astrid Berg"))
+//        {
+//            return getData("CharInfo", "Astrid Berg");
+//        }
+//        
+//        else if(selectedCharacter.equals("Mylan"))
+//        {
+//            return getData("CharInfo", "Mylan");
+//        }
+//        
+//        else if(selectedCharacter.equals("Camila"))
+//        {
+//            return getData("CharInfo", "Camila");
+//        }
+//        
+//        else if(selectedCharacter.equals("Emile"))
+//        {
+//            return getData("CharInfo", "Emile");
+//        }
+//        
+//        else //this is for Ara
+//        {
+//            return getData("CharInfo", "Ara");
+//        }
     }
     
     //helper method to the getCharacterInfo method
@@ -219,9 +246,10 @@ public class Diary
             
             //running a query to get the data from the database
             UserManager userManager = new UserManager();
-            ResultSet result = userManager.query("SELECT CharInfo FROM tblCharacters WHERE Name = " + character);
+            ResultSet result = userManager.query("SELECT CharInfo FROM tblCharacters WHERE Name = \"" + character + "\"");
                 
             //converting it into a String and returning it
+            result.next();
             return result.getString("CharInfo");
         }
         
@@ -233,9 +261,10 @@ public class Diary
             
             //running a query to get the data from the database
             UserManager userManager = new UserManager();
-            ResultSet result = userManager.query("SELECT Motive FROM tblCharacters WHERE Name = " + character);
+            ResultSet result = userManager.query("SELECT Motive FROM tblCharacters WHERE Name= \"" + character + "\"");
                 
             //converting it into a String and returning it
+            result.next();
             return result.getString("Motive");
         }
             
@@ -247,9 +276,10 @@ public class Diary
             
             //running a query to get the data from the database
             UserManager userManager = new UserManager();
-            ResultSet result = userManager.query("SELECT Info FROM tblClues WHERE ClueName = " + clue); 
+            ResultSet result = userManager.query("SELECT Info FROM tblClues WHERE ClueName = = \"" + clue + "\"");
                 
             //converting it into a String and returning it
+            result.next();
             return result.getString("Info");
         }
     }
