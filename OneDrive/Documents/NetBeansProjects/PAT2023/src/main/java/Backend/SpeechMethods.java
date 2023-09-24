@@ -18,6 +18,7 @@ public class SpeechMethods
 {
     //fields
     private static String speech;
+    private static String characterSelected;
     
     
     //gets the speech needed from the database
@@ -25,13 +26,14 @@ public class SpeechMethods
     {
         //running a query to fetch the data
         UserManager userManager = new UserManager();
-        String query = ""; //use the characterSelected field here and the col variable
+        String query = "SELECT " + col + " FROM tblCharacters WHERE Name = \"" + characterSelected + "\""; //use the characterSelected field here and the col variable
         ResultSet results = userManager.query(query);
 
         //changing it into a string
         try
         {
-            speech = results.getString("Speech");
+            results.next();
+            speech = results.getString(col);
         } catch (SQLException ex)
         {
             Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,37 +48,44 @@ public class SpeechMethods
     }
     
     
-    //gets the picture filepath of the character
-    public String getCharacterPic(String characterSelected)
+    //setters
+    public static void setCharacterSelected(String characterSelected)
     {
-        if(characterSelected.equals("Tommy"))
+        SpeechMethods.characterSelected = characterSelected;
+    }
+    
+    
+    //gets the picture filepath of the character
+    public String getCharacterPic()
+    {
+        if(characterSelected.equals("Tommy Winters"))
         {
-            return "";
+            return "\\resources\\tommyWintersCloseUp.png";
         }
         
-        else if(characterSelected.equals("Astrid"))
+        else if(characterSelected.equals("Astrid Berg"))
         {
-            return "";
+            return "\\resources\\astridBergCloseUp.png";
         }
         
-        else if(characterSelected.equals("Emile"))
+        else if(characterSelected.equals("Emile Beaufoy"))
         {
-            return "";
+            return "\\resources\\emileBeaufoyCloseUp.png";
         }
         
-        else  if(characterSelected.equals("Camila"))
+        else  if(characterSelected.equals("Camila Morea"))
         {
-            return "";
+            return "\\resources\\camilaMoreaCloseUp.png";
         }
         
-        else if(characterSelected.equals("Ara"))
+        else if(characterSelected.equals("Ara Bozoyan"))
         {
-            return "";
+            return "\\resources\\araBozoyanCloseUp.png";
         }
         
         else
         {
-            return "";
+            return "\\resources\\mylanMoreaCloseUp.png";
         }
     }
 }

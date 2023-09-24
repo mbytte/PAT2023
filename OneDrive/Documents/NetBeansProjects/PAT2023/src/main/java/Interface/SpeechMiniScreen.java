@@ -18,6 +18,8 @@ public class SpeechMiniScreen extends javax.swing.JFrame
     public SpeechMiniScreen()
     {
         initComponents();
+        
+        //setting all the components to the info they need to be
     }
 
     /**

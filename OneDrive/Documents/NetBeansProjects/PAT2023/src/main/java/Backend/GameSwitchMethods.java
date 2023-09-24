@@ -5,6 +5,15 @@
  */
 package Backend;
 
+import Interface.CrosswordScreen;
+import Interface.FindingGameScreen;
+import Interface.HangmanScreen;
+import Interface.MagicSquareScreen;
+import Interface.RiddleScreen;
+import Interface.SceneScreen;
+import Interface.SlidingPuzzleScreen;
+import Interface.TicTacToeScreen;
+import Interface.WordGameScreen;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -76,7 +85,7 @@ public class GameSwitchMethods
 
     
     //resets all the variables to false
-    public void resetOptionVariables()
+    public static void resetOptionVariables()
     {
         findingMapSelected = false;
         riddleSelected = false;
@@ -313,5 +322,55 @@ public class GameSwitchMethods
             return output;
         }
     } 
+    
+    
+    //opens the next game screen required based off of what the user's previous choices were
+    public void openGameScreen()
+    {
+        if(findingMapSelected)
+        {
+            new FindingGameScreen().setVisible(true);
+        }
+        
+        else if(crosswordSelected)
+        {
+            new CrosswordScreen().setVisible(true);
+        } 
+        
+        else if(hangmanSelected)
+        {
+            new HangmanScreen().setVisible(true);
+        }
+        
+        else if(magicSquareSelected)
+        {
+            new MagicSquareScreen().setVisible(true);
+        }
+        
+        else if(riddleSelected)
+        {
+            new RiddleScreen().setVisible(true);
+        }
+        
+        else if(sceneGameSelected)
+        {
+            new SceneScreen().setVisible(true);
+        }
+        
+        else if(slidingPuzzleSelected)
+        {
+            new SlidingPuzzleScreen().setVisible(true);
+        }
+        
+        else if(ticTacToeSelected)
+        {
+            new TicTacToeScreen().setVisible(true);
+        }
+        
+        else if(wordGameSelected)
+        {
+            new WordGameScreen().setVisible(true);
+        }
+    }
 }
 

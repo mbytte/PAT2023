@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import static Backend.GameSwitchMethods.*;
+import static Backend.SpeechMethods.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +26,9 @@ public class DiningRoomScreen extends javax.swing.JFrame
         initComponents();
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH); 
+        
+        //ensuring all the games are false
+        resetOptionVariables();
     }
 
     /**
@@ -59,7 +64,6 @@ public class DiningRoomScreen extends javax.swing.JFrame
         tommyWintersButton.setBorderPainted(false);
         tommyWintersButton.setContentAreaFilled(false);
         tommyWintersButton.setFocusPainted(false);
-        tommyWintersButton.setOpaque(false);
         getContentPane().add(tommyWintersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 250, 130, 360));
 
         emileBeaufoyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\emileBeaufoyFullShot.png")); // NOI18N
@@ -67,7 +71,13 @@ public class DiningRoomScreen extends javax.swing.JFrame
         emileBeaufoyButton.setBorderPainted(false);
         emileBeaufoyButton.setContentAreaFilled(false);
         emileBeaufoyButton.setFocusPainted(false);
-        emileBeaufoyButton.setOpaque(false);
+        emileBeaufoyButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                emileBeaufoyButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(emileBeaufoyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 290, 70, 110));
 
         araBozoyanButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\araBozoyanFullShot.png")); // NOI18N
@@ -75,7 +85,13 @@ public class DiningRoomScreen extends javax.swing.JFrame
         araBozoyanButton.setBorderPainted(false);
         araBozoyanButton.setContentAreaFilled(false);
         araBozoyanButton.setFocusPainted(false);
-        araBozoyanButton.setOpaque(false);
+        araBozoyanButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                araBozoyanButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(araBozoyanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 90, 130));
 
         camilaMoreaButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\camilaMoreaFullShot.png")); // NOI18N
@@ -83,7 +99,13 @@ public class DiningRoomScreen extends javax.swing.JFrame
         camilaMoreaButton.setBorderPainted(false);
         camilaMoreaButton.setContentAreaFilled(false);
         camilaMoreaButton.setFocusPainted(false);
-        camilaMoreaButton.setOpaque(false);
+        camilaMoreaButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                camilaMoreaButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(camilaMoreaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 330, 100, 140));
 
         mylanMoreaButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mylanMoreaFullShot2.png")); // NOI18N
@@ -91,7 +113,13 @@ public class DiningRoomScreen extends javax.swing.JFrame
         mylanMoreaButton.setBorderPainted(false);
         mylanMoreaButton.setContentAreaFilled(false);
         mylanMoreaButton.setFocusPainted(false);
-        mylanMoreaButton.setOpaque(false);
+        mylanMoreaButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mylanMoreaButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(mylanMoreaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 140, 150));
 
         astridBergButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\astridBergFullShot.png")); // NOI18N
@@ -99,14 +127,12 @@ public class DiningRoomScreen extends javax.swing.JFrame
         astridBergButton.setBorderPainted(false);
         astridBergButton.setContentAreaFilled(false);
         astridBergButton.setFocusPainted(false);
-        astridBergButton.setOpaque(false);
         getContentPane().add(astridBergButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 300, 60, 160));
 
         swordsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\swords.png")); // NOI18N
         swordsButton.setBorder(null);
         swordsButton.setBorderPainted(false);
         swordsButton.setContentAreaFilled(false);
-        swordsButton.setOpaque(false);
         getContentPane().add(swordsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 230, 100, 130));
 
         backButton.setBackground(new java.awt.Color(15, 28, 33));
@@ -156,7 +182,6 @@ public class DiningRoomScreen extends javax.swing.JFrame
         boxButton.setBorderPainted(false);
         boxButton.setContentAreaFilled(false);
         boxButton.setFocusPainted(false);
-        boxButton.setOpaque(false);
         getContentPane().add(boxButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, 90, 70));
 
         keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.png")); // NOI18N
@@ -211,6 +236,51 @@ public class DiningRoomScreen extends javax.swing.JFrame
         keyFoundMessage.setText("KEY FOUND!");
         keyFoundMessage.setOpaque(true);
     }//GEN-LAST:event_keyButtonActionPerformed
+
+    private void mylanMoreaButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mylanMoreaButtonActionPerformed
+    {//GEN-HEADEREND:event_mylanMoreaButtonActionPerformed
+        if()
+        //set the variable for this game to true
+        setHangmanSelected(true);
+        
+        //setting the relevant character variable to true
+        setCharacterSelected("Mylan Morea");
+        
+        //opening the speech screen
+        new SpeechMiniScreen().setVisible(true);
+    }//GEN-LAST:event_mylanMoreaButtonActionPerformed
+
+    private void camilaMoreaButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_camilaMoreaButtonActionPerformed
+    {//GEN-HEADEREND:event_camilaMoreaButtonActionPerformed
+        //set the variable for this game to true
+        setFindingMapSelected(true);
+        
+        //setting the relevant character variable to true
+        setCharacterSelected("Camila Morea");
+        
+        //opening the speech screen
+        new SpeechMiniScreen().setVisible(true);
+    }//GEN-LAST:event_camilaMoreaButtonActionPerformed
+
+    private void araBozoyanButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_araBozoyanButtonActionPerformed
+    {//GEN-HEADEREND:event_araBozoyanButtonActionPerformed
+        
+        
+        //set the variable for this game to true
+        setCrosswordSelected(true);
+        
+        //setting the relevant character variable to true
+        setCharacterSelected("Ara Bozyan");
+        
+        //opening the speech screen
+        new SpeechMiniScreen().setVisible(true);
+    }//GEN-LAST:event_araBozoyanButtonActionPerformed
+
+    private void emileBeaufoyButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_emileBeaufoyButtonActionPerformed
+    {//GEN-HEADEREND:event_emileBeaufoyButtonActionPerformed
+        //there are two possible games for emile here
+        if
+    }//GEN-LAST:event_emileBeaufoyButtonActionPerformed
 
     
 
