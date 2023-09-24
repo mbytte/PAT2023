@@ -22,6 +22,8 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
     public SeatCompartmentsScreen()
     {
         initComponents();
+        //setting full screen
+        this.setExtendedState(this.MAXIMIZED_BOTH);
     }
 
     /**

@@ -26,6 +26,8 @@ public class DiaryScreen extends javax.swing.JFrame
     public DiaryScreen() throws SQLException
     {
         initComponents();
+        //setting full screen
+        this.setExtendedState(this.MAXIMIZED_BOTH); 
         
         //populating the lists
         UserManager userManager = new UserManager();

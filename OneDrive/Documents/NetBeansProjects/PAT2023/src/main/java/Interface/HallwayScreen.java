@@ -18,6 +18,8 @@ public class HallwayScreen extends javax.swing.JFrame
     public HallwayScreen()
     {
         initComponents();
+        //setting full screen
+        this.setExtendedState(this.MAXIMIZED_BOTH); 
     }
 
     /**

@@ -25,6 +25,8 @@ public class UserScreen extends javax.swing.JFrame
     public UserScreen()
     {
         initComponents();
+        //setting full screen
+        this.setExtendedState(this.MAXIMIZED_BOTH); 
         
         //populating the list with the users
         UserManager users = new UserManager();

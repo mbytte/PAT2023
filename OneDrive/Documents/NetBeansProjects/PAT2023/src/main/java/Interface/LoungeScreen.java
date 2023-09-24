@@ -22,6 +22,8 @@ public class LoungeScreen extends javax.swing.JFrame
     public LoungeScreen()
     {
         initComponents();
+        //setting full screen
+        this.setExtendedState(this.MAXIMIZED_BOTH); 
     }
 
     /**

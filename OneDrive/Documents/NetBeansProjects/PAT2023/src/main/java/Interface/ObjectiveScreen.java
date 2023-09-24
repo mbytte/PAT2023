@@ -18,6 +18,9 @@ public class ObjectiveScreen extends javax.swing.JFrame
     public ObjectiveScreen()
     {
         initComponents();
+        
+        //setting it to be in the centre of the screen
+        setLocationRelativeTo (null);  
     }
 
     /**

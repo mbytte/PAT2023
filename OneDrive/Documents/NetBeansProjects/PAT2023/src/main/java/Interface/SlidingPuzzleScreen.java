@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author megan
@@ -18,6 +22,8 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
     public SlidingPuzzleScreen()
     {
         initComponents();
+        //setting full screen
+        this.setExtendedState(this.MAXIMIZED_BOTH);
     }
 
     /**
@@ -129,8 +135,14 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
 
     private void diaryButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_diaryButtonActionPerformed
     {//GEN-HEADEREND:event_diaryButtonActionPerformed
-        this.dispose();
-        new DiaryScreen().setVisible(true);
+        try
+        {
+            this.dispose();
+            new DiaryScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_diaryButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_homeButtonActionPerformed

@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author megan
@@ -18,6 +22,8 @@ public class SceneScreen extends javax.swing.JFrame
     public SceneScreen()
     {
         initComponents();
+        //setting full screen
+        this.setExtendedState(this.MAXIMIZED_BOTH);
     }
 
     /**
@@ -130,7 +136,13 @@ public class SceneScreen extends javax.swing.JFrame
 
     private void diaryButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_diaryButtonActionPerformed
     {//GEN-HEADEREND:event_diaryButtonActionPerformed
-        new DiaryScreen().setVisible(true);
+        try
+        {
+            new DiaryScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SceneScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_diaryButtonActionPerformed
 
     private void infoButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_infoButtonActionPerformed

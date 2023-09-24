@@ -22,6 +22,8 @@ public class DiningRoomScreen extends javax.swing.JFrame
     public DiningRoomScreen()
     {
         initComponents();
+        //setting full screen
+        this.setExtendedState(this.MAXIMIZED_BOTH); 
     }
 
     /**

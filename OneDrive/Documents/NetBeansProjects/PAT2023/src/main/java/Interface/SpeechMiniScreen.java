@@ -37,6 +37,7 @@ public class SpeechMiniScreen extends javax.swing.JFrame
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, -90));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         infoTextArea.setEditable(false);
