@@ -718,13 +718,13 @@ public class Games
     
     
     //CANE GAME
-    //fields
-    private boolean caneFound;
-    
-    
     //marks this task as complete
     public void foundCane() throws SQLException, IOException
     {
+        //setting the character selected to Tommy
+        SpeechMethods.setCharacterSelected("Tommy Winters");
+        SpeechMethods.getSpeechDB("InformationSpeech");
+        
         new SpeechMiniScreen().setVisible(true);
         
         //sets the user objects variable to be true

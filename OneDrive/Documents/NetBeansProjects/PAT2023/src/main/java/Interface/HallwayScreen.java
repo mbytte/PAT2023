@@ -6,6 +6,12 @@
 package Interface;
 
 import static Backend.GameSwitchMethods.resetOptionVariables;
+import Backend.Games;
+import Backend.UserManager;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,7 +19,9 @@ import static Backend.GameSwitchMethods.resetOptionVariables;
  */
 public class HallwayScreen extends javax.swing.JFrame
 {
-
+    UserManager userManager = new UserManager();
+    Games game = new Games();
+    
     /**
      * Creates new form HallwayScreen
      */
@@ -25,6 +33,14 @@ public class HallwayScreen extends javax.swing.JFrame
         
         //ensuring all the games are false
         resetOptionVariables();
+        
+        //checks if the cane has been found yet
+        if(userManager.getSelectedUser().isCompletedFindCane())
+        {
+            walkingStickButton.setIcon(null);
+            remove(walkingStickButton);
+            walkingStickFoundMessage.setOpaque(false);
+        }
     }
 
     /**
@@ -169,7 +185,18 @@ public class HallwayScreen extends javax.swing.JFrame
         walkingStickButton.setIcon(null);
         remove(walkingStickButton);
         walkingStickFoundMessage.setText("CANE FOUND!");
-        walkingStickFoundMessage.setOpaque(true);
+        walkingStickFoundMessage.setOpaque(false);
+        
+        try
+        {
+            game.foundCane();
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(HallwayScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(HallwayScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_walkingStickButtonActionPerformed
 
     
