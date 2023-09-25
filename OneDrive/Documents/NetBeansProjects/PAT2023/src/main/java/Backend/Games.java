@@ -6,6 +6,7 @@
 package Backend;
 
 import Interface.SpeechMiniScreen;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,8 +23,8 @@ public class Games
     private UserManager userManager = new UserManager();
     private ArrayList<User> currentArrayList = new ArrayList<User>();
     private int currentUserIndex = UserManager.getCurrentUserIndex();
-    private User currentUser = userManager.getSelectedUser(currentUserIndex);
-    private Diary diary = new Diary(currentUser);
+    private User currentUser = userManager.getSelectedUser();
+    private Diary diary = new Diary();
     
     //updates the current array list to comply with the new info
     private void updateCurrentArrayList()
@@ -317,7 +318,7 @@ public class Games
     
     
     //checks if the user has user up all their chances
-    public void hangmanWinCheck() throws SQLException        
+    public void hangmanWinCheck() throws SQLException, IOException        
     {
         //win
         if(Arrays.equals(correctWordArray, usersWordArray))
@@ -388,7 +389,7 @@ public class Games
     
     
     //checks if the answer is right
-    public void inputCheck(String userInput) throws SQLException
+    public void inputCheck(String userInput) throws SQLException, IOException
     {
         //right answer
         if(userInput.equals(riddleAnswer))
@@ -584,7 +585,7 @@ public class Games
     
     
     //checks if the order that the user has arranged the pictures in is the exact way they are supposed to be arranged
-    public void puzzleWin() throws SQLException
+    public void puzzleWin() throws SQLException, IOException
     {
         //variables
         //the order that the pictures should be arranged in in order for the player to win
@@ -654,7 +655,7 @@ public class Games
     
     
     //the user has found a fragment
-    public void fragmentFound() throws SQLException
+    public void fragmentFound() throws SQLException, IOException
     {
         mapFragmentsLeft--;
         
@@ -686,7 +687,7 @@ public class Games
     
     
     //the user has found a fragment
-    public void keyFound() throws SQLException
+    public void keyFound() throws SQLException, IOException
     {
         keysLeft--;
         
@@ -718,7 +719,7 @@ public class Games
     
     
     //marks this task as complete
-    public void foundCane() throws SQLException
+    public void foundCane() throws SQLException, IOException
     {
         new SpeechMiniScreen().setVisible(true);
         
@@ -807,7 +808,7 @@ public class Games
     
     
     //checks if the answer inputted was correct
-    public boolean checkAnswer(int questionNumber, String ans) throws SQLException
+    public boolean checkAnswer(int questionNumber, String ans) throws SQLException, IOException
     {
         //checks if the question has already been answered or not
         if(!answeredQuestions.contains(ans))
@@ -816,6 +817,8 @@ public class Games
             {
                 answeredQuestions.add(ans);
                 numCorrectAnswers++;
+                
+                System.out.println("YAY");
                 
                 //checking if the game is won
                 if(checkGameWin())
@@ -864,24 +867,24 @@ public class Games
         //getting the crosswords
         if(index == 0)
         {
-            crosswordPicturePathway = "";
-            crosswordHintPathway = "";           
-            crosswordAnswers[0] = "";
-            crosswordAnswers[1] = "";
-            crosswordAnswers[2] = "";
-            crosswordAnswers[3] = "";
-            crosswordAnswers[4] = "";
+            crosswordPicturePathway = "resources\\crossword2.png";
+            crosswordHintPathway = "resources\\crossword2Clues.png";           
+            crosswordAnswers[0] = "comb";
+            crosswordAnswers[1] = "towel";
+            crosswordAnswers[2] = "library";
+            crosswordAnswers[3] = "staircase";
+            crosswordAnswers[4] = "clock";
         }
         
         else
         {
-            crosswordPicturePathway = "";
-            crosswordHintPathway = "";           
-            crosswordAnswers[0] = "";
-            crosswordAnswers[1] = "";
-            crosswordAnswers[2] = "";
-            crosswordAnswers[3] = "";
-            crosswordAnswers[4] = "";
+            crosswordPicturePathway = "resources\\crossword1.png";
+            crosswordHintPathway = "resources\\crossword1Clues.png";           
+            crosswordAnswers[0] = "sponge";
+            crosswordAnswers[1] = "dictionary";
+            crosswordAnswers[2] = "candle";
+            crosswordAnswers[3] = "keyboard";
+            crosswordAnswers[4] = "fence";
         }
     }
     
@@ -907,7 +910,7 @@ public class Games
     
     
     //checks if the answers are correct
-    public void checkAnswers() throws SQLException
+    public void checkAnswers() throws SQLException, IOException
     {
         //variables
         int numCorrectAnswers = 0;
@@ -1021,7 +1024,7 @@ public class Games
     
     
     //checks if the game has been win or not
-    public boolean wordGameWinCheck() throws SQLException
+    public boolean wordGameWinCheck() throws SQLException, IOException
     {
         //variables
         boolean letterFound = true;

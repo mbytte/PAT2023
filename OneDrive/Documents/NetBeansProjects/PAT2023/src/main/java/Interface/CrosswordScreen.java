@@ -5,9 +5,16 @@
  */
 package Interface;
 
+import Backend.Games;
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,15 +22,24 @@ import java.util.logging.Logger;
  */
 public class CrosswordScreen extends javax.swing.JFrame
 {
-
+    //creating a games object in order to use the methods in that class
+    Games game = new Games();
+    
     /**
      * Creates new form CrosswordScreen
      */
-    public CrosswordScreen()
+    public CrosswordScreen() throws IOException
     {
         initComponents();
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH); 
+        
+        //selecting a crossword
+        game.setCrossword();
+        BufferedImage crosswordImg = ImageIO.read(new File(game.getCrosswordPicturePathway()));
+        crosswordPic.setIcon(new ImageIcon(crosswordImg));
+        BufferedImage cluesImg = ImageIO.read(new File(game.getCrosswordAnswerPathway()));
+        crosswordCluesPic.setIcon(new ImageIcon(cluesImg));
     }
 
     /**
@@ -40,18 +56,18 @@ public class CrosswordScreen extends javax.swing.JFrame
         diaryButton = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        crosswordCluesPic = new javax.swing.JLabel();
+        crosswordPic = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        answerTextField = new javax.swing.JTextField();
-        answerTextField1 = new javax.swing.JTextField();
-        answerTextField2 = new javax.swing.JTextField();
-        answerTextField4 = new javax.swing.JTextField();
-        answerTextField5 = new javax.swing.JTextField();
+        answerBox5 = new javax.swing.JTextField();
+        answerBox3 = new javax.swing.JTextField();
+        answerBox4 = new javax.swing.JTextField();
+        answerBox2 = new javax.swing.JTextField();
+        answerBox1 = new javax.swing.JTextField();
         checkButton1 = new javax.swing.JButton();
         checkButton2 = new javax.swing.JButton();
         checkButton3 = new javax.swing.JButton();
@@ -117,12 +133,8 @@ public class CrosswordScreen extends javax.swing.JFrame
             }
         });
         getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 80, 50));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\crossword2Clues.png")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 630, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\crossword2.png")); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, 290));
+        getContentPane().add(crosswordCluesPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 680, -1));
+        getContentPane().add(crosswordPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 80, 470, 330));
 
         jLabel3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(139, 118, 82));
@@ -149,70 +161,70 @@ public class CrosswordScreen extends javax.swing.JFrame
         jLabel7.setText("2.");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 220, 50, -1));
 
-        answerTextField.setBackground(new java.awt.Color(15, 28, 33));
-        answerTextField.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
-        answerTextField.setForeground(new java.awt.Color(139, 118, 82));
-        answerTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-        answerTextField.addActionListener(new java.awt.event.ActionListener()
+        answerBox5.setBackground(new java.awt.Color(15, 28, 33));
+        answerBox5.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        answerBox5.setForeground(new java.awt.Color(139, 118, 82));
+        answerBox5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        answerBox5.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                answerTextFieldActionPerformed(evt);
+                answerBox5ActionPerformed(evt);
             }
         });
-        getContentPane().add(answerTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 360, 50));
+        getContentPane().add(answerBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 360, 50));
 
-        answerTextField1.setBackground(new java.awt.Color(15, 28, 33));
-        answerTextField1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
-        answerTextField1.setForeground(new java.awt.Color(139, 118, 82));
-        answerTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-        answerTextField1.addActionListener(new java.awt.event.ActionListener()
+        answerBox3.setBackground(new java.awt.Color(15, 28, 33));
+        answerBox3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        answerBox3.setForeground(new java.awt.Color(139, 118, 82));
+        answerBox3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        answerBox3.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                answerTextField1ActionPerformed(evt);
+                answerBox3ActionPerformed(evt);
             }
         });
-        getContentPane().add(answerTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, 360, 50));
+        getContentPane().add(answerBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, 360, 50));
 
-        answerTextField2.setBackground(new java.awt.Color(15, 28, 33));
-        answerTextField2.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
-        answerTextField2.setForeground(new java.awt.Color(139, 118, 82));
-        answerTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-        answerTextField2.addActionListener(new java.awt.event.ActionListener()
+        answerBox4.setBackground(new java.awt.Color(15, 28, 33));
+        answerBox4.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        answerBox4.setForeground(new java.awt.Color(139, 118, 82));
+        answerBox4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        answerBox4.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                answerTextField2ActionPerformed(evt);
+                answerBox4ActionPerformed(evt);
             }
         });
-        getContentPane().add(answerTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 380, 360, 50));
+        getContentPane().add(answerBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 380, 360, 50));
 
-        answerTextField4.setBackground(new java.awt.Color(15, 28, 33));
-        answerTextField4.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
-        answerTextField4.setForeground(new java.awt.Color(139, 118, 82));
-        answerTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-        answerTextField4.addActionListener(new java.awt.event.ActionListener()
+        answerBox2.setBackground(new java.awt.Color(15, 28, 33));
+        answerBox2.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        answerBox2.setForeground(new java.awt.Color(139, 118, 82));
+        answerBox2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        answerBox2.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                answerTextField4ActionPerformed(evt);
+                answerBox2ActionPerformed(evt);
             }
         });
-        getContentPane().add(answerTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 210, 360, 50));
+        getContentPane().add(answerBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 210, 360, 50));
 
-        answerTextField5.setBackground(new java.awt.Color(15, 28, 33));
-        answerTextField5.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
-        answerTextField5.setForeground(new java.awt.Color(139, 118, 82));
-        answerTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-        answerTextField5.addActionListener(new java.awt.event.ActionListener()
+        answerBox1.setBackground(new java.awt.Color(15, 28, 33));
+        answerBox1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        answerBox1.setForeground(new java.awt.Color(139, 118, 82));
+        answerBox1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        answerBox1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                answerTextField5ActionPerformed(evt);
+                answerBox1ActionPerformed(evt);
             }
         });
-        getContentPane().add(answerTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 360, 50));
+        getContentPane().add(answerBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 360, 50));
 
         checkButton1.setBackground(new java.awt.Color(15, 28, 33));
         checkButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -318,64 +330,159 @@ public class CrosswordScreen extends javax.swing.JFrame
         new DiningRoom().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void answerTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerTextFieldActionPerformed
-    {//GEN-HEADEREND:event_answerTextFieldActionPerformed
+    private void answerBox5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerBox5ActionPerformed
+    {//GEN-HEADEREND:event_answerBox5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_answerTextFieldActionPerformed
+    }//GEN-LAST:event_answerBox5ActionPerformed
 
-    private void answerTextField1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerTextField1ActionPerformed
-    {//GEN-HEADEREND:event_answerTextField1ActionPerformed
+    private void answerBox3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerBox3ActionPerformed
+    {//GEN-HEADEREND:event_answerBox3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_answerTextField1ActionPerformed
+    }//GEN-LAST:event_answerBox3ActionPerformed
 
-    private void answerTextField2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerTextField2ActionPerformed
-    {//GEN-HEADEREND:event_answerTextField2ActionPerformed
+    private void answerBox4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerBox4ActionPerformed
+    {//GEN-HEADEREND:event_answerBox4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_answerTextField2ActionPerformed
+    }//GEN-LAST:event_answerBox4ActionPerformed
 
-    private void answerTextField4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerTextField4ActionPerformed
-    {//GEN-HEADEREND:event_answerTextField4ActionPerformed
+    private void answerBox2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerBox2ActionPerformed
+    {//GEN-HEADEREND:event_answerBox2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_answerTextField4ActionPerformed
+    }//GEN-LAST:event_answerBox2ActionPerformed
 
-    private void answerTextField5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerTextField5ActionPerformed
-    {//GEN-HEADEREND:event_answerTextField5ActionPerformed
+    private void answerBox1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerBox1ActionPerformed
+    {//GEN-HEADEREND:event_answerBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_answerTextField5ActionPerformed
+    }//GEN-LAST:event_answerBox1ActionPerformed
 
     private void checkButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_checkButton1ActionPerformed
     {//GEN-HEADEREND:event_checkButton1ActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            game.checkAnswer(1, answerBox1.getText());
+            if(game.checkAnswer(1, answerBox1.getText()))
+            {
+                answerBox1.setBackground(Color.green);
+                //locking the answer box
+                answerBox1.setEditable(false);
+            }
+            else
+            {
+                answerBox1.setBackground(Color.red);
+            }
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(CrosswordScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(CrosswordScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_checkButton1ActionPerformed
 
     private void checkButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_checkButton2ActionPerformed
     {//GEN-HEADEREND:event_checkButton2ActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            game.checkAnswer(2, answerBox2.getText());
+            if(game.checkAnswer(2, answerBox2.getText()))
+            {
+                answerBox2.setBackground(Color.green);
+                //locking the answer box
+                answerBox2.setEditable(false);
+            }
+            else
+            {
+                answerBox2.setBackground(Color.red);
+            }
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(CrosswordScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(CrosswordScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_checkButton2ActionPerformed
 
     private void checkButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_checkButton3ActionPerformed
     {//GEN-HEADEREND:event_checkButton3ActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            game.checkAnswer(3, answerBox3.getText());
+            if(game.checkAnswer(3, answerBox3.getText()))
+            {
+                answerBox3.setBackground(Color.green);
+                //locking the answer box
+                answerBox3.setEditable(false);
+            }
+            else
+            {
+                answerBox3.setBackground(Color.red);
+            }
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(CrosswordScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(CrosswordScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_checkButton3ActionPerformed
 
     private void checkButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_checkButton4ActionPerformed
     {//GEN-HEADEREND:event_checkButton4ActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            game.checkAnswer(4, answerBox4.getText());
+            if(game.checkAnswer(4, answerBox4.getText()))
+            {
+                answerBox4.setBackground(Color.green);
+                //locking the answer box
+                answerBox4.setEditable(false);
+            }
+            else
+            {
+                answerBox4.setBackground(Color.red);
+            }
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(CrosswordScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(CrosswordScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_checkButton4ActionPerformed
 
     private void checkButton5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_checkButton5ActionPerformed
     {//GEN-HEADEREND:event_checkButton5ActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            game.checkAnswer(5, answerBox5.getText());
+            if(game.checkAnswer(5, answerBox5.getText()))
+            {
+                answerBox5.setBackground(Color.green);
+                //locking the answer box
+                answerBox5.setEditable(false);
+            }
+            else
+            {
+                answerBox5.setBackground(Color.red);
+            }
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(CrosswordScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(CrosswordScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_checkButton5ActionPerformed
 
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField answerTextField;
-    private javax.swing.JTextField answerTextField1;
-    private javax.swing.JTextField answerTextField2;
-    private javax.swing.JTextField answerTextField4;
-    private javax.swing.JTextField answerTextField5;
+    private javax.swing.JTextField answerBox1;
+    private javax.swing.JTextField answerBox2;
+    private javax.swing.JTextField answerBox3;
+    private javax.swing.JTextField answerBox4;
+    private javax.swing.JTextField answerBox5;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel background;
     private javax.swing.JButton checkButton1;
@@ -383,11 +490,11 @@ public class CrosswordScreen extends javax.swing.JFrame
     private javax.swing.JButton checkButton3;
     private javax.swing.JButton checkButton4;
     private javax.swing.JButton checkButton5;
+    private javax.swing.JLabel crosswordCluesPic;
+    private javax.swing.JLabel crosswordPic;
     private javax.swing.JButton diaryButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton infoButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
