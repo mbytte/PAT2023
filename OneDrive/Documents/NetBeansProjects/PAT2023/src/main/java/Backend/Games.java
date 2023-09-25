@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import Backend.UserManager;
 import Interface.SlidingPuzzleScreen;
 
 /**
@@ -37,7 +36,21 @@ public class Games
     private int numLoses;
     private int numDraws;
     private String[][] layout = new String[3][3];
-    private ArrayList <String> openSpaces;
+    private ArrayList <String> openSpaces = new ArrayList<>();
+    
+    //instantiates the array list
+    public void instantiateOpenSpaces()
+    {
+        openSpaces.add("button1");
+        openSpaces.add("button2");
+        openSpaces.add("button3");
+        openSpaces.add("button4");
+        openSpaces.add("button5");
+        openSpaces.add("button6");
+        openSpaces.add("button7");
+        openSpaces.add("button8");
+        openSpaces.add("button9");
+    }
     
     
     //checks if the button pressed is free to be used
@@ -56,7 +69,7 @@ public class Games
     
     
     //adds an X component to the button
-    public void addSymbol(JButton button, String symbol)
+    public void addSymbol(JButton button, int numButton, String symbol)
     {
         //checking if button is free
         if(!isButtonUsed(button.getText()))
@@ -65,22 +78,24 @@ public class Games
             button.setText(symbol);
            
             //removing this button from the buttons used
-            int numButton = Integer.parseInt(button.getName().substring(6));
-            int index = openSpaces.indexOf("button" + numButton);
-            openSpaces.remove(index);
+//            int numButton = Integer.parseInt(numButton.substring(4));
+//            int index = openSpaces.indexOf("button" + numButton);
+            openSpaces.remove("button" + numButton);
             
             //adding this symbol to the layout
-            int[] buttonPos = getButtonPos(button);
+            int[] buttonPos = getButtonPos(button, numButton);
             layout[buttonPos[0]][buttonPos[1]] = symbol;
+            
+            //checks if the game has been won
+            isTicTacToeWinCheck();
         }
     }
     
     
     //gets the button position
-    public int[] getButtonPos(JButton button)
+    public int[] getButtonPos(JButton button, int numButton)
     {
         //variables
-        int numButton = Integer.parseInt(button.getName().substring(6));
         int[] location = {0, 0};
         
         //getting the row first

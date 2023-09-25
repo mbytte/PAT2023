@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Backend.Games;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class TicTacToeScreen extends javax.swing.JFrame
 {
-
+    Games game = new Games();
     /**
      * Creates new form TicTacToeScreen
      */
@@ -24,6 +25,9 @@ public class TicTacToeScreen extends javax.swing.JFrame
         initComponents();
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH);
+        
+        //instantiating the openspaces arraylist
+        game.instantiateOpenSpaces();
     }
 
     /**
@@ -128,38 +132,101 @@ public class TicTacToeScreen extends javax.swing.JFrame
 
         button1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button1.setBorder(null);
+        button1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 120, 120));
 
         button2.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button2.setBorder(null);
+        button2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, 120, 120));
 
         button3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button3.setBorder(null);
+        button3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 120, 120));
 
         button4.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button4.setBorder(null);
+        button4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 120, 120));
 
         button5.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button5.setBorder(null);
+        button5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 120, 120));
 
         button6.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button6.setBorder(null);
+        button6.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button6ActionPerformed(evt);
+            }
+        });
         getContentPane().add(button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 320, 120, 120));
 
         button7.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button7.setBorder(null);
+        button7.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button7ActionPerformed(evt);
+            }
+        });
         getContentPane().add(button7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 120, 120));
 
         button8.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button8.setBorder(null);
+        button8.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button8ActionPerformed(evt);
+            }
+        });
         getContentPane().add(button8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 460, 120, 120));
 
         button9.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button9.setBorder(null);
+        button9.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button9ActionPerformed(evt);
+            }
+        });
         getContentPane().add(button9, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 120, 120));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\ticTacToeGrid.jpg")); // NOI18N
@@ -203,6 +270,366 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_infoButtonActionPerformed
         new ObjectiveScreen().setVisible(true);
     }//GEN-LAST:event_infoButtonActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button1ActionPerformed
+    {//GEN-HEADEREND:event_button1ActionPerformed
+        game.addSymbol(button1, 1, "X");
+        
+        //AI's turn
+        String computerMove = game.computerMove();
+        if(computerMove.equals("button2"))
+        {
+            game.addSymbol(button2, 2, "O");
+        }
+        else if(computerMove.equals("button3"))
+        {
+            game.addSymbol(button3, 3, "O");
+        }
+        else if(computerMove.equals("button4"))
+        {
+            game.addSymbol(button4, 4, "O");
+        }
+        else if(computerMove.equals("button5"))
+        {
+            game.addSymbol(button5, 5, "O");
+        }
+        else if(computerMove.equals("button6"))
+        {
+            game.addSymbol(button6, 6, "O");
+        }
+        else if(computerMove.equals("button7"))
+        {
+            game.addSymbol(button7, 7, "O");
+        }
+        else if(computerMove.equals("button8"))
+        {
+            game.addSymbol(button8, 8, "O");
+        }
+        else
+        {
+            game.addSymbol(button9, 9, "O");
+        }
+    }//GEN-LAST:event_button1ActionPerformed
+
+    private void button2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button2ActionPerformed
+    {//GEN-HEADEREND:event_button2ActionPerformed
+        game.addSymbol(button2, 2, "X");
+        
+        //AI's turn
+        String computerMove = game.computerMove();
+        if(computerMove.equals("button1"))
+        {
+            game.addSymbol(button2, 1, "O");
+        }
+        else if(computerMove.equals("button3"))
+        {
+            game.addSymbol(button3, 3, "O");
+        }
+        else if(computerMove.equals("button4"))
+        {
+            game.addSymbol(button4, 4, "O");
+        }
+        else if(computerMove.equals("button5"))
+        {
+            game.addSymbol(button5, 5, "O");
+        }
+        else if(computerMove.equals("button6"))
+        {
+            game.addSymbol(button6, 6, "O");
+        }
+        else if(computerMove.equals("button7"))
+        {
+            game.addSymbol(button7, 7, "O");
+        }
+        else if(computerMove.equals("button8"))
+        {
+            game.addSymbol(button8, 8, "O");
+        }
+        else
+        {
+            game.addSymbol(button9, 9, "O");
+        }
+    }//GEN-LAST:event_button2ActionPerformed
+
+    private void button3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button3ActionPerformed
+    {//GEN-HEADEREND:event_button3ActionPerformed
+        game.addSymbol(button3, 3, "X");
+        
+        //AI's turn
+        String computerMove = game.computerMove();
+        if(computerMove.equals("button1"))
+        {
+            game.addSymbol(button1, 1, "O");
+        }
+        else if(computerMove.equals("button2"))
+        {
+            game.addSymbol(button2, 2, "O");
+        }
+        else if(computerMove.equals("button4"))
+        {
+            game.addSymbol(button4, 4, "O");
+        }
+        else if(computerMove.equals("button5"))
+        {
+            game.addSymbol(button5, 5, "O");
+        }
+        else if(computerMove.equals("button6"))
+        {
+            game.addSymbol(button6, 6, "O");
+        }
+        else if(computerMove.equals("button7"))
+        {
+            game.addSymbol(button7, 7, "O");
+        }
+        else if(computerMove.equals("button8"))
+        {
+            game.addSymbol(button8, 8, "O");
+        }
+        else
+        {
+            game.addSymbol(button9, 9, "O");
+        }
+    }//GEN-LAST:event_button3ActionPerformed
+
+    private void button4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button4ActionPerformed
+    {//GEN-HEADEREND:event_button4ActionPerformed
+        game.addSymbol(button4, 4, "X");
+        
+        //AI's turn
+        String computerMove = game.computerMove();
+        if(computerMove.equals("button1"))
+        {
+            game.addSymbol(button1, 1, "O");
+        }
+        else if(computerMove.equals("button2"))
+        {
+            game.addSymbol(button2, 2, "O");
+        }
+        else if(computerMove.equals("button3"))
+        {
+            game.addSymbol(button3, 3, "O");
+        }
+        else if(computerMove.equals("button5"))
+        {
+            game.addSymbol(button5, 5, "O");
+        }
+        else if(computerMove.equals("button6"))
+        {
+            game.addSymbol(button6, 6, "O");
+        }
+        else if(computerMove.equals("button7"))
+        {
+            game.addSymbol(button7, 7, "O");
+        }
+        else if(computerMove.equals("button8"))
+        {
+            game.addSymbol(button8, 8, "O");
+        }
+        else
+        {
+            game.addSymbol(button9, 9, "O");
+        }
+    }//GEN-LAST:event_button4ActionPerformed
+
+    private void button5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button5ActionPerformed
+    {//GEN-HEADEREND:event_button5ActionPerformed
+        game.addSymbol(button5, 5, "X");
+        
+        //AI's turn
+        String computerMove = game.computerMove();
+        if(computerMove.equals("button1"))
+        {
+            game.addSymbol(button1, 1, "O");
+        }
+        else if(computerMove.equals("button2"))
+        {
+            game.addSymbol(button2, 2, "O");
+        }
+        else if(computerMove.equals("button3"))
+        {
+            game.addSymbol(button3, 3, "O");
+        }
+        else if(computerMove.equals("button4"))
+        {
+            game.addSymbol(button4, 4, "O");
+        }
+        else if(computerMove.equals("button6"))
+        {
+            game.addSymbol(button6, 6, "O");
+        }
+        else if(computerMove.equals("button7"))
+        {
+            game.addSymbol(button7, 7, "O");
+        }
+        else if(computerMove.equals("button8"))
+        {
+            game.addSymbol(button8, 8, "O");
+        }
+        else
+        {
+            game.addSymbol(button9, 9, "O");
+        }
+    }//GEN-LAST:event_button5ActionPerformed
+
+    private void button6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button6ActionPerformed
+    {//GEN-HEADEREND:event_button6ActionPerformed
+        game.addSymbol(button6, 6, "X");
+        
+        //AI's turn
+        String computerMove = game.computerMove();
+        if(computerMove.equals("button1"))
+        {
+            game.addSymbol(button1, 1, "O");
+        }
+        else if(computerMove.equals("button2"))
+        {
+            game.addSymbol(button2, 2, "O");
+        }
+        else if(computerMove.equals("button3"))
+        {
+            game.addSymbol(button3, 3, "O");
+        }
+        else if(computerMove.equals("button4"))
+        {
+            game.addSymbol(button4, 4, "O");
+        }
+        else if(computerMove.equals("button5"))
+        {
+            game.addSymbol(button5, 5, "O");
+        }
+        else if(computerMove.equals("button7"))
+        {
+            game.addSymbol(button7, 7, "O");
+        }
+        else if(computerMove.equals("button8"))
+        {
+            game.addSymbol(button8, 8, "O");
+        }
+        else
+        {
+            game.addSymbol(button9, 9, "O");
+        }
+    }//GEN-LAST:event_button6ActionPerformed
+
+    private void button7ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button7ActionPerformed
+    {//GEN-HEADEREND:event_button7ActionPerformed
+        game.addSymbol(button7, 7, "X");
+        
+        //AI's turn
+        String computerMove = game.computerMove();
+        if(computerMove.equals("button1"))
+        {
+            game.addSymbol(button1, 1, "O");
+        }
+        else if(computerMove.equals("button2"))
+        {
+            game.addSymbol(button2, 2, "O");
+        }
+        else if(computerMove.equals("button3"))
+        {
+            game.addSymbol(button3, 3, "O");
+        }
+        else if(computerMove.equals("button4"))
+        {
+            game.addSymbol(button4, 4, "O");
+        }
+        else if(computerMove.equals("button5"))
+        {
+            game.addSymbol(button5, 5, "O");
+        }
+        else if(computerMove.equals("button6"))
+        {
+            game.addSymbol(button6, 6, "O");
+        }
+        else if(computerMove.equals("button8"))
+        {
+            game.addSymbol(button8, 8, "O");
+        }
+        else
+        {
+            game.addSymbol(button9, 9, "O");
+        }
+    }//GEN-LAST:event_button7ActionPerformed
+
+    private void button8ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button8ActionPerformed
+    {//GEN-HEADEREND:event_button8ActionPerformed
+        game.addSymbol(button8, 8, "X");
+        
+        //AI's turn
+        String computerMove = game.computerMove();
+        if(computerMove.equals("button1"))
+        {
+            game.addSymbol(button1, 1, "O");
+        }
+        else if(computerMove.equals("button2"))
+        {
+            game.addSymbol(button2, 2, "O");
+        }
+        else if(computerMove.equals("button3"))
+        {
+            game.addSymbol(button3, 3, "O");
+        }
+        else if(computerMove.equals("button4"))
+        {
+            game.addSymbol(button4, 4, "O");
+        }
+        else if(computerMove.equals("button5"))
+        {
+            game.addSymbol(button5, 5, "O");
+        }
+        else if(computerMove.equals("button6"))
+        {
+            game.addSymbol(button6, 6, "O");
+        }
+        else if(computerMove.equals("button7"))
+        {
+            game.addSymbol(button7, 7, "O");
+        }
+        else
+        {
+            game.addSymbol(button9, 9, "O");
+        }
+    }//GEN-LAST:event_button8ActionPerformed
+
+    private void button9ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button9ActionPerformed
+    {//GEN-HEADEREND:event_button9ActionPerformed
+        game.addSymbol(button9, 9, "X");
+        
+        //AI's turn
+        String computerMove = game.computerMove();
+        if(computerMove.equals("button1"))
+        {
+            game.addSymbol(button1, 1, "O");
+        }
+        else if(computerMove.equals("button2"))
+        {
+            game.addSymbol(button2, 2, "O");
+        }
+        else if(computerMove.equals("button3"))
+        {
+            game.addSymbol(button3, 3, "O");
+        }
+        else if(computerMove.equals("button4"))
+        {
+            game.addSymbol(button4, 4, "O");
+        }
+        else if(computerMove.equals("button5"))
+        {
+            game.addSymbol(button5, 5, "O");
+        }
+        else if(computerMove.equals("button6"))
+        {
+            game.addSymbol(button6, 6, "O");
+        }
+        else if(computerMove.equals("button7"))
+        {
+            game.addSymbol(button7, 7, "O");
+        }
+        else
+        {
+            game.addSymbol(button8, 8, "O");
+        }
+    }//GEN-LAST:event_button9ActionPerformed
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
