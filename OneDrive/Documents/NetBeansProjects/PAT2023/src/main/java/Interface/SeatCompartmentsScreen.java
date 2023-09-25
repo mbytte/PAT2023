@@ -6,6 +6,8 @@
 package Interface;
 
 import static Backend.GameSwitchMethods.resetOptionVariables;
+import Backend.Games;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +19,7 @@ import java.util.logging.Logger;
 public class SeatCompartmentsScreen extends javax.swing.JFrame
 {
 
+    Games game = new Games();
     /**
      * Creates new form SeatCompartmentsScreen
      */
@@ -152,6 +155,18 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
         remove(keyButton);
         keyFoundMessage.setText("KEY FOUND!");
         keyFoundMessage.setOpaque(true);
+        
+        try
+        {
+            //adding it to the keys found
+            game.keyFound(3);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_keyButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

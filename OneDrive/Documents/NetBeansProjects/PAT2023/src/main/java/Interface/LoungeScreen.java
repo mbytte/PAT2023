@@ -7,6 +7,7 @@ package Interface;
 
 import Backend.GameSwitchMethods;
 import static Backend.GameSwitchMethods.*;
+import Backend.Games;
 import static Backend.SpeechMethods.getSpeechDB;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,7 +20,8 @@ import java.util.logging.Logger;
  */
 public class LoungeScreen extends javax.swing.JFrame
 {
-
+    Games game = new Games();
+    
     /**
      * Creates new form LoungeScreen
      */
@@ -172,6 +174,18 @@ public class LoungeScreen extends javax.swing.JFrame
         remove(keyButton);
         keyFoundMessage.setText("KEY FOUND!");
         keyFoundMessage.setOpaque(true);
+        
+        try
+        {
+            //adding it to the keys found
+            game.keyFound(2);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_keyButtonActionPerformed
 
     private void picButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_picButtonActionPerformed
@@ -180,7 +194,13 @@ public class LoungeScreen extends javax.swing.JFrame
         setMagicSquareSelected(true);
         //opens the next relative screen
         GameSwitchMethods gm = new GameSwitchMethods();
-        gm.openGameScreen();
+        try
+        {
+            gm.openGameScreen();
+        } catch (IOException ex)
+        {
+            Logger.getLogger(LoungeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_picButtonActionPerformed
 
 

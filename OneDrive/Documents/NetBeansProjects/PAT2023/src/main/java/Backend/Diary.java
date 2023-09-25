@@ -90,7 +90,12 @@ public class Diary
             //checking if the clue has been obtained
             if(CURRENT_USER.isCompletedMagicSquare())
             {
-                return getData("Clue", "Picture");
+                return "Notes on " + selectedClue + " \n\n" + getData("Clue", "Picture");
+            }
+            else
+            {
+                String message = "No data found. \nTo get this information find the picture and complete the game. ";
+                return message;
             }
         }
         
@@ -99,7 +104,12 @@ public class Diary
             //checking if the clue has been obtained
             if(CURRENT_USER.isInvestigatedKnife())
             {
-                return getData("Clue", "Knife");
+                return "Notes on " + selectedClue + " \n\n" + getData("Clue", "Knife");
+            }
+            else
+            {
+                String message = "No data found. \nTo get this information find the knife.";
+                return message;
             }
         }
             
@@ -108,7 +118,12 @@ public class Diary
             //checking if the clue has been obtained
             if(CURRENT_USER.isInvestigatedFireIron())
             {
-                return getData("Clue", "FireIron");
+                return "Notes on " + selectedClue + " \n\n" + getData("Clue", "FireIron");
+            }
+            else
+            {
+                String message = "No data found. \nTo get this information find the fire iron.";
+                return message;
             }
         }
         
@@ -117,7 +132,12 @@ public class Diary
             //checking if the clue has been obtained
             if(CURRENT_USER.isInvestigatedLetter())
             {
-                return getData("Clue", "Letter");
+                return "Notes on " + selectedClue + " \n\n" + getData("Clue", "Letter");
+            }
+            else
+            {
+                String message = "No data found. \nTo get this information find the letter.";
+                return message;
             }
         }
         
@@ -126,7 +146,12 @@ public class Diary
             //checking if the clue has been obtained
             if(CURRENT_USER.isCompletedWordGame())
             {
-                return getData("Clue", "SecretMessage");
+                return "Notes on " + selectedClue + " \n\n" + getData("Clue", "SecretMessage");
+            }
+            else
+            {
+                String message = "No data found. \nTo get this information complete the task from Mylan first in order to get to the task that is required to get this information.";
+                return message;
             }
         }
         
@@ -135,7 +160,12 @@ public class Diary
             //checking if the clue has been obtained
             if(CURRENT_USER.isInvestigatedSwords())
             {
-                return getData("Clue", "Swords");
+                return "Notes on " + selectedClue + " \n\n" + getData("Clue", "Swords");
+            }
+            else
+            {
+                String message = "No data found. \nTo get this information find the swords.";
+                return message;
             }
         }
         
@@ -144,8 +174,12 @@ public class Diary
             //checking if the clue has been obtained
             if(CURRENT_USER.isCompletedCrossword())
             {
-                return getData("Motive", "Tommy Winters");
-                
+                return "Notes on " + selectedClue + " \n\n" + getData("Motive", "Tommy Winters");
+            }
+            else
+            {
+                String message = "No data found. \nTo get this information complete the task from Ara.";
+                return message;
             }
         }
         
@@ -154,8 +188,12 @@ public class Diary
             //checking if the clue has been obtained
             if(CURRENT_USER.isCompletedHangman())
             {
-                return getData("Motive", "Astrid Berg");
-                
+                return "Notes on " + selectedClue + " \n\n" + getData("Motive", "Astrid Berg");
+            }
+            else
+            {
+                String message = "No data found. \nTo get this information complete the task from Mylan";
+                return message;
             }
         }
         
@@ -164,7 +202,12 @@ public class Diary
             //checking if the clue has been obtained
             if(CURRENT_USER.isCompletedTicTacToe())
             {
-                return getData("Motive", "Mylan Morea");              
+                return "Notes on " + selectedClue + " \n\n" + getData("Motive", "Mylan Morea");              
+            }
+            else
+            {
+                String message = "No data found. \nTo get this information complete the task from Emile.";
+                return message;
             }
         }
         
@@ -173,7 +216,16 @@ public class Diary
             //checking if the clue has been obtained
             if(CURRENT_USER.isCompletedFindKeys())
             {
-                return getData("Motive", "Camila Morea");              
+                return "Notes on " + selectedClue + " \n\n" + getData("Motive", "Camila Morea");              
+            }
+            
+            //returns the number of keys left to find
+            else
+            {
+                Games game = new Games();
+                String message = "No data found. \nTo get this information complete the task from Astrid.";
+                message+="\n\nNumber of keys found: \n" + game.getNumKeysFound() + "/3";
+                return message;
             }
         }
         
@@ -182,58 +234,35 @@ public class Diary
             //checking if the clue has been obtained
             if(CURRENT_USER.isCompletedFindMap() && CURRENT_USER.isCompletedSlidingPuzzle())
             {
-                return getData("Motive", "Emile Beaufoy");
+                return "Notes on " + selectedClue + " \n\n" + getData("Motive", "Emile Beaufoy");
+            }
+            else
+            {
+                String message = "No data found. \nTo get this information complete the task from Camila.";
+                return message;
             }
         }
         
-        else if(selectedClue.equals("Ara Bozoyan"))
+        else
         {
             //checking if the clue has been obtained
             if(CURRENT_USER.isCompletedFindCane())
             {
-                return getData("Motive", "Ara Bozoyan");
+                return "Notes on " + selectedClue + " \n\n" + getData("Motive", "Ara Bozoyan");
+            }
+            else
+            {
+                String message = "No data found. \nTo get this information complete the task from Tommy.";
+                return message;
             }
         }
-        
-        //game has not been completed and hence no data has been found
-        return "No data found";
     }
 
     
     //gets the character data that is requested
     public String getCharacterData(String selectedCharacter) throws SQLException
     {
-        return getData("CharInfo", selectedCharacter);
-   
-//        if(selectedCharacter.equals("Tommy Winters"))
-//        {
-//            return getData("CharInfo", "Tommy Winters");
-//        }
-//        
-//        else if(selectedCharacter.equals("Astrid Berg"))
-//        {
-//            return getData("CharInfo", "Astrid Berg");
-//        }
-//        
-//        else if(selectedCharacter.equals("Mylan"))
-//        {
-//            return getData("CharInfo", "Mylan");
-//        }
-//        
-//        else if(selectedCharacter.equals("Camila"))
-//        {
-//            return getData("CharInfo", "Camila");
-//        }
-//        
-//        else if(selectedCharacter.equals("Emile"))
-//        {
-//            return getData("CharInfo", "Emile");
-//        }
-//        
-//        else //this is for Ara
-//        {
-//            return getData("CharInfo", "Ara");
-//        }
+        return "Personal evaluation - " + selectedCharacter.toUpperCase() + " \n\n" + getData("CharInfo", selectedCharacter);
     }
     
     //helper method to the getCharacterInfo method

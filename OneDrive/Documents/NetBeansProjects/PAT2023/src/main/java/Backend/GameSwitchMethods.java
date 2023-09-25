@@ -14,6 +14,7 @@ import Interface.SceneScreen;
 import Interface.SlidingPuzzleScreen;
 import Interface.TicTacToeScreen;
 import Interface.WordGameScreen;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -325,7 +326,7 @@ public class GameSwitchMethods
     
     
     //opens the next game screen required based off of what the user's previous choices were
-    public void openGameScreen()
+    public void openGameScreen() throws IOException
     {
         if(findingMapSelected)
         {

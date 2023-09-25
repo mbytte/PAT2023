@@ -7,11 +7,9 @@ package Interface;
 
 import Backend.GameSwitchMethods;
 import Backend.SpeechMethods;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,7 +24,7 @@ public class SpeechMiniScreen extends javax.swing.JFrame
     public SpeechMiniScreen() throws IOException
     {
         initComponents();
-        //this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         
         //setting all the components to the info they need to be
         SpeechMethods sm = new SpeechMethods();
@@ -58,14 +56,14 @@ public class SpeechMiniScreen extends javax.swing.JFrame
         infoTextArea.setEditable(false);
         infoTextArea.setBackground(new java.awt.Color(15, 28, 33));
         infoTextArea.setColumns(20);
-        infoTextArea.setFont(new java.awt.Font("Perpetua Titling MT", 0, 18)); // NOI18N
-        infoTextArea.setForeground(new java.awt.Color(139, 118, 82));
+        infoTextArea.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        infoTextArea.setForeground(new java.awt.Color(234, 232, 231));
         infoTextArea.setLineWrap(true);
         infoTextArea.setRows(5);
         infoTextArea.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         jScrollPane1.setViewportView(infoTextArea);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 900, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 900, 120));
 
         characterPic.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         getContentPane().add(characterPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 30, 150, 170));
@@ -95,7 +93,13 @@ public class SpeechMiniScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_nextButtonActionPerformed
         //opens the next relative screen
         GameSwitchMethods gm = new GameSwitchMethods();
-        gm.openGameScreen();
+        try
+        {
+            gm.openGameScreen();
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SpeechMiniScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         //closing screens
         this.dispose();

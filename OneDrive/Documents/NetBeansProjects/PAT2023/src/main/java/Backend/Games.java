@@ -13,6 +13,7 @@ import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import Backend.UserManager;
+import Interface.SlidingPuzzleScreen;
 
 /**
  *
@@ -394,7 +395,7 @@ public class Games
             
             //sets the user objects variable to be true
             currentUser.setCompletedRiddleTrue();
-            updateCurrentArrayList();
+            userManager.updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "Riddle", 1);
         }
@@ -658,7 +659,8 @@ public class Games
         //checking to see if the game has been won or not yet
         if(mapFragmentsLeft == 0)
         {
-            new SpeechMiniScreen().setVisible(true);
+            //opens the next stage of this game
+            new SlidingPuzzleScreen().setVisible(true);
             
             //sets the user objects variable to be true
             currentUser.setCompletedFindMapTrue();
@@ -679,24 +681,28 @@ public class Games
     
     //FIND KEYS
     //fields
-    private int keysLeft = 6;
-    
+    private static int keysLeft = 3;
+    private static ArrayList<Integer> keysFound = new ArrayList<Integer>();
     
     //the user has found a fragment
-    public void keyFound() throws SQLException, IOException
+    public void keyFound(int keyNum) throws SQLException, IOException
     {
-        keysLeft--;
-        
-        //checking to see if the game has been won or not yet
-        if(keysLeft == 0)
+        //checking if that key has been found yet
+        if(!keysFound.contains(keyNum))
         {
-            new SpeechMiniScreen().setVisible(true);
-            
-            //sets the user objects variable to be true
-            currentUser.setCompletedFindKeysTrue();
-            updateCurrentArrayList();
-            userManager.setUsers(currentArrayList);
-            userManager.save(currentUser.getUserID(), "FindKeys", 1);
+            keysLeft--;
+        
+            //checking to see if the game has been won or not yet
+            if(keysLeft == 0)
+            {
+                new SpeechMiniScreen().setVisible(true);
+
+                //sets the user objects variable to be true
+                currentUser.setCompletedFindKeysTrue();
+                userManager.updateCurrentArrayList();
+                userManager.setUsers(currentArrayList);
+                userManager.save(currentUser.getUserID(), "FindKeys", 1);
+            }
         }
     }
     
@@ -705,6 +711,8 @@ public class Games
     {
         return 3-keysLeft;
     }
+    
+    
     
     
     
@@ -721,7 +729,7 @@ public class Games
         
         //sets the user objects variable to be true
         currentUser.setCompletedFindCaneTrue();
-        updateCurrentArrayList();
+        userManager.updateCurrentArrayList();
         userManager.setUsers(currentArrayList);
         userManager.save(currentUser.getUserID(), "FindCane", 1);
     }
@@ -823,7 +831,7 @@ public class Games
 
                     //sets the user objects variable to be true
                     currentUser.setCompletedCrosswordTrue();
-                    updateCurrentArrayList();
+                    userManager.updateCurrentArrayList();
                     userManager.setUsers(currentArrayList);
                     userManager.save(currentUser.getUserID(), "Crossword", 1);
                 }
@@ -931,7 +939,7 @@ public class Games
             
             //sets the user objects variable to be true
             currentUser.setCompletedMagicSquareTrue();
-            updateCurrentArrayList();
+            userManager.updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "MagicSquare", 1);
         }
@@ -1047,7 +1055,7 @@ public class Games
             
             //sets the user objects variable to be true
             currentUser.setCompletedMagicSquareTrue();
-            updateCurrentArrayList();
+            userManager.updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "WordGame", 1);
         }

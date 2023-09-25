@@ -6,6 +6,7 @@
 package Interface;
 
 import static Backend.GameSwitchMethods.*;
+import Backend.Games;
 import static Backend.SpeechMethods.*;
 import Backend.UserManager;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.util.logging.Logger;
 public class DiningRoom extends javax.swing.JFrame
 {
     UserManager userManager = new UserManager();
+    Games game = new Games();
     /**
      * Creates new form DiningRoomScreen
      */
@@ -251,6 +253,18 @@ public class DiningRoom extends javax.swing.JFrame
         remove(keyButton);
         keyFoundMessage.setText("KEY FOUND!");
         keyFoundMessage.setOpaque(true);
+        
+        try
+        {
+            //adding it to the keys found
+            game.keyFound(1);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_keyButtonActionPerformed
 
     private void mylanMoreaButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mylanMoreaButtonActionPerformed

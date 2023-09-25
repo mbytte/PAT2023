@@ -146,15 +146,17 @@ public class DiaryScreen extends javax.swing.JFrame
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 210, 210));
 
+        jScrollPane1.setBorder(null);
+
         infoTextArea.setEditable(false);
         infoTextArea.setBackground(new java.awt.Color(222, 222, 222));
         infoTextArea.setColumns(20);
-        infoTextArea.setFont(new java.awt.Font("Felix Titling", 0, 18)); // NOI18N
+        infoTextArea.setFont(new java.awt.Font("Lucida Handwriting", 0, 24)); // NOI18N
         infoTextArea.setForeground(new java.awt.Color(15, 28, 33));
         infoTextArea.setLineWrap(true);
         infoTextArea.setRows(5);
         infoTextArea.setWrapStyleWord(true);
-        infoTextArea.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        infoTextArea.setBorder(null);
         jScrollPane1.setViewportView(infoTextArea);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 140, 420, 490));
