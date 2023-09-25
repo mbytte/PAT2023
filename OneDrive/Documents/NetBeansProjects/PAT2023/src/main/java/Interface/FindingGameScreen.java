@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import Backend.Games;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,15 +17,20 @@ import java.util.logging.Logger;
  */
 public class FindingGameScreen extends javax.swing.JFrame
 {
-
+    //creates a game object
+    Games game = new Games();
+    
     /**
      * Creates new form FindingGameScreen
      */
     public FindingGameScreen()
     {
         initComponents();
+        
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH); 
+        
+        spritesFoundLabel.setText("0/6");
     }
 
     /**
@@ -54,6 +61,13 @@ public class FindingGameScreen extends javax.swing.JFrame
 
         spriteButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\picture.jpg")); // NOI18N
         spriteButton1.setBorder(null);
+        spriteButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                spriteButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(spriteButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 310, -1, 30));
 
         spriteButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\picture.jpg")); // NOI18N
@@ -69,6 +83,13 @@ public class FindingGameScreen extends javax.swing.JFrame
 
         spriteButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\picture.jpg")); // NOI18N
         spriteButton3.setBorder(null);
+        spriteButton3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                spriteButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(spriteButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 30, 30));
 
         spriteButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\picture.jpg")); // NOI18N
@@ -84,10 +105,24 @@ public class FindingGameScreen extends javax.swing.JFrame
 
         spriteButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\picture.jpg")); // NOI18N
         spriteButton5.setBorder(null);
+        spriteButton5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                spriteButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(spriteButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 140, 10, 20));
 
         spriteButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\picture.jpg")); // NOI18N
         spriteButton6.setBorder(null);
+        spriteButton6.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                spriteButton6ActionPerformed(evt);
+            }
+        });
         getContentPane().add(spriteButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 110, 10, 20));
 
         infoButton.setBackground(new java.awt.Color(15, 28, 33));
@@ -147,12 +182,12 @@ public class FindingGameScreen extends javax.swing.JFrame
         getContentPane().add(diaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 30, 70, 70));
 
         spritesFoundLabel.setBackground(new java.awt.Color(15, 28, 33));
-        spritesFoundLabel.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        spritesFoundLabel.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         spritesFoundLabel.setForeground(new java.awt.Color(139, 118, 82));
         spritesFoundLabel.setText("jLabel1");
         spritesFoundLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         spritesFoundLabel.setOpaque(true);
-        getContentPane().add(spritesFoundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 30, 90, 70));
+        getContentPane().add(spritesFoundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 30, 70, 70));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\sleepingCompartmentBackground.png")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -330, 1400, 1200));
@@ -191,13 +226,153 @@ public class FindingGameScreen extends javax.swing.JFrame
 
     private void spriteButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_spriteButton2ActionPerformed
     {//GEN-HEADEREND:event_spriteButton2ActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            //adding the fragment to the found fragments
+            game.fragmentFound();
+            spritesFoundLabel.setText(game.getNumFragmentsFound() + "/6");
+            
+            
+            //disabling the button so it cannot be used anymore
+            spriteButton2.setEnabled(false);
+            spriteButton2.setOpaque(false);
+            spriteButton2.setContentAreaFilled(false);
+            spriteButton2.setFocusPainted(false);
+            spriteButton2.setIcon(null);
+            
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(FindingGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(FindingGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_spriteButton2ActionPerformed
 
     private void spriteButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_spriteButton4ActionPerformed
     {//GEN-HEADEREND:event_spriteButton4ActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            //adding the fragment to the found fragments
+            game.fragmentFound();
+            spritesFoundLabel.setText(game.getNumFragmentsFound() + "/6");
+            
+            
+            //disabling the button so it cannot be used anymore
+            spriteButton4.setEnabled(false);
+            spriteButton4.setOpaque(false);
+            spriteButton4.setContentAreaFilled(false);
+            spriteButton4.setFocusPainted(false);
+            spriteButton4.setIcon(null);
+            
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(FindingGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(FindingGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_spriteButton4ActionPerformed
+
+    private void spriteButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_spriteButton1ActionPerformed
+    {//GEN-HEADEREND:event_spriteButton1ActionPerformed
+        try
+        {
+            //adding the fragment to the found fragments
+            game.fragmentFound();
+            spritesFoundLabel.setText(game.getNumFragmentsFound() + "/6");
+            
+            
+            //disabling the button so it cannot be used anymore
+            spriteButton1.setEnabled(false);
+            spriteButton1.setOpaque(false);
+            spriteButton1.setContentAreaFilled(false);
+            spriteButton1.setFocusPainted(false);
+            spriteButton1.setIcon(null);
+            
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(FindingGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(FindingGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_spriteButton1ActionPerformed
+
+    private void spriteButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_spriteButton3ActionPerformed
+    {//GEN-HEADEREND:event_spriteButton3ActionPerformed
+        try
+        {
+            //adding the fragment to the found fragments
+            game.fragmentFound();
+            spritesFoundLabel.setText(game.getNumFragmentsFound() + "/6");
+            
+            
+            //disabling the button so it cannot be used anymore
+            spriteButton3.setEnabled(false);
+            spriteButton3.setOpaque(false);
+            spriteButton3.setContentAreaFilled(false);
+            spriteButton3.setFocusPainted(false);
+            spriteButton3.setIcon(null);
+            
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(FindingGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(FindingGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_spriteButton3ActionPerformed
+
+    private void spriteButton5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_spriteButton5ActionPerformed
+    {//GEN-HEADEREND:event_spriteButton5ActionPerformed
+        try
+        {
+            //adding the fragment to the found fragments
+            game.fragmentFound();
+            spritesFoundLabel.setText(game.getNumFragmentsFound() + "/6");
+            
+            
+            //disabling the button so it cannot be used anymore
+            spriteButton5.setEnabled(false);
+            spriteButton5.setOpaque(false);
+            spriteButton5.setContentAreaFilled(false);
+            spriteButton5.setFocusPainted(false);
+            spriteButton5.setIcon(null);
+            
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(FindingGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(FindingGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_spriteButton5ActionPerformed
+
+    private void spriteButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_spriteButton6ActionPerformed
+    {//GEN-HEADEREND:event_spriteButton6ActionPerformed
+        try
+        {
+            //adding the fragment to the found fragments
+            game.fragmentFound();
+            spritesFoundLabel.setText(game.getNumFragmentsFound() + "/6");
+            
+            
+            //disabling the button so it cannot be used anymore
+            spriteButton6.setEnabled(false);
+            spriteButton6.setOpaque(false);
+            spriteButton6.setContentAreaFilled(false);
+            spriteButton6.setFocusPainted(false);
+            spriteButton6.setIcon(null);
+            
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(FindingGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(FindingGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_spriteButton6ActionPerformed
 
 
 

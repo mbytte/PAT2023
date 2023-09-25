@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import Backend.UserManager;
 
 /**
  *
@@ -21,17 +22,12 @@ public class Games
 {
     //class fields specific for the user
     private UserManager userManager = new UserManager();
-    private ArrayList<User> currentArrayList = new ArrayList<User>();
-    private int currentUserIndex = UserManager.getCurrentUserIndex();
+    private static ArrayList<User> currentArrayList = new ArrayList<User>();
+    private static int currentUserIndex = UserManager.getCurrentUserIndex();
     private User currentUser = userManager.getSelectedUser();
     private Diary diary = new Diary();
     
-    //updates the current array list to comply with the new info
-    private void updateCurrentArrayList()
-    {
-        currentArrayList.remove(currentUserIndex);
-        currentArrayList.add(currentUserIndex, currentUser);
-    }
+    
     
     
     //TIC TAC TOE
@@ -329,7 +325,7 @@ public class Games
             
             //sets the user objects variable to be true and changes the information
             currentUser.setCompletedHangmanTrue();            
-            updateCurrentArrayList();
+            userManager.updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "Hangman", 1);
         }
@@ -666,7 +662,7 @@ public class Games
             
             //sets the user objects variable to be true
             currentUser.setCompletedFindMapTrue();
-            updateCurrentArrayList();
+            userManager.updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "FindMap", 1);
         }

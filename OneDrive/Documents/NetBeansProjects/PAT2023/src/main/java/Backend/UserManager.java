@@ -22,7 +22,7 @@ public class UserManager
    private static final String url = "jdbc:mysql://102.130.115.69:3306/meganlDB";
    private static final String username = "meganl";
    private static final String password = "Reddam2021";
-   private ArrayList<User> users;
+   private static ArrayList<User> users;
    private static int currentUserIndex;
    private int numUsers;
    private int lastUserID; //will use this value when adding to the db
@@ -80,6 +80,14 @@ public class UserManager
        {
            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
        }
+    }
+    
+    
+    //updates the current array list to comply with the new info
+    public void updateCurrentArrayList()
+    {
+        users.remove(currentUserIndex);
+        users.add(currentUserIndex, getSelectedUser());
     }
     
     
@@ -226,7 +234,7 @@ public class UserManager
     //saves the changed information to the database
     public void save(int userID, String field, int value) throws SQLException
     {
-        query("UPDATE tblUsers SET " + field + " = " + value + "WHERE UserID = " + userID);
+        update("UPDATE tblUsers SET " + field + " = " + value + " WHERE UserID = " + userID);
     }
     
     
