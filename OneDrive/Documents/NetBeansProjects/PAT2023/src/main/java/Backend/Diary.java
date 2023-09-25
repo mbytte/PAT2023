@@ -86,6 +86,7 @@ public class Diary
         //getting the game that the user wants
         if(selectedClue.equals("Picture"))
         {
+            System.out.println("Data found");
             //checking if the clue has been obtained
             if(CURRENT_USER.isCompletedMagicSquare())
             {
@@ -102,7 +103,7 @@ public class Diary
             }
         }
             
-        else if(selectedClue.equals("Fire Iron"))
+        else if(selectedClue.equals("FireIron"))
         {
             //checking if the clue has been obtained
             if(CURRENT_USER.isInvestigatedFireIron())
@@ -276,7 +277,7 @@ public class Diary
             
             //running a query to get the data from the database
             UserManager userManager = new UserManager();
-            ResultSet result = userManager.query("SELECT Info FROM tblClues WHERE ClueName = = \"" + clue + "\"");
+            ResultSet result = userManager.query("SELECT Info FROM tblClues WHERE ClueName = \"" + clue + "\"");
                 
             //converting it into a String and returning it
             result.next();

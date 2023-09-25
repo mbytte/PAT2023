@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import Backend.GameSwitchMethods;
+import static Backend.GameSwitchMethods.*;
+import static Backend.SpeechMethods.getSpeechDB;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +28,9 @@ public class LoungeScreen extends javax.swing.JFrame
         initComponents();
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH); 
+        
+        //ensuring all the games are false
+        resetOptionVariables();
     }
 
     /**
@@ -96,7 +103,6 @@ public class LoungeScreen extends javax.swing.JFrame
         fireIronButton.setBorderPainted(false);
         fireIronButton.setContentAreaFilled(false);
         fireIronButton.setFocusPainted(false);
-        fireIronButton.setOpaque(false);
         getContentPane().add(fireIronButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, -30, 50, 430));
 
         knifeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\knife.png")); // NOI18N
@@ -104,10 +110,16 @@ public class LoungeScreen extends javax.swing.JFrame
         knifeButton.setBorderPainted(false);
         knifeButton.setContentAreaFilled(false);
         knifeButton.setFocusPainted(false);
-        knifeButton.setOpaque(false);
         getContentPane().add(knifeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 640, 70, 70));
 
         picButton.setOpaque(false);
+        picButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                picButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(picButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 110, 90));
 
         keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.png")); // NOI18N
@@ -161,6 +173,15 @@ public class LoungeScreen extends javax.swing.JFrame
         keyFoundMessage.setText("KEY FOUND!");
         keyFoundMessage.setOpaque(true);
     }//GEN-LAST:event_keyButtonActionPerformed
+
+    private void picButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_picButtonActionPerformed
+    {//GEN-HEADEREND:event_picButtonActionPerformed
+        //set the variable for this game to true
+        setMagicSquareSelected(true);
+        //opens the next relative screen
+        GameSwitchMethods gm = new GameSwitchMethods();
+        gm.openGameScreen();
+    }//GEN-LAST:event_picButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

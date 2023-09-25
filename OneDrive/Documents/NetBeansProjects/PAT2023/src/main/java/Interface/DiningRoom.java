@@ -284,7 +284,7 @@ public class DiningRoom extends javax.swing.JFrame
             //uncompleted
             if(!userManager.getSelectedUser().isCompletedHangman())
             {
-                 //set the variable for this game to true
+                //set the variable for this game to true
                 setHangmanSelected(true);
 
                 try

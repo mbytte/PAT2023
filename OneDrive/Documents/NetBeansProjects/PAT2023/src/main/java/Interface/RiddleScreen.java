@@ -105,7 +105,7 @@ public class RiddleScreen extends javax.swing.JFrame
         });
         getContentPane().add(infoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 110, 70, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\emilBeaufoyCloseUp.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\emileBeaufoyCloseUpBig.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 500, 410));
 
         riddleTextField.setBackground(new java.awt.Color(15, 28, 33));

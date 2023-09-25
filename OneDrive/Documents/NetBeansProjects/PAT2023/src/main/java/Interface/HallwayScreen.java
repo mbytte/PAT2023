@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import static Backend.GameSwitchMethods.resetOptionVariables;
+
 /**
  *
  * @author megan
@@ -20,6 +22,9 @@ public class HallwayScreen extends javax.swing.JFrame
         initComponents();
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH); 
+        
+        //ensuring all the games are false
+        resetOptionVariables();
     }
 
     /**
