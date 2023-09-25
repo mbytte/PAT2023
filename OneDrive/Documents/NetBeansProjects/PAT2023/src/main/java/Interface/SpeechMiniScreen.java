@@ -5,6 +5,14 @@
  */
 package Interface;
 
+import Backend.GameSwitchMethods;
+import Backend.SpeechMethods;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author megan
@@ -15,11 +23,16 @@ public class SpeechMiniScreen extends javax.swing.JFrame
     /**
      * Creates new form SpeechMiniScreen
      */
-    public SpeechMiniScreen()
+    public SpeechMiniScreen() throws IOException
     {
         initComponents();
+        //this.setLocationRelativeTo(null);
         
         //setting all the components to the info they need to be
+        SpeechMethods sm = new SpeechMethods();
+        infoTextArea.setText(sm.getSpeech());
+        characterPic.setIcon(sm.getCharacterPic());
+        
     }
 
     /**
@@ -39,7 +52,7 @@ public class SpeechMiniScreen extends javax.swing.JFrame
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(0, -90));
+        setLocation(new java.awt.Point(1, 1));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         infoTextArea.setEditable(false);
@@ -62,6 +75,13 @@ public class SpeechMiniScreen extends javax.swing.JFrame
         nextButton.setForeground(new java.awt.Color(139, 118, 82));
         nextButton.setText("NEXT");
         nextButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        nextButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                nextButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 160, 110, 40));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\redBackground.png")); // NOI18N
@@ -70,6 +90,16 @@ public class SpeechMiniScreen extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_nextButtonActionPerformed
+    {//GEN-HEADEREND:event_nextButtonActionPerformed
+        //opens the next relative screen
+        GameSwitchMethods gm = new GameSwitchMethods();
+        gm.openGameScreen();
+        
+        //closing screens
+        this.dispose();
+    }//GEN-LAST:event_nextButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

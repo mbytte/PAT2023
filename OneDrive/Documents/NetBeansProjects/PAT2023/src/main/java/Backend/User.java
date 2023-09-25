@@ -243,4 +243,17 @@ public class User
     {
         this.investigatedSwords = true;
     }
+    
+    //checks if all the tasks before the end are completed
+    public boolean isGameComplete()
+    {
+        if(completedFindCane && completedFindKeys && completedFindMap && completedHangman && completedMagicSquare && completedSlidingPuzzle && completedTicTacToe && completedWordGame && investigatedKnife && investigatedFireIron && investigatedLetter && investigatedSwords)
+        {
+            return true;
+        }
+        
+        //not all of the tasks are completed and hence the user cannot move on to the final reveal
+        return false;
+    }
+
 }

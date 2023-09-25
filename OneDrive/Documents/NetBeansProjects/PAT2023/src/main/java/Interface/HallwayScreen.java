@@ -150,7 +150,7 @@ public class HallwayScreen extends javax.swing.JFrame
     private void diningButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_diningButtonActionPerformed
     {//GEN-HEADEREND:event_diningButtonActionPerformed
         this.dispose();
-        new DiningRoomScreen().setVisible(true);
+        new DiningRoom().setVisible(true);
     }//GEN-LAST:event_diningButtonActionPerformed
 
     private void loungeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_loungeButtonActionPerformed

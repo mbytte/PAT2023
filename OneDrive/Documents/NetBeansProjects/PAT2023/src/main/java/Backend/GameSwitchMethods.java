@@ -371,6 +371,8 @@ public class GameSwitchMethods
         {
             new WordGameScreen().setVisible(true);
         }
+        
+        //the tasks that do not have a screen will not open a screen
     }
 }
 

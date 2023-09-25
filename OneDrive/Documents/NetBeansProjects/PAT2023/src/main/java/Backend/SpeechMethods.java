@@ -5,10 +5,16 @@
  */
 package Backend;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -22,7 +28,7 @@ public class SpeechMethods
     
     
     //gets the speech needed from the database
-    public void setSpeech(String col) throws SQLException
+    public static void getSpeechDB(String col) throws SQLException
     {
         //running a query to fetch the data
         UserManager userManager = new UserManager();
@@ -53,39 +59,49 @@ public class SpeechMethods
     {
         SpeechMethods.characterSelected = characterSelected;
     }
+
+    public static void setSpeech(String speech)
+    {
+        SpeechMethods.speech = speech;
+    }
+    
     
     
     //gets the picture filepath of the character
-    public String getCharacterPic()
+    public Icon getCharacterPic() throws IOException
     {
+        BufferedImage img;
         if(characterSelected.equals("Tommy Winters"))
         {
-            return "\\resources\\tommyWintersCloseUp.png";
+            img = ImageIO.read(new File( "resources\\tommyWintersCloseUp.png"));
         }
         
         else if(characterSelected.equals("Astrid Berg"))
         {
-            return "\\resources\\astridBergCloseUp.png";
+            img = ImageIO.read(new File( "resources\\astridBergCloseUp.png"));
         }
         
         else if(characterSelected.equals("Emile Beaufoy"))
         {
-            return "\\resources\\emileBeaufoyCloseUp.png";
+            img = ImageIO.read(new File( "resources\\emileBeaufoyCloseUp.png"));
         }
         
         else  if(characterSelected.equals("Camila Morea"))
         {
-            return "\\resources\\camilaMoreaCloseUp.png";
+            img = ImageIO.read(new File( "resources\\camilaMoreaCloseUp.png"));
         }
         
         else if(characterSelected.equals("Ara Bozoyan"))
         {
-            return "\\resources\\araBozoyanCloseUp.png";
+            img = ImageIO.read(new File( "resources\\araBozoyanCloseUp.png"));
         }
         
         else
         {
-            return "\\resources\\mylanMoreaCloseUp.png";
+            img = ImageIO.read(new File( "resources\\mylanMoreaCloseUp.png"));
         }
+        
+        ImageIcon icon = new ImageIcon(img);
+        return icon;
     }
 }

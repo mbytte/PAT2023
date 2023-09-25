@@ -184,7 +184,7 @@ public class HangmanScreen extends javax.swing.JFrame
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_backButtonActionPerformed
     {//GEN-HEADEREND:event_backButtonActionPerformed
         this.dispose();
-        new DiningRoomScreen().setVisible(true);
+        new DiningRoom().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void diaryButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_diaryButtonActionPerformed
