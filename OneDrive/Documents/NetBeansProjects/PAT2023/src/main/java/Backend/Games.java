@@ -1126,7 +1126,7 @@ public class Games
     
     
     //checks if the answers are correct
-    public void checkAnswers() throws SQLException, IOException
+    public boolean checkAnswers() throws SQLException, IOException
     {
         //variables
         int numCorrectAnswers = 0;
@@ -1147,14 +1147,17 @@ public class Games
         //everything is correct and the game has been won
         if(numCorrectAnswers == 16)
         {
-            new SpeechMiniScreen().setVisible(true);
+            //this does not belong to any character task and hence will not open any screens
             
             //sets the user objects variable to be true
             currentUser.setCompletedMagicSquareTrue();
             userManager.updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "MagicSquare", 1);
+            return true;
         }
+        
+        return false;
     }
     
     

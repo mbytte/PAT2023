@@ -5,9 +5,13 @@
  */
 package Interface;
 
+import Backend.Games;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -15,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class MagicSquareScreen extends javax.swing.JFrame
 {
-
+    Games game = new Games();
     /**
      * Creates new form MagicSquareScreen
      */
@@ -24,6 +28,44 @@ public class MagicSquareScreen extends javax.swing.JFrame
         initComponents();
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH); 
+        
+        //giving all the lists a list of numbers
+        ArrayList<Integer> list = new ArrayList<>();
+        //adding all the integers 
+        for(int i = 1; i <= 16; i++)
+        {
+            list.add(i);
+        }
+        DefaultComboBoxModel combo1 = new DefaultComboBoxModel();
+        DefaultComboBoxModel combo2 = new DefaultComboBoxModel();
+        DefaultComboBoxModel combo3 = new DefaultComboBoxModel();
+        DefaultComboBoxModel combo4 = new DefaultComboBoxModel();
+        DefaultComboBoxModel combo5 = new DefaultComboBoxModel();
+        DefaultComboBoxModel combo6 = new DefaultComboBoxModel();
+        DefaultComboBoxModel combo7 = new DefaultComboBoxModel();
+        DefaultComboBoxModel combo8 = new DefaultComboBoxModel();
+        DefaultComboBoxModel combo9 = new DefaultComboBoxModel();
+        
+        combo1.addAll(list);
+        combo2.addAll(list);
+        combo3.addAll(list);
+        combo4.addAll(list);
+        combo5.addAll(list);
+        combo6.addAll(list);
+        combo7.addAll(list);
+        combo8.addAll(list);
+        combo9.addAll(list);
+        
+        list1.setModel(combo1);
+        list2.setModel(combo2);
+        list3.setModel(combo3);
+        list4.setModel(combo4);
+        list5.setModel(combo5);
+        list6.setModel(combo6);
+        list7.setModel(combo7);
+        list8.setModel(combo8);
+        list9.setModel(combo9);
+        
     }
 
     /**
@@ -40,15 +82,15 @@ public class MagicSquareScreen extends javax.swing.JFrame
         diaryButton = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
         infoButton = new javax.swing.JButton();
-        comboBox3 = new javax.swing.JComboBox<>();
-        comboBox5 = new javax.swing.JComboBox<>();
-        comboBox13 = new javax.swing.JComboBox<>();
-        comboBox10 = new javax.swing.JComboBox<>();
-        comboBox7 = new javax.swing.JComboBox<>();
-        comboBox8 = new javax.swing.JComboBox<>();
-        comboBox12 = new javax.swing.JComboBox<>();
-        comboBox15 = new javax.swing.JComboBox<>();
-        comboBox16 = new javax.swing.JComboBox<>();
+        list1 = new javax.swing.JComboBox<>();
+        list2 = new javax.swing.JComboBox<>();
+        list7 = new javax.swing.JComboBox<>();
+        list5 = new javax.swing.JComboBox<>();
+        list3 = new javax.swing.JComboBox<>();
+        list4 = new javax.swing.JComboBox<>();
+        list6 = new javax.swing.JComboBox<>();
+        list8 = new javax.swing.JComboBox<>();
+        list9 = new javax.swing.JComboBox<>();
         answerButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -60,6 +102,7 @@ public class MagicSquareScreen extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        notCompleteMessage = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -121,32 +164,95 @@ public class MagicSquareScreen extends javax.swing.JFrame
         });
         getContentPane().add(infoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 110, -1, 60));
 
-        comboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(comboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 170, 90, 90));
+        list1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        list1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                list1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(list1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 170, 90, 90));
 
-        comboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(comboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 90, 90));
+        list2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        list2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                list2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(list2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 90, 90));
 
-        comboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(comboBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, 90, 90));
+        list7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        list7.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                list7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(list7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, 90, 90));
 
-        comboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(comboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, 90, 90));
+        list5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        list5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                list5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(list5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, 90, 90));
 
-        comboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(comboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 280, 90, 90));
+        list3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        list3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                list3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(list3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 280, 90, 90));
 
-        comboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(comboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 280, 90, 90));
+        list4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        list4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                list4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(list4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 280, 90, 90));
 
-        comboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(comboBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 390, 90, 90));
+        list6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        list6.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                list6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(list6, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 390, 90, 90));
 
-        comboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(comboBox15, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 90, 90));
+        list8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        list8.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                list8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(list8, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 90, 90));
 
-        comboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(comboBox16, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 490, 90, 90));
+        list9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        list9.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                list9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(list9, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 490, 90, 90));
 
         answerButton.setBackground(new java.awt.Color(15, 28, 33));
         answerButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -208,6 +314,13 @@ public class MagicSquareScreen extends javax.swing.JFrame
         jLabel9.setText("6");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 400, 30, 70));
 
+        notCompleteMessage.setBackground(new java.awt.Color(15, 28, 33));
+        notCompleteMessage.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        notCompleteMessage.setForeground(new java.awt.Color(250, 0, 0));
+        notCompleteMessage.setToolTipText("");
+        notCompleteMessage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(notCompleteMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 520, 30));
+
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\redBackground.png")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -330, 1400, 1200));
 
@@ -244,8 +357,83 @@ public class MagicSquareScreen extends javax.swing.JFrame
 
     private void answerButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerButtonActionPerformed
     {//GEN-HEADEREND:event_answerButtonActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            //checks if the game has been won
+            //has not been won
+            if(!game.checkAnswers())
+            {
+                notCompleteMessage.setText("This is not correct");
+                notCompleteMessage.setOpaque(true);
+            }
+            //has been won
+            else
+            {
+                this.dispose();
+            }
+            
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(MagicSquareScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(MagicSquareScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_answerButtonActionPerformed
+
+    private void list1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_list1ActionPerformed
+    {//GEN-HEADEREND:event_list1ActionPerformed
+        //changes the user array
+        game.changeUserArray(0, 2, (int)list1.getSelectedItem());
+    }//GEN-LAST:event_list1ActionPerformed
+
+    private void list2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_list2ActionPerformed
+    {//GEN-HEADEREND:event_list2ActionPerformed
+        //changes the user array
+        game.changeUserArray(1, 0, (int)list2.getSelectedItem());
+    }//GEN-LAST:event_list2ActionPerformed
+
+    private void list3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_list3ActionPerformed
+    {//GEN-HEADEREND:event_list3ActionPerformed
+        //changes the user array
+        game.changeUserArray(1, 2, (int)list3.getSelectedItem());
+    }//GEN-LAST:event_list3ActionPerformed
+
+    private void list4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_list4ActionPerformed
+    {//GEN-HEADEREND:event_list4ActionPerformed
+        //changes the user array
+        game.changeUserArray(1, 3, (int)list4.getSelectedItem());
+    }//GEN-LAST:event_list4ActionPerformed
+
+    private void list5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_list5ActionPerformed
+    {//GEN-HEADEREND:event_list5ActionPerformed
+        //changes the user array
+        game.changeUserArray(2, 1, (int)list5.getSelectedItem());
+    }//GEN-LAST:event_list5ActionPerformed
+
+    private void list6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_list6ActionPerformed
+    {//GEN-HEADEREND:event_list6ActionPerformed
+        //changes the user array
+        game.changeUserArray(2, 3, (int)list6.getSelectedItem());
+    }//GEN-LAST:event_list6ActionPerformed
+
+    private void list7ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_list7ActionPerformed
+    {//GEN-HEADEREND:event_list7ActionPerformed
+        //changes the user array
+        game.changeUserArray(3, 0, (int)list7.getSelectedItem());
+    }//GEN-LAST:event_list7ActionPerformed
+
+    private void list8ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_list8ActionPerformed
+    {//GEN-HEADEREND:event_list8ActionPerformed
+        //changes the user array
+        game.changeUserArray(3, 2, (int)list8.getSelectedItem());
+    }//GEN-LAST:event_list8ActionPerformed
+
+    private void list9ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_list9ActionPerformed
+    {//GEN-HEADEREND:event_list9ActionPerformed
+        //changes the user array
+        game.changeUserArray(3, 3, (int)list9.getSelectedItem());
+    }//GEN-LAST:event_list9ActionPerformed
 
     
 
@@ -253,15 +441,6 @@ public class MagicSquareScreen extends javax.swing.JFrame
     private javax.swing.JButton answerButton;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel background;
-    private javax.swing.JComboBox<String> comboBox10;
-    private javax.swing.JComboBox<String> comboBox12;
-    private javax.swing.JComboBox<String> comboBox13;
-    private javax.swing.JComboBox<String> comboBox15;
-    private javax.swing.JComboBox<String> comboBox16;
-    private javax.swing.JComboBox<String> comboBox3;
-    private javax.swing.JComboBox<String> comboBox5;
-    private javax.swing.JComboBox<String> comboBox7;
-    private javax.swing.JComboBox<String> comboBox8;
     private javax.swing.JButton diaryButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton infoButton;
@@ -275,5 +454,15 @@ public class MagicSquareScreen extends javax.swing.JFrame
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox<String> list1;
+    private javax.swing.JComboBox<String> list2;
+    private javax.swing.JComboBox<String> list3;
+    private javax.swing.JComboBox<String> list4;
+    private javax.swing.JComboBox<String> list5;
+    private javax.swing.JComboBox<String> list6;
+    private javax.swing.JComboBox<String> list7;
+    private javax.swing.JComboBox<String> list8;
+    private javax.swing.JComboBox<String> list9;
+    private javax.swing.JLabel notCompleteMessage;
     // End of variables declaration//GEN-END:variables
 }
