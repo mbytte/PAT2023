@@ -5,9 +5,15 @@
  */
 package Interface;
 
+import Backend.Games;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,15 +21,44 @@ import java.util.logging.Logger;
  */
 public class SlidingPuzzleScreen extends javax.swing.JFrame
 {
-
+    Games puzzle = new Games();
     /**
      * Creates new form PuzzleScreen
      */
-    public SlidingPuzzleScreen()
+    public SlidingPuzzleScreen() throws IOException
     {
         initComponents();
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH);
+        
+        //creating the picture set up and applying it
+        puzzle.createPicSetup();
+        String[] picSetup = puzzle.getCurrentPicOrder();
+        
+        //showing the picture set up
+        for(int i = 0; i < 6; i++)
+        {
+            System.out.println(picSetup[i]);
+        }
+        
+        BufferedImage img;
+        img = ImageIO.read(new File(picSetup[0]));        
+        button0.setIcon(new ImageIcon(img));
+        
+        img = ImageIO.read(new File(picSetup[1]));        
+        button1.setIcon(new ImageIcon(img));
+        
+        img = ImageIO.read(new File(picSetup[2]));        
+        button2.setIcon(new ImageIcon(img));
+        
+        img = ImageIO.read(new File(picSetup[3]));        
+        button3.setIcon(new ImageIcon(img));
+        
+        img = ImageIO.read(new File(picSetup[4]));        
+        button4.setIcon(new ImageIcon(img));
+        
+        img = ImageIO.read(new File(picSetup[5]));        
+        button5.setIcon(new ImageIcon(img));
     }
 
     /**
@@ -40,12 +75,12 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
         diaryButton = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
         infoButton = new javax.swing.JButton();
+        button0 = new javax.swing.JButton();
         button1 = new javax.swing.JButton();
         button2 = new javax.swing.JButton();
         button3 = new javax.swing.JButton();
         button4 = new javax.swing.JButton();
         button5 = new javax.swing.JButton();
-        button6 = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,10 +141,48 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
             }
         });
         getContentPane().add(infoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 110, -1, 60));
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 270, 220));
-        getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 270, 220));
-        getContentPane().add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 270, 220));
 
+        button0.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mapPiece1.jpg")); // NOI18N
+        button0.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button0ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(button0, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 270, 316));
+
+        button1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mapPiece2.jpg")); // NOI18N
+        button1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 270, 316));
+
+        button2.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mapPiece3.jpg")); // NOI18N
+        button2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, 270, 316));
+
+        button3.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mapPiece4.jpg")); // NOI18N
+        button3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 270, 316));
+
+        button4.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mapPiece5.jpg")); // NOI18N
         button4.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -117,12 +190,20 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
                 button4ActionPerformed(evt);
             }
         });
-        getContentPane().add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, 270, 220));
-        getContentPane().add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 270, 220));
-        getContentPane().add(button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 270, 220));
+        getContentPane().add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 270, 316));
+
+        button5.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mapPiece6.jpg")); // NOI18N
+        button5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                button5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 350, 270, 316));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\redBackground.png")); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -330, 1400, 1200));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -320, 1400, 1200));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,22 +237,200 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
         new ObjectiveScreen().setVisible(true);
     }//GEN-LAST:event_infoButtonActionPerformed
 
+    private void button3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button3ActionPerformed
+    {//GEN-HEADEREND:event_button3ActionPerformed
+        //getting the current location of the blank picture
+        int blankPicFrame = puzzle.getCirclePicPos();
+        try
+        {        
+            //swapping selected picture with the blank pic
+            puzzle.buttonPicSwap(3, blankPicFrame, button0, button1, button2, button3, button4, button5);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try
+        {
+            //checking if the picture is correctly sorted out
+            puzzle.puzzleWin();
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //closing the screen if game has been won(can't dispose a screen in a method so it has to be done here)
+        if(puzzle.isPuzzleWin())
+        {
+            this.dispose();
+        }
+    }//GEN-LAST:event_button3ActionPerformed
+
+    private void button0ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button0ActionPerformed
+    {//GEN-HEADEREND:event_button0ActionPerformed
+        System.out.println("Button is run");
+        
+        //getting the current location of the blank picture
+        int blankPicFrame = puzzle.getCirclePicPos();
+        System.out.println(blankPicFrame);
+        try
+        {        
+            //swapping selected picture with the blank pic
+            puzzle.buttonPicSwap(0, blankPicFrame, button0, button1, button2, button3, button4, button5);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try
+        {
+            //checking if the picture is correctly sorted out
+            puzzle.puzzleWin();
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //closing the screen if game has been won(can't dispose a screen in a method so it has to be done here)
+        if(puzzle.isPuzzleWin())
+        {
+            this.dispose();
+        }
+    }//GEN-LAST:event_button0ActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button1ActionPerformed
+    {//GEN-HEADEREND:event_button1ActionPerformed
+        //getting the current location of the blank picture
+        int blankPicFrame = puzzle.getCirclePicPos();
+        try
+        {        
+            //swapping selected picture with the blank pic
+            puzzle.buttonPicSwap(1, blankPicFrame, button0, button1, button2, button3, button4, button5);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try
+        {
+            //checking if the picture is correctly sorted out
+            puzzle.puzzleWin();
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //closing the screen if game has been won(can't dispose a screen in a method so it has to be done here)
+        if(puzzle.isPuzzleWin())
+        {
+            this.dispose();
+        }
+    }//GEN-LAST:event_button1ActionPerformed
+
+    private void button2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button2ActionPerformed
+    {//GEN-HEADEREND:event_button2ActionPerformed
+        //getting the current location of the blank picture
+        int blankPicFrame = puzzle.getCirclePicPos();
+        try
+        {        
+            //swapping selected picture with the blank pic
+            puzzle.buttonPicSwap(2, blankPicFrame, button0, button1, button2, button3, button4, button5);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try
+        {
+            //checking if the picture is correctly sorted out
+            puzzle.puzzleWin();
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //closing the screen if game has been won(can't dispose a screen in a method so it has to be done here)
+        if(puzzle.isPuzzleWin())
+        {
+            this.dispose();
+        }
+    }//GEN-LAST:event_button2ActionPerformed
+
     private void button4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button4ActionPerformed
     {//GEN-HEADEREND:event_button4ActionPerformed
-        // TODO add your handling code here:
+        ///getting the current location of the blank picture
+        int blankPicFrame = puzzle.getCirclePicPos();
+        try
+        {        
+            //swapping selected picture with the blank pic
+            puzzle.buttonPicSwap(4, blankPicFrame, button0, button1, button2, button3, button4, button5);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try
+        {
+            //checking if the picture is correctly sorted out
+            puzzle.puzzleWin();
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //closing the screen if game has been won(can't dispose a screen in a method so it has to be done here)
+        if(puzzle.isPuzzleWin())
+        {
+            this.dispose();
+        }
     }//GEN-LAST:event_button4ActionPerformed
+
+    private void button5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button5ActionPerformed
+    {//GEN-HEADEREND:event_button5ActionPerformed
+        //getting the current location of the blank picture
+        int blankPicFrame = puzzle.getCirclePicPos();
+        try
+        {        
+            //swapping selected picture with the blank pic
+            puzzle.buttonPicSwap(5, blankPicFrame, button0, button1, button2, button3, button4, button5);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try
+        {
+            //checking if the picture is correctly sorted out
+            puzzle.puzzleWin();
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //closing the screen if game has been won(can't dispose a screen in a method so it has to be done here)
+        if(puzzle.isPuzzleWin())
+        {
+            this.dispose();
+        }
+    }//GEN-LAST:event_button5ActionPerformed
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel background;
+    private javax.swing.JButton button0;
     private javax.swing.JButton button1;
     private javax.swing.JButton button2;
     private javax.swing.JButton button3;
     private javax.swing.JButton button4;
     private javax.swing.JButton button5;
-    private javax.swing.JButton button6;
     private javax.swing.JButton diaryButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton infoButton;

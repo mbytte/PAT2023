@@ -13,6 +13,9 @@ import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import Interface.SlidingPuzzleScreen;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -658,44 +661,48 @@ public class Games
             case "button3" -> buttonNumber = 3;
             case "button4" -> buttonNumber = 4;
             case "button5" -> buttonNumber = 5;
-            case "button6" -> buttonNumber = 6;
             //no default because it will never be used
         }
         return buttonNumber;
     }
     
     
-    //finds what position the blank picture(pic2) is currently in
-    public int getBlankPicPos()
+    //finds what position the blank picture(mapPiece6) is currently in
+    public int getCirclePicPos()
     {
         //variables
-        int blankPicPos = 0;
-        String blankPic = "/images/2.jpg";  //the blank picture is saved as "/images/2.jpg"
+        int circlePicPos = 0;
+        String circlePicPath = "resources\\mapPiece6.jpg";  //what the circle pic is saved as
         
         //looking through all the positions in the ray to find which one is the blank picture
         //loops 6 times because there are 6 positions
         for(int i = 0; i < 6; i++)
         {
-            if(blankPic.equals(currentPicOrder[i]))
+            if(circlePicPath.equals(currentPicOrder[i]))
             {
-                blankPicPos = i;
+                circlePicPos = i;
             }
         }    
-        return blankPicPos;
+        
+        
+        return circlePicPos;
     }
     
     
     //swaps two buttons' pictures
     //helper method to framePicSwap
-    private void pictureSwap(JButton button1, JButton button2, String button1Str, String button2Str)
+    private void pictureSwap(JButton button1, JButton button2, String button1Str, String button2Str) throws IOException
     {    
         //getting the image icons in those current buttons
         String button1Icon = getPic(button1Str);
         String button2Icon = getPic(button2Str);
         
         //setting the icons
-        button2.setIcon(new ImageIcon(getClass().getResource(button1Icon)));
-        button1.setIcon(new ImageIcon(getClass().getResource(button2Icon)));
+        BufferedImage img = ImageIO.read(new File(button1Icon)); 
+        button2.setIcon(new ImageIcon(img));
+        
+        img = ImageIO.read(new File(button2Icon)); 
+        button1.setIcon(new ImageIcon(img));
         
         //setting the current image array to be updated according to what images are there
         int btn1ScreenNumber = getButtonNumber(button1Str);
@@ -705,84 +712,82 @@ public class Games
     }
     
     //swaps the pics depending on which frame they are in
-    public void framePicSwap(int frameNum, int blankPicFrame, JButton frame0, JButton frame1, JButton frame2, JButton frame3, JButton frame4, JButton frame5)
+    public void buttonPicSwap(int buttonNum, int blankPicButton, JButton button0, JButton button1, JButton button2, JButton button3, JButton button4, JButton button5) throws IOException
     {
-        //making a swappics object
-        Games swapPics = new Games();       
         
-        //only swapping pics if the blank space is next to frame0 (frame1, frame3)
-        if(frameNum == 0)
+        //only swapping pics if the blank space is next to button0 (button1, button3)
+        if(buttonNum == 0)
         {
-            switch (blankPicFrame)
+            switch (blankPicButton)
             {
                 case 1 -> //swapping the pictures
-                    swapPics.pictureSwap(frame0, frame1, buttonOrder[0], buttonOrder[1]);
+                    pictureSwap(button0, button1, buttonOrder[0], buttonOrder[1]);
                 case 3 -> //swapping the pictures
-                    swapPics.pictureSwap(frame0, frame3, buttonOrder[0], buttonOrder[3]);
+                    pictureSwap(button0, button3, buttonOrder[0], buttonOrder[3]);
             }
         }
         
-        //only swapping pics if the blank space is next to frame1 (frame0, frame2, frame4)
-        if(frameNum == 1)
+        //only swapping pics if the blank space is next to button1 (button0, button2, button4)
+        if(buttonNum == 1)
         {        
-            switch (blankPicFrame)
+            switch (blankPicButton)
             {
                 case 0 -> //swapping the pictures
-                    swapPics.pictureSwap(frame1, frame0, buttonOrder[1], buttonOrder[0]);
+                    pictureSwap(button1, button0, buttonOrder[1], buttonOrder[0]);
                 case 2 -> //swapping the pictures
-                    swapPics.pictureSwap(frame1, frame2, buttonOrder[1], buttonOrder[2]);
+                    pictureSwap(button1, button2, buttonOrder[1], buttonOrder[2]);
                 case 4 -> //swapping the pictures
-                    swapPics.pictureSwap(frame1, frame4, buttonOrder[1], buttonOrder[4]);
+                    pictureSwap(button1, button4, buttonOrder[1], buttonOrder[4]);
             }
         }
         
-        //only swapping pics if the blank space is next to frame2 (frame1, frame5)
-        if(frameNum == 2)
+        //only swapping pics if the blank space is next to button2 (button1, button5)
+        if(buttonNum == 2)
         {           
-            switch (blankPicFrame)
+            switch (blankPicButton)
             {
                 case 1 -> //swapping the pictures
-                    swapPics.pictureSwap(frame2, frame1, buttonOrder[2], buttonOrder[1]);
+                    pictureSwap(button2, button1, buttonOrder[2], buttonOrder[1]);
                 case 5 -> //swapping the pictures
-                    swapPics.pictureSwap(frame2, frame5, buttonOrder[2], buttonOrder[5]);
+                    pictureSwap(button2, button5, buttonOrder[2], buttonOrder[5]);
             }
         }
         
-        //only swapping pics if the blank space is next to frame3 (frame0, frame4)
-        if(frameNum == 3)
+        //only swapping pics if the blank space is next to button3 (button0, button4)
+        if(buttonNum == 3)
         {            
-            switch (blankPicFrame)
+            switch (blankPicButton)
             {
                 case 0 -> //swapping the pictures
-                    swapPics.pictureSwap(frame3, frame0, buttonOrder[3], buttonOrder[0]);
+                    pictureSwap(button3, button0, buttonOrder[3], buttonOrder[0]);
                 case 4 -> //swapping the pictures
-                    swapPics.pictureSwap(frame3, frame4, buttonOrder[3], buttonOrder[4]);
+                    pictureSwap(button3, button4, buttonOrder[3], buttonOrder[4]);
             }
         }
         
-        //only swapping pics if the blank space is next to frame4 (frame1, frame3, frame5)        
-        if(frameNum == 4)
+        //only swapping pics if the blank space is next to button4 (button1, button3, button5)        
+        if(buttonNum == 4)
         {
-            switch (blankPicFrame)
+            switch (blankPicButton)
             {
                 case 1 -> //swapping the pictures
-                    swapPics.pictureSwap(frame4, frame1, buttonOrder[4], buttonOrder[1]);
+                    pictureSwap(button4, button1, buttonOrder[4], buttonOrder[1]);
                 case 3 -> //swapping the pictures
-                    swapPics.pictureSwap(frame4, frame3, buttonOrder[4], buttonOrder[3]);
+                    pictureSwap(button4, button3, buttonOrder[4], buttonOrder[3]);
                 case 5 -> //swapping the pictures
-                    swapPics.pictureSwap(frame4, frame5, buttonOrder[4], buttonOrder[5]);
+                    pictureSwap(button4, button5, buttonOrder[4], buttonOrder[5]);
             }        
         }
         
-        //only swapping pics if the blank space is next to frame5 (frame2, frame4)
-        if(frameNum == 5)
+        //only swapping pics if the blank space is next to button5 (button2, button4)
+        if(buttonNum == 5)
         {
-            switch (blankPicFrame)
+            switch (blankPicButton)
             {
                 case 2 -> //swapping the pictures
-                    swapPics.pictureSwap(frame5, frame2, buttonOrder[5], buttonOrder[2]);
+                    pictureSwap(button5, button2, buttonOrder[5], buttonOrder[2]);
                 case 4 -> //swapping the pictures
-                    swapPics.pictureSwap(frame5, frame4, buttonOrder[5], buttonOrder[4]);
+                    pictureSwap(button5, button4, buttonOrder[5], buttonOrder[4]);
             }
         }
     }
@@ -794,12 +799,12 @@ public class Games
         //variables
         //the order that the pictures should be arranged in in order for the player to win
         String[] correctOrder = new String[6];
-        correctOrder[0] = "/images/0.jpg";
-        correctOrder[1] = "/images/1.jpg";
-        correctOrder[2] = "/images/2.jpg";
-        correctOrder[3] = "/images/3.jpg";
-        correctOrder[4] = "/images/4.jpg";
-        correctOrder[5] = "/images/5.jpg";
+        correctOrder[0] = "resources\\mapPiece1.jpg";
+        correctOrder[1] = "resources\\mapPiece2.jpg";
+        correctOrder[2] = "resources\\mapPiece3.jpg";
+        correctOrder[3] = "resources\\mapPiece4.jpg";
+        correctOrder[4] = "resources\\mapPiece5.jpg";
+        correctOrder[5] = "resources\\mapPiece6.jpg";
         //changeable variable
         int numCorrectPicPlace = 0;
         
@@ -832,12 +837,11 @@ public class Games
     {
         //variables
         ArrayList <String> picsInOrder = new ArrayList<String>(); //start in order
-        String[] picOrder = new String[6];
         
         //making the array list
         for(int i = 1; i < 7; i++)
         {
-            picsInOrder.add("resources/" + i + ".png");
+            picsInOrder.add("resources\\mapPiece" + i + ".jpg");
         }
         
         //assigning the new order to be solved
@@ -846,7 +850,8 @@ public class Games
             //getting a random number within the length of he pics avaialble still
             int index = (int)(Math.random()*(picsInOrder.size()));
             //adding it to the pic order and removing that picture from the array
-            picOrder[i] = picsInOrder.get(index); 
+            currentPicOrder[i] = picsInOrder.get(index); 
+            picsInOrder.remove(index);
         }
     }
     

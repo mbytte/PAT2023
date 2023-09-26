@@ -86,8 +86,10 @@ public class UserManager
     //updates the current array list to comply with the new info
     public void updateCurrentArrayList()
     {
+        User changedUser = getSelectedUser();
+        
         users.remove(currentUserIndex);
-        users.add(currentUserIndex, getSelectedUser());
+        users.add(currentUserIndex, changedUser);
     }
     
     

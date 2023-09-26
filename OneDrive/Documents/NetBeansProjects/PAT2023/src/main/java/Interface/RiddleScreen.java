@@ -35,7 +35,7 @@ public class RiddleScreen extends javax.swing.JFrame
         }
         
         //inserting the riddle onto the screen
-        riddleTextField.setText(game.getRiddle());
+        riddleTextArea.setText(game.getRiddle());
     }
 
     /**
@@ -53,9 +53,10 @@ public class RiddleScreen extends javax.swing.JFrame
         answerButton = new javax.swing.JButton();
         infoButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        riddleTextField = new javax.swing.JTextField();
         answerTextField = new javax.swing.JTextField();
         homeButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        riddleTextArea = new javax.swing.JTextArea();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -120,12 +121,6 @@ public class RiddleScreen extends javax.swing.JFrame
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\emileBeaufoyCloseUpBig.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 500, 410));
 
-        riddleTextField.setBackground(new java.awt.Color(15, 28, 33));
-        riddleTextField.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
-        riddleTextField.setForeground(new java.awt.Color(139, 118, 82));
-        riddleTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-        getContentPane().add(riddleTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 520, 280));
-
         answerTextField.setBackground(new java.awt.Color(15, 28, 33));
         answerTextField.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
         answerTextField.setForeground(new java.awt.Color(139, 118, 82));
@@ -152,6 +147,19 @@ public class RiddleScreen extends javax.swing.JFrame
             }
         });
         getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 30, 110, 70));
+
+        riddleTextArea.setEditable(false);
+        riddleTextArea.setBackground(new java.awt.Color(15, 28, 33));
+        riddleTextArea.setColumns(20);
+        riddleTextArea.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        riddleTextArea.setForeground(new java.awt.Color(139, 118, 82));
+        riddleTextArea.setLineWrap(true);
+        riddleTextArea.setRows(5);
+        riddleTextArea.setWrapStyleWord(true);
+        riddleTextArea.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        jScrollPane1.setViewportView(riddleTextArea);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 520, 280));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\redBackground.png")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -330, 1400, 1200));
@@ -217,6 +225,7 @@ public class RiddleScreen extends javax.swing.JFrame
     private javax.swing.JButton homeButton;
     private javax.swing.JButton infoButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField riddleTextField;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea riddleTextArea;
     // End of variables declaration//GEN-END:variables
 }

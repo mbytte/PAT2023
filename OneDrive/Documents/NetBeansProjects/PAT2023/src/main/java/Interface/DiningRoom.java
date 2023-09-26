@@ -371,7 +371,7 @@ public class DiningRoom extends javax.swing.JFrame
             //uncompleted
             if(!userManager.getSelectedUser().isCompletedFindMap())
             {
-                 //set the variable for this game to true
+                //set the variable for this game to true
                 setFindingMapSelected(true);
 
                 try
@@ -396,15 +396,36 @@ public class DiningRoom extends javax.swing.JFrame
             {
                 try
                 {
-                    //opening the speech screen
-                    getSpeechDB("ExtraSpeech");
-                    try
+                    //checking if the last game is viable
+                    if(!userManager.getSelectedUser().isCompletedSlidingPuzzle())
                     {
-                        new SpeechMiniScreen().setVisible(true);
-                    } catch (IOException ex)
-                    {
-                        Logger.getLogger(DiningRoom.class.getName()).log(Level.SEVERE, null, ex);
+                        //set the variable for this game to true
+                        setSlidingPuzzleSelected(true);
+                        
+                        setSpeech("Very much thanks for finding my map, but it still in pieces!");
+                        try
+                        {
+                            new SpeechMiniScreen().setVisible(true);
+                        } catch (IOException ex)
+                        {
+                            Logger.getLogger(DiningRoom.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
+                    
+                    //still have not completed all of the tasks
+                    else
+                    {
+                        //opening the speech screen
+                        getSpeechDB("ExtraSpeech");
+                        try
+                        {
+                            new SpeechMiniScreen().setVisible(true);
+                        } catch (IOException ex)
+                        {
+                            Logger.getLogger(DiningRoom.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    
                 } catch (SQLException ex)
                 {
                     Logger.getLogger(DiningRoom.class.getName()).log(Level.SEVERE, null, ex);
