@@ -547,9 +547,9 @@ public class Games
     
     //RIDDLE
     //fields
-    private String riddle = "";
-    private String riddleAnswer = "";
-    private boolean riddleChosen = false;
+    private static String riddle = "";
+    private static String riddleAnswer = "";
+    private static boolean riddleChosen = false; //once the riddle is chosen, it will not be chosen again
     
     
     //selecting a riddle

@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import Backend.Games;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +17,8 @@ import java.util.logging.Logger;
  */
 public class RiddleScreen extends javax.swing.JFrame
 {
-
+    Games game = new Games();
+    
     /**
      * Creates new form RiddleScreen
      */
@@ -24,6 +27,15 @@ public class RiddleScreen extends javax.swing.JFrame
         initComponents();
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH);
+        
+        if(!game.isRiddleChosen())
+        {
+            //setting the riddle into the text
+            game.selectRiddle();
+        }
+        
+        //inserting the riddle onto the screen
+        riddleTextField.setText(game.getRiddle());
     }
 
     /**
@@ -166,7 +178,16 @@ public class RiddleScreen extends javax.swing.JFrame
 
     private void answerButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerButtonActionPerformed
     {//GEN-HEADEREND:event_answerButtonActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            game.inputCheck(answerTextField.getText());
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(RiddleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(RiddleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_answerButtonActionPerformed
 
     private void infoButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_infoButtonActionPerformed
