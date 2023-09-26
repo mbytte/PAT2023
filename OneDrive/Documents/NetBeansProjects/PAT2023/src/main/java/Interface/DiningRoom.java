@@ -278,6 +278,14 @@ public class DiningRoom extends javax.swing.JFrame
                 {
                     //opening the speech screen
                     getSpeechDB("CheckUpSpeech");
+                    game.setSpeakToMylan();
+                    
+                    //checking if the task has been completed and if so, it updates the UserManager here in order to access new information
+                    if(game.isCharactersSpokenTo())
+                    {
+                        userManager = new UserManager(); 
+                    }
+                    
                 try
                 {
                     new SpeechMiniScreen().setVisible(true);
@@ -371,6 +379,14 @@ public class DiningRoom extends javax.swing.JFrame
                 {
                     //opening the speech screen
                     getSpeechDB("CheckUpSpeech");
+                    game.setSpeakToCamila();
+                    
+                    //checking if the task has been completed and if so, it updates the UserManager here in order to access new information
+                    if(game.isCharactersSpokenTo())
+                    {
+                        userManager = new UserManager(); 
+                    }
+                    
                 try
                 {
                     new SpeechMiniScreen().setVisible(true);
@@ -464,6 +480,14 @@ public class DiningRoom extends javax.swing.JFrame
                 {
                     //opening the speech screen
                     getSpeechDB("CheckUpSpeech");
+                    game.setSpeakToAra();
+                    
+                    //checking if the task has been completed and if so, it updates the UserManager here in order to access new information
+                    if(game.isCharactersSpokenTo())
+                    {
+                        userManager = new UserManager(); 
+                    }
+                    
                 try
                 {
                     new SpeechMiniScreen().setVisible(true);
@@ -537,6 +561,14 @@ public class DiningRoom extends javax.swing.JFrame
                 {
                     //opening the speech screen
                     getSpeechDB("CheckUpSpeech");
+                    game.setSpeakToEmile();
+                    
+                    //checking if the task has been completed and if so, it updates the UserManager here in order to access new information
+                    if(game.isCharactersSpokenTo())
+                    {
+                        userManager = new UserManager(); 
+                    }
+                    
                 try
                 {
                     new SpeechMiniScreen().setVisible(true);
@@ -631,6 +663,14 @@ public class DiningRoom extends javax.swing.JFrame
                 {
                     //opening the speech screen
                     getSpeechDB("CheckUpSpeech");
+                    game.setSpeakToAstrid();
+                    
+                    //checking if the task has been completed and if so, it updates the UserManager here in order to access new information
+                    if(game.isCharactersSpokenTo())
+                    {
+                        userManager = new UserManager(); 
+                    }
+                    
                 try
                 {
                     new SpeechMiniScreen().setVisible(true);
@@ -701,6 +741,14 @@ public class DiningRoom extends javax.swing.JFrame
                 {
                     //opening the speech screen
                     getSpeechDB("CheckUpSpeech");
+                    game.setSpeakToTommy();
+                    
+                    //checking if the task has been completed and if so, it updates the UserManager here in order to access new information
+                    if(game.isCharactersSpokenTo())
+                    {
+                        userManager = new UserManager(); 
+                    }
+                    
                 try
                 {
                     new SpeechMiniScreen().setVisible(true);

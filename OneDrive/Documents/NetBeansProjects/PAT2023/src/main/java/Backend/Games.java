@@ -951,13 +951,13 @@ public class Games
     
     //SPEAK TO ALL CHARACTERS TASK
     //fields
-    private boolean speakToTommy;
-    private boolean speakToAstrid;
-    private boolean speakToMylan;
-    private boolean speakToCamila;
-    private boolean speakToEmile;
-    private boolean speakToAra;
-    private int numCharactersSpokenTo;
+    private static boolean speakToTommy;
+    private static boolean speakToAstrid;
+    private static boolean speakToMylan;
+    private static boolean speakToCamila;
+    private static boolean speakToEmile;
+    private static boolean speakToAra;
+    private static int numCharactersSpokenTo;
     
     
     //setters
@@ -973,42 +973,63 @@ public class Games
     public void setSpeakToAstrid()
     {
         //checking if the task has already been conpleted or not
-        if(speakToTommy == false)
+        if(speakToAstrid == false)
         {
-            speakToTommy = true;
+            speakToAstrid = true;
             numCharactersSpokenTo++;
         }
     }
     public void setSpeakToMylan()
     {
         //checking if the task has already been conpleted or not
-        if(speakToTommy == false)
+        if(speakToMylan == false)
         {
-            speakToTommy = true;
+            speakToMylan = true;
             numCharactersSpokenTo++;
         }
     }
     public void setSpeakToCamila()
     {
         //checking if the task has already been conpleted or not
-        if(speakToTommy == false)
+        if(speakToCamila == false)
         {
-            speakToTommy = true;
+            speakToCamila = true;
             numCharactersSpokenTo++;
         }
     }
     public void setSpeakToEmile()
     {
         //checking if the task has already been conpleted or not
-        if(speakToTommy == false)
+        if(speakToEmile == false)
         {
-            speakToTommy = true;
+            speakToEmile = true;
             numCharactersSpokenTo++;
         }
     }
     public void setSpeakToAra()
     {
-        speakToTommy = true;
+        //checking if the task has already been conpleted or not
+        if(speakToAra == false)
+        {
+            speakToAra = true;
+            numCharactersSpokenTo++;
+        }
+    }
+    
+    //checks if all the characters have been spoken to
+    public boolean isCharactersSpokenTo() throws SQLException
+    {
+        if(numCharactersSpokenTo == 6)
+        {
+            //sets the user objects variable to be true
+            currentUser.setCompletedSpeakingToCharactersTrue();
+            userManager.updateCurrentArrayList();
+            userManager.setUsers(currentArrayList);
+            userManager.save(currentUser.getUserID(), "SpeakToCharacters", 1);
+            return true;
+        }
+        
+        return false;
     }
     
     
