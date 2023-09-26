@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import Backend.SceneMethods;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,15 +17,17 @@ import java.util.logging.Logger;
  */
 public class SceneScreen extends javax.swing.JFrame
 {
-
+    SceneMethods sm = new SceneMethods();
     /**
      * Creates new form SceneScreen
      */
-    public SceneScreen()
+    public SceneScreen() throws SQLException, IOException
     {
         initComponents();
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH);
+        
+        
     }
 
     /**
@@ -37,11 +41,17 @@ public class SceneScreen extends javax.swing.JFrame
     {
 
         characterPics = new javax.swing.JLabel();
-        optionsAndTextPane = new javax.swing.JPanel();
         homeButton = new javax.swing.JButton();
         diaryButton = new javax.swing.JButton();
         infoButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        startButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        infoTextArea = new javax.swing.JTextArea();
+        answerButton1 = new javax.swing.JButton();
+        answerButton2 = new javax.swing.JButton();
+        answerButton3 = new javax.swing.JButton();
+        answerButton4 = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,22 +59,6 @@ public class SceneScreen extends javax.swing.JFrame
 
         characterPics.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         getContentPane().add(characterPics, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 230, 250));
-
-        optionsAndTextPane.setBackground(new java.awt.Color(15, 28, 33));
-        optionsAndTextPane.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-
-        javax.swing.GroupLayout optionsAndTextPaneLayout = new javax.swing.GroupLayout(optionsAndTextPane);
-        optionsAndTextPane.setLayout(optionsAndTextPaneLayout);
-        optionsAndTextPaneLayout.setHorizontalGroup(
-            optionsAndTextPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 860, Short.MAX_VALUE)
-        );
-        optionsAndTextPaneLayout.setVerticalGroup(
-            optionsAndTextPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(optionsAndTextPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 870, 530));
 
         homeButton.setBackground(new java.awt.Color(15, 28, 33));
         homeButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -122,6 +116,89 @@ public class SceneScreen extends javax.swing.JFrame
         });
         getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 80, 50));
 
+        startButton.setBackground(new java.awt.Color(15, 28, 33));
+        startButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        startButton.setForeground(new java.awt.Color(139, 118, 82));
+        startButton.setText("START");
+        startButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        startButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                startButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 80, 60));
+
+        infoTextArea.setEditable(false);
+        infoTextArea.setBackground(new java.awt.Color(15, 28, 33));
+        infoTextArea.setColumns(20);
+        infoTextArea.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        infoTextArea.setForeground(new java.awt.Color(139, 118, 82));
+        infoTextArea.setLineWrap(true);
+        infoTextArea.setRows(5);
+        infoTextArea.setWrapStyleWord(true);
+        infoTextArea.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        jScrollPane1.setViewportView(infoTextArea);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 850, 440));
+
+        answerButton1.setBackground(new java.awt.Color(15, 28, 33));
+        answerButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        answerButton1.setForeground(new java.awt.Color(139, 118, 82));
+        answerButton1.setText("A");
+        answerButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        answerButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                answerButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(answerButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 460, 80, 60));
+
+        answerButton2.setBackground(new java.awt.Color(15, 28, 33));
+        answerButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        answerButton2.setForeground(new java.awt.Color(139, 118, 82));
+        answerButton2.setText("B");
+        answerButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        answerButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                answerButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(answerButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 460, 80, 60));
+
+        answerButton3.setBackground(new java.awt.Color(15, 28, 33));
+        answerButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        answerButton3.setForeground(new java.awt.Color(139, 118, 82));
+        answerButton3.setText("C");
+        answerButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        answerButton3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                answerButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(answerButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 530, 80, 60));
+
+        answerButton4.setBackground(new java.awt.Color(15, 28, 33));
+        answerButton4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        answerButton4.setForeground(new java.awt.Color(139, 118, 82));
+        answerButton4.setText("D");
+        answerButton4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        answerButton4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                answerButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(answerButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 530, 80, 60));
+
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\redBackground.png")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -330, 1400, 1200));
 
@@ -153,17 +230,70 @@ public class SceneScreen extends javax.swing.JFrame
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_backButtonActionPerformed
     {//GEN-HEADEREND:event_backButtonActionPerformed
         this.dispose();
-        new DiningRoom().setVisible(true);
+        new UserScreen().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void answerButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerButton1ActionPerformed
+    {//GEN-HEADEREND:event_answerButton1ActionPerformed
+        
+    }//GEN-LAST:event_answerButton1ActionPerformed
+
+    private void answerButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerButton2ActionPerformed
+    {//GEN-HEADEREND:event_answerButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_answerButton2ActionPerformed
+
+    private void answerButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerButton3ActionPerformed
+    {//GEN-HEADEREND:event_answerButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_answerButton3ActionPerformed
+
+    private void answerButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerButton4ActionPerformed
+    {//GEN-HEADEREND:event_answerButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_answerButton4ActionPerformed
+
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_startButtonActionPerformed
+    {//GEN-HEADEREND:event_startButtonActionPerformed
+        startButton.remove(this);
+        
+        if(sm.isFirstScene())
+        {
+            try
+            {
+                sm.playFirstScene(characterPics, infoTextArea, answerButton1, answerButton2, answerButton3, answerButton4);
+            } catch (SQLException ex)
+            {
+                Logger.getLogger(SceneScreen.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex)
+            {
+                Logger.getLogger(SceneScreen.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex)
+            {
+                Logger.getLogger(SceneScreen.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(!sm.isFirstScene())
+            {
+                new DiningRoom().setVisible(true);
+                this.dispose();
+            }
+        }
+    }//GEN-LAST:event_startButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton answerButton1;
+    private javax.swing.JButton answerButton2;
+    private javax.swing.JButton answerButton3;
+    private javax.swing.JButton answerButton4;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel background;
     private javax.swing.JLabel characterPics;
     private javax.swing.JButton diaryButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton infoButton;
-    private javax.swing.JPanel optionsAndTextPane;
+    private javax.swing.JTextArea infoTextArea;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton startButton;
     // End of variables declaration//GEN-END:variables
 }

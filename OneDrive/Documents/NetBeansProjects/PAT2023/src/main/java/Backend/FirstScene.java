@@ -9,7 +9,7 @@ package Backend;
  *
  * @author megan
  */
-public class ClassManager
+public class FirstScene
 {
     
 }

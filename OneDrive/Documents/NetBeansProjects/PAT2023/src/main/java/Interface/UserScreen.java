@@ -5,7 +5,9 @@
  */
 package Interface;
 
+import Backend.SceneMethods;
 import Backend.UserManager;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -211,7 +213,18 @@ public class UserScreen extends javax.swing.JFrame
             UserManager uM = new UserManager();
             if(!uM.getSelectedUser().isCompletedFirstReveal())
             {
-                new SceneScreen().setVisible(true); // will change when there is a new room to go to
+                try
+                {
+                    SceneMethods sm = new SceneMethods();
+                    sm.setFirstScene(true);
+                    new SceneScreen().setVisible(true); // will change when there is a new room to go to
+                } catch (SQLException ex)
+                {
+                    Logger.getLogger(UserScreen.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex)
+                {
+                    Logger.getLogger(UserScreen.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 this.dispose();
             }
             else
