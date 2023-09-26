@@ -28,6 +28,9 @@ public class TicTacToeScreen extends javax.swing.JFrame
         
         //instantiating the openspaces arraylist
         game.instantiateOpenSpaces();
+        
+        //getting the results from all the matches
+        statsTextArea.setText(game.ticTacToeToString());
     }
 
     /**
@@ -41,7 +44,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        wrongLettersTextArea = new javax.swing.JTextArea();
+        statsTextArea = new javax.swing.JTextArea();
         backButton = new javax.swing.JButton();
         diaryButton = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
@@ -62,15 +65,15 @@ public class TicTacToeScreen extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        wrongLettersTextArea.setEditable(false);
-        wrongLettersTextArea.setBackground(new java.awt.Color(15, 28, 33));
-        wrongLettersTextArea.setColumns(20);
-        wrongLettersTextArea.setFont(new java.awt.Font("Perpetua Titling MT", 0, 18)); // NOI18N
-        wrongLettersTextArea.setForeground(new java.awt.Color(139, 118, 82));
-        wrongLettersTextArea.setLineWrap(true);
-        wrongLettersTextArea.setRows(5);
-        wrongLettersTextArea.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
-        jScrollPane1.setViewportView(wrongLettersTextArea);
+        statsTextArea.setEditable(false);
+        statsTextArea.setBackground(new java.awt.Color(15, 28, 33));
+        statsTextArea.setColumns(20);
+        statsTextArea.setFont(new java.awt.Font("Perpetua Titling MT", 0, 18)); // NOI18N
+        statsTextArea.setForeground(new java.awt.Color(139, 118, 82));
+        statsTextArea.setLineWrap(true);
+        statsTextArea.setRows(5);
+        statsTextArea.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        jScrollPane1.setViewportView(statsTextArea);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 210, 430));
 
@@ -131,6 +134,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(infoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 110, -1, 60));
 
         button1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
+        button1.setText("-");
         button1.setBorder(null);
         button1.addActionListener(new java.awt.event.ActionListener()
         {
@@ -142,6 +146,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 120, 120));
 
         button2.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
+        button2.setText("-");
         button2.setBorder(null);
         button2.addActionListener(new java.awt.event.ActionListener()
         {
@@ -153,6 +158,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, 120, 120));
 
         button3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
+        button3.setText("-");
         button3.setBorder(null);
         button3.addActionListener(new java.awt.event.ActionListener()
         {
@@ -164,6 +170,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 120, 120));
 
         button4.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
+        button4.setText("-");
         button4.setBorder(null);
         button4.addActionListener(new java.awt.event.ActionListener()
         {
@@ -175,6 +182,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 120, 120));
 
         button5.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
+        button5.setText("-");
         button5.setBorder(null);
         button5.addActionListener(new java.awt.event.ActionListener()
         {
@@ -186,6 +194,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 120, 120));
 
         button6.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
+        button6.setText("-");
         button6.setBorder(null);
         button6.addActionListener(new java.awt.event.ActionListener()
         {
@@ -197,6 +206,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 320, 120, 120));
 
         button7.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
+        button7.setText("-");
         button7.setBorder(null);
         button7.addActionListener(new java.awt.event.ActionListener()
         {
@@ -208,6 +218,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 120, 120));
 
         button8.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
+        button8.setText("-");
         button8.setBorder(null);
         button8.addActionListener(new java.awt.event.ActionListener()
         {
@@ -275,6 +286,9 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button1ActionPerformed
         game.addSymbol(button1, 1, "X");
         
+        //reseting the statistics in case of a win or draw
+        statsTextArea.setText(game.ticTacToeToString());
+        
         //AI's turn
         String computerMove = game.computerMove();
         if(computerMove.equals("button2"))
@@ -314,6 +328,9 @@ public class TicTacToeScreen extends javax.swing.JFrame
     private void button2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button2ActionPerformed
     {//GEN-HEADEREND:event_button2ActionPerformed
         game.addSymbol(button2, 2, "X");
+        
+        //reseting the statistics in case of a win or draw
+        statsTextArea.setText(game.ticTacToeToString());
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -355,6 +372,9 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button3ActionPerformed
         game.addSymbol(button3, 3, "X");
         
+        //reseting the statistics in case of a win or draw
+        statsTextArea.setText(game.ticTacToeToString());
+        
         //AI's turn
         String computerMove = game.computerMove();
         if(computerMove.equals("button1"))
@@ -394,6 +414,9 @@ public class TicTacToeScreen extends javax.swing.JFrame
     private void button4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button4ActionPerformed
     {//GEN-HEADEREND:event_button4ActionPerformed
         game.addSymbol(button4, 4, "X");
+        
+        //reseting the statistics in case of a win or draw
+        statsTextArea.setText(game.ticTacToeToString());
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -435,6 +458,9 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button5ActionPerformed
         game.addSymbol(button5, 5, "X");
         
+        //reseting the statistics in case of a win or draw
+        statsTextArea.setText(game.ticTacToeToString());
+        
         //AI's turn
         String computerMove = game.computerMove();
         if(computerMove.equals("button1"))
@@ -474,6 +500,9 @@ public class TicTacToeScreen extends javax.swing.JFrame
     private void button6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button6ActionPerformed
     {//GEN-HEADEREND:event_button6ActionPerformed
         game.addSymbol(button6, 6, "X");
+        
+        //reseting the statistics in case of a win or draw
+        statsTextArea.setText(game.ticTacToeToString());
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -515,6 +544,9 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button7ActionPerformed
         game.addSymbol(button7, 7, "X");
         
+        //reseting the statistics in case of a win or draw
+        statsTextArea.setText(game.ticTacToeToString());
+        
         //AI's turn
         String computerMove = game.computerMove();
         if(computerMove.equals("button1"))
@@ -555,6 +587,9 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button8ActionPerformed
         game.addSymbol(button8, 8, "X");
         
+        //reseting the statistics in case of a win or draw
+        statsTextArea.setText(game.ticTacToeToString());
+        
         //AI's turn
         String computerMove = game.computerMove();
         if(computerMove.equals("button1"))
@@ -594,6 +629,9 @@ public class TicTacToeScreen extends javax.swing.JFrame
     private void button9ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button9ActionPerformed
     {//GEN-HEADEREND:event_button9ActionPerformed
         game.addSymbol(button9, 9, "X");
+        
+        //reseting the statistics in case of a win or draw
+        statsTextArea.setText(game.ticTacToeToString());
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -650,6 +688,6 @@ public class TicTacToeScreen extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea wrongLettersTextArea;
+    private javax.swing.JTextArea statsTextArea;
     // End of variables declaration//GEN-END:variables
 }
