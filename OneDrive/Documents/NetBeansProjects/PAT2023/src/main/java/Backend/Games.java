@@ -1169,27 +1169,33 @@ public class Games
     
     //WORD GAME
     //fields
-    private static String message = "Ah, Nicolas. You have cracked my secret message! Good! One can never be too careful. When you get to France come visit me. I am curious of all the new supplies you have found through your source. You have a talent my boy. It is time for you to show it to the world. Looking forward to seeing you, Claude. P.S. Burn this when you are done reading";
+    private static String message = "*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************";
+    private static String completeMessage = "Ah, Nicolas. You have cracked my secret message! Good! One can never be too careful. When you get to France come visit me. I am curious of all the new supplies you have found through your source. You have a talent my boy. It is time for you to show it to the world. Looking forward to seeing you, Claude. P.S. Burn this when you are done reading";
     private static String riddle1 = "A man is looking at a photograph of someone. His friend asks who it is. The man replies, “Brothers and sisters, I have none. But that man’s father is my father’s son.” Who was in the photograph?";
     private static String riddle2 = "A sundial has the fewest moving parts of any timepiece. Which has the most?";
     private static String riddle3 = "Your parents have six sons including you and each son has one sister. How many people are in the family?";
     private static String ans1 = "his son";
-    private static String ans2 = "sundial";
+    private static String ans2 = "hourglass";
     private static String ans3 = "nine";
     
     
     //getters
-    public static String getRiddle1()
+    public String getMessage()
+    {
+        return message;
+    }
+
+    public String getRiddle1()
     {
         return riddle1;
     }
 
-    public static String getRiddle2()
+    public String getRiddle2()
     {
         return riddle2;
     }
 
-    public static String getRiddle3()
+    public String getRiddle3()
     {
         return riddle3;
     }
@@ -1201,8 +1207,8 @@ public class Games
         if(ans1.equals(input))
         {
             //decrypts part of the message
-            String decrypted = "diufbaouvbaskdjnvsjdnv"; //change this to be what you want
-            message = decrypted + message.substring(9); //number should be from the next index after the length of the decrypted message
+            String decrypted = "Ah, Nicolas. You have cracked my secret message! Good! One can never be too careful. When you get to France come visit me."; 
+            message = decrypted + message.substring(122); //number should be from the next index after the length of the decrypted message
             
             return true;
         }
@@ -1212,11 +1218,11 @@ public class Games
     
     public boolean checkRiddle2Ans(String input)
     {
-        if(ans1.equals(input))
+        if(ans2.equals(input))
         {
             //decrypts part of the message
-            String decrypted = "diufbaouvbaskdjnvsjdnv"; //change this to be what you want
-            message = message.substring(0) + decrypted + message.substring(9); //number should be from the next index after the length of the decrypted message
+            String decrypted = " I am curious of all the new supplies you have found through your source. You have a talent my boy. "; //change this to be what you want
+            message = message.substring(0, 122) + decrypted + message.substring(222); //number should be from the next index after the length of the decrypted message
             
             return true;
         }
@@ -1226,11 +1232,11 @@ public class Games
     
     public boolean checkRiddle3Ans(String input)
     {
-        if(ans1.equals(input))
+        if(ans3.equals(input))
         {
             //decrypts part of the message
-            String decrypted = "diufbaouvbaskdjnvsjdnv"; //change this to be what you want
-            message = message.substring(9)  + decrypted; //number should be from the next index after the length of the decrypted message
+            String decrypted = "It is time for you to show it to the world. Looking forward to seeing you, Claude. P.S. Burn this when you are done reading"; //change this to be what you want
+            message = message.substring(0,222)  + decrypted; //number should be from the next index after the length of the decrypted message
             
             return true;
         }
@@ -1242,26 +1248,8 @@ public class Games
     //checks if the game has been win or not
     public boolean wordGameWinCheck() throws SQLException, IOException
     {
-        //variables
-        boolean letterFound = true;
-        int i = 0;
-        
-        //running the loop until an incorrect character is found
-        while(letterFound)
-        {
-            char currentLetter = message.charAt(i);
-            if(currentLetter == '*')
-            {
-                //letter is incorrect
-                letterFound = false;
-                break;
-            }
-            
-            i++;
-        }
-        
         //checks if all riddles have been answered correctly
-        if(i == message.length()-1)
+        if(message.equals(completeMessage))
         {
             new SpeechMiniScreen().setVisible(true);
             
@@ -1270,8 +1258,9 @@ public class Games
             userManager.updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "WordGame", 1);
+            return true;
         }
         
-        return letterFound;
+        return false;
     }
 }

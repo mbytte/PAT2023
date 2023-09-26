@@ -323,14 +323,34 @@ public class DiningRoom extends javax.swing.JFrame
             {
                 try
                 {
-                    //opening the speech screen
-                    getSpeechDB("ExtraSpeech");
-                    try
+                    //checking if the last game is viable
+                    if(!userManager.getSelectedUser().isCompletedWordGame())
                     {
-                        new SpeechMiniScreen().setVisible(true);
-                    } catch (IOException ex)
+                        //set the variable for this game to true
+                        setWordGameSelected(true);
+                        
+                        setSpeech("Thank you for helping me. This letter seems to be just be a load of rubbish. Ah, but it reminds me of the time when I was a young man and my old man was speaking to his companions during the war. Perhaps it is some sort of secret message.");
+                        try
+                        {
+                            new SpeechMiniScreen().setVisible(true);
+                        } catch (IOException ex)
+                        {
+                            Logger.getLogger(DiningRoom.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    
+                    //still have not completed all of the tasks
+                    else
                     {
-                        Logger.getLogger(DiningRoom.class.getName()).log(Level.SEVERE, null, ex);
+                        //opening the speech screen
+                        getSpeechDB("ExtraSpeech");
+                        try
+                        {
+                            new SpeechMiniScreen().setVisible(true);
+                        } catch (IOException ex)
+                        {
+                            Logger.getLogger(DiningRoom.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                 } catch (SQLException ex)
                 {
@@ -425,7 +445,6 @@ public class DiningRoom extends javax.swing.JFrame
                             Logger.getLogger(DiningRoom.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
-                    
                 } catch (SQLException ex)
                 {
                     Logger.getLogger(DiningRoom.class.getName()).log(Level.SEVERE, null, ex);
