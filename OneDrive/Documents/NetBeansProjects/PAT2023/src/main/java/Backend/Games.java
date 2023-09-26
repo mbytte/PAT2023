@@ -438,7 +438,7 @@ public class Games
         //adding all the letters from the userArray into a string
         for(int arrayPosition = 0; arrayPosition < CORRECT_WORD_LENGTH; arrayPosition++)
         {
-           displayString += usersWordArray[arrayPosition] + " "; 
+           displayString += " " + usersWordArray[arrayPosition]; 
         }
         
         return displayString;
@@ -453,6 +453,12 @@ public class Games
     {
         return progressBarValue;
     }
+
+    public boolean isCloseScreen()
+    {
+        return closeScreen;
+    }
+    
     
     
     //resets to original values

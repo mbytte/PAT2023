@@ -203,11 +203,12 @@
           <Color blue="21" green="1c" red="f" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Perpetua Titling MT" size="18" style="1"/>
+          <Font name="Perpetua Titling MT" size="48" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="52" green="76" red="8b" type="rgb"/>
         </Property>
+        <Property name="text" type="java.lang.String" value=" _ _ _ _ _ _ _ _"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder roundedCorners="true" thickness="5">
@@ -221,7 +222,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="290" y="300" width="600" height="70"/>
+          <AbsoluteConstraints x="420" y="300" width="340" height="70"/>
         </Constraint>
       </Constraints>
     </Component>

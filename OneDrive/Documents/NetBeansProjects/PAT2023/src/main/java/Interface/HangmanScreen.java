@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import Backend.Games;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +17,8 @@ import java.util.logging.Logger;
  */
 public class HangmanScreen extends javax.swing.JFrame
 {
-
+    Games game = new Games();
+    
     /**
      * Creates new form HangmanScreen
      */
@@ -24,6 +27,12 @@ public class HangmanScreen extends javax.swing.JFrame
         initComponents();
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH); 
+        
+        //gets the word and answer that the user will be dealing with here
+        game.getWord();
+        
+        //getting the display text
+        hangmanTextField.setText(game.getDisplayString());
     }
 
     /**
@@ -130,8 +139,9 @@ public class HangmanScreen extends javax.swing.JFrame
 
         hangmanTextField.setEditable(false);
         hangmanTextField.setBackground(new java.awt.Color(15, 28, 33));
-        hangmanTextField.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        hangmanTextField.setFont(new java.awt.Font("Perpetua Titling MT", 1, 48)); // NOI18N
         hangmanTextField.setForeground(new java.awt.Color(139, 118, 82));
+        hangmanTextField.setText(" _ _ _ _ _ _ _ _");
         hangmanTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         hangmanTextField.addActionListener(new java.awt.event.ActionListener()
         {
@@ -140,7 +150,7 @@ public class HangmanScreen extends javax.swing.JFrame
                 hangmanTextFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(hangmanTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 600, 70));
+        getContentPane().add(hangmanTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 340, 70));
 
         answerTextField.setBackground(new java.awt.Color(15, 28, 33));
         answerTextField.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
@@ -211,7 +221,22 @@ public class HangmanScreen extends javax.swing.JFrame
 
     private void answerButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerButtonActionPerformed
     {//GEN-HEADEREND:event_answerButtonActionPerformed
-        // TODO add your handling code here:
+        game.letterCheck(answerTextField.getText());
+        try
+        {
+            game.hangmanWinCheck();
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(HangmanScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(HangmanScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //updating the components
+        hangmanTextField.setText(game.getDisplayString());
+        wrongLettersTextArea.setText(game.getWrongAnswers());
+        wrongAnswersProgressBar.setValue(game.getProgressBarValue());
     }//GEN-LAST:event_answerButtonActionPerformed
 
     private void answerTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerTextFieldActionPerformed
