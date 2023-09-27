@@ -6,6 +6,7 @@
 package Interface;
 
 import Backend.Games;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +29,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         
         //instantiating the openspaces arraylist
         game.instantiateOpenSpaces();
-        //game.instantiateLayout();
+        game.instantiateLayout();
         
         //getting the results from all the matches
         statsTextArea.setText(game.ticTacToeToString());
@@ -310,13 +311,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button1ActionPerformed
         game.addSymbol(button1, 1, "X");
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //AI's turn
@@ -354,27 +364,45 @@ public class TicTacToeScreen extends javax.swing.JFrame
             game.addSymbol(button9, 9, "O");
         }
         
-//        if(game.isTicTacToeRoundComplete())
-//        {
-//            //reseting the statistics in case of a win or draw
-//            statsTextArea.setText(game.ticTacToeToString());
-//            
-//            //resetting the display
-//            resetButtonValues();
-//        }
+        try
+        {
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_button1ActionPerformed
 
     private void button2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button2ActionPerformed
     {//GEN-HEADEREND:event_button2ActionPerformed
         game.addSymbol(button2, 2, "X");
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //AI's turn
@@ -412,13 +440,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
             game.addSymbol(button9, 9, "O");
         }
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_button2ActionPerformed
 
@@ -426,13 +463,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button3ActionPerformed
         game.addSymbol(button3, 3, "X");
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //AI's turn
@@ -470,13 +516,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
             game.addSymbol(button9, 9, "O");
         }
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_button3ActionPerformed
 
@@ -484,13 +539,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button4ActionPerformed
         game.addSymbol(button4, 4, "X");
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //AI's turn
@@ -528,13 +592,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
             game.addSymbol(button9, 9, "O");
         }
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_button4ActionPerformed
 
@@ -542,13 +615,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button5ActionPerformed
         game.addSymbol(button5, 5, "X");
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //AI's turn
@@ -586,13 +668,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
             game.addSymbol(button9, 9, "O");
         }
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_button5ActionPerformed
 
@@ -600,13 +691,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button6ActionPerformed
         game.addSymbol(button6, 6, "X");
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //AI's turn
@@ -644,13 +744,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
             game.addSymbol(button9, 9, "O");
         }
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_button6ActionPerformed
 
@@ -658,13 +767,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button7ActionPerformed
         game.addSymbol(button7, 7, "X");
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //AI's turn
@@ -702,13 +820,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
             game.addSymbol(button9, 9, "O");
         }
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_button7ActionPerformed
 
@@ -716,13 +843,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button8ActionPerformed
         game.addSymbol(button8, 8, "X");
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //AI's turn
@@ -760,13 +896,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
             game.addSymbol(button9, 9, "O");
         }
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_button8ActionPerformed
 
@@ -774,13 +919,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button9ActionPerformed
         game.addSymbol(button9, 9, "X");
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //AI's turn
@@ -818,13 +972,22 @@ public class TicTacToeScreen extends javax.swing.JFrame
             game.addSymbol(button8, 8, "O");
         }
         
-        if(game.isTicTacToeRoundComplete())
+        try
         {
-            //reseting the statistics in case of a win or draw
-            statsTextArea.setText(game.ticTacToeToString());
-            
-            //resetting the display
-            resetButtonValues();
+            if(game.isTicTacToeRoundComplete())
+            {
+                //reseting the statistics in case of a win or draw
+                statsTextArea.setText(game.ticTacToeToString());
+                
+                //resetting the display
+                resetButtonValues();
+            }
+        } catch (IOException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_button9ActionPerformed
 

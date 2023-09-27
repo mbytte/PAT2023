@@ -142,7 +142,6 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
         });
         getContentPane().add(infoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 110, -1, 60));
 
-        button0.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mapPiece1.jpg")); // NOI18N
         button0.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -152,7 +151,6 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
         });
         getContentPane().add(button0, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 270, 316));
 
-        button1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mapPiece2.jpg")); // NOI18N
         button1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -162,7 +160,6 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
         });
         getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 270, 316));
 
-        button2.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mapPiece3.jpg")); // NOI18N
         button2.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -172,7 +169,6 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
         });
         getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, 270, 316));
 
-        button3.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mapPiece4.jpg")); // NOI18N
         button3.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -182,7 +178,6 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
         });
         getContentPane().add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 270, 316));
 
-        button4.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mapPiece5.jpg")); // NOI18N
         button4.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -192,7 +187,6 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
         });
         getContentPane().add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 270, 316));
 
-        button5.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mapPiece6.jpg")); // NOI18N
         button5.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -247,10 +241,20 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button3ActionPerformed
         //getting the current location of the blank picture
         int blankPicFrame = puzzle.getCirclePicPos();
+        System.out.println(blankPicFrame + "\n\n");
+        
         try
         {        
             //swapping selected picture with the blank pic
             puzzle.buttonPicSwap(3, blankPicFrame, button0, button1, button2, button3, button4, button5);
+            System.out.println(blankPicFrame + "\n\n");
+             String[] picSetup = puzzle.getCurrentPicOrder();
+             //showing the picture set up
+        for(int i = 0; i < 6; i++)
+        {
+            System.out.println(picSetup[i]);
+        }
+            
         } catch (IOException ex)
         {
             Logger.getLogger(SlidingPuzzleScreen.class.getName()).log(Level.SEVERE, null, ex);

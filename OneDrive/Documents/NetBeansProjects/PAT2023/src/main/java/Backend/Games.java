@@ -37,10 +37,10 @@ public class Games
     
     //TIC TAC TOE
     //fields
-    private int numWins;
+    private static int numWins;
     private int numLoses;
     private int numDraws;
-    private String[][] layout = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
+    private String[][] layout = new String[3][3];
     private ArrayList <String> openSpaces = new ArrayList<>();
     
     
@@ -87,7 +87,7 @@ public class Games
     //checks if the button pressed is free to be used
     public boolean isButtonUsed(String buttonText)
     {
-        if(buttonText == " ")
+        if(buttonText.equals(" "))
         {
             return false;
         }
@@ -105,9 +105,6 @@ public class Games
         //checking if button is free
         if(!isButtonUsed(button.getText()))
         {
-            System.out.println("Made it");
-            System.out.println(symbol);
-            
             //adding symbol
             button.setText(symbol);
             System.out.println(button.getText());
@@ -119,7 +116,6 @@ public class Games
             //adding this symbol to the layout
             int[] buttonPos = getButtonPos(button, numButton);
             layout[buttonPos[0]][buttonPos[1]] = symbol;
-            System.out.println(layout[buttonPos[0]][buttonPos[1]]);
         }
     }
     
@@ -212,13 +208,6 @@ public class Games
         
         //creating a default array for the layout (need this because the winCheck needs the thingys to be not null)
         String[][] newLayout = new String[3][3];
-        for(int i = 0; i < 3; i++)
-        {
-            for(int j = 0; j < 3; j++)
-            {
-                newLayout[i][j] = " ";
-            }
-        }
         
         //setting values
         layout = newLayout;
@@ -251,16 +240,17 @@ public class Games
     
     //checks if the round has been won and if the whole game is completed
     //boolean to be used in the GUI to reset the UI version of the grid
-    public boolean isTicTacToeRoundComplete()
+    public boolean isTicTacToeRoundComplete() throws SQLException, IOException
     {
         //all possible win scenarios
         //#1
-        if((layout[0][0] == layout[0][1] && layout[0][0]== layout[0][2]))
+        if((layout[0][0] == layout[0][1] && layout[0][0]== layout[0][2]) && !layout[0][0].equals(" "))
         {
             //checking who won
             if(layout[0][0].equals("X"))
             {
                 numWins++;
+                isTicTacToeComplete();
             }
             
             //LOSE
@@ -271,15 +261,17 @@ public class Games
             
             //resetting the grid
             resetTicTacToe();
+            instantiateLayout();
             return true; 
         }
         
         //#2
-        else if(layout[1][0] == layout[1][1] && layout[1][0]== layout[1][2])
+        else if(layout[1][0] == layout[1][1] && layout[1][0]== layout[1][2] && !layout[1][0].equals(" "))
         {
             if(layout[1][0].equals("X"))
             {
                 numWins++;
+                isTicTacToeComplete();
             }
 
             else if(layout[1][0].equals("O")) 
@@ -289,16 +281,18 @@ public class Games
             
             //resetting the grid
             resetTicTacToe();
+            instantiateLayout();
             return true; 
         }
         
         
         //#3
-        else if((layout[2][0] == layout[2][1] && layout[2][0]== layout[2][2]))
+        else if((layout[2][0] == layout[2][1] && layout[2][0]== layout[2][2]) && !layout[2][0].equals(" "))
         {
             if(layout[2][0].equals("X"))
             {
                 numWins++;
+                isTicTacToeComplete();
             }
 
             else if(layout[2][0].equals("O"))
@@ -308,15 +302,17 @@ public class Games
             
             //resetting the grid
             resetTicTacToe();
+            instantiateLayout();
             return true; 
         }
         
         //#4
-         else if((layout[0][0] == layout[1][1] && layout[0][0]== layout[2][2]))
+         else if((layout[0][0] == layout[1][1] && layout[0][0]== layout[2][2]) && !layout[0][0].equals(" "))
         {
             if(layout[0][0].equals("X"))
             {
                 numWins++;
+                isTicTacToeComplete();
             }
 
             else if(layout[0][0].equals("O"))
@@ -326,15 +322,17 @@ public class Games
             
             //resetting the grid
             resetTicTacToe();
+            instantiateLayout();
             return true; 
         }
          
         //#5 
-        else if((layout[0][2] == layout[1][1] && layout[0][2]== layout[2][0]))
+        else if((layout[0][2] == layout[1][1] && layout[0][2]== layout[2][0]) && !layout[0][2].equals(" "))
         {
             if(layout[0][2].equals("X"))
             {
                 numWins++;
+                isTicTacToeComplete();
             }
 
             else if(layout[0][2].equals("O"))
@@ -344,15 +342,17 @@ public class Games
             
             //resetting the grid
             resetTicTacToe();
+            instantiateLayout();
             return true; 
         }
         
         //#6
-        else if((layout[0][0] == layout[1][0] && layout[0][0]== layout[2][0]))
+        else if((layout[0][0] == layout[1][0] && layout[0][0]== layout[2][0]) && !layout[0][0].equals(" "))
         {
             if(layout[0][0].equals("X"))
             {
                 numWins++;
+                isTicTacToeComplete();
             }
 
             else if(layout[0][0].equals("O"))
@@ -362,15 +362,17 @@ public class Games
             
             //resetting the grid
             resetTicTacToe();
+            instantiateLayout();
             return true; 
         }
         
         //#7
-        else if((layout[0][1] == layout[1][1] && layout[0][1]== layout[2][1]))
+        else if((layout[0][1] == layout[1][1] && layout[0][1]== layout[2][1]) && !layout[0][1].equals(" "))
         {
             if(layout[0][1].equals("X"))
             {
                 numWins++;
+                isTicTacToeComplete();
             }
 
             else if(layout[0][1].equals("O"))
@@ -380,15 +382,17 @@ public class Games
             
             //resetting the grid
             resetTicTacToe();
+            instantiateLayout();
             return true; 
         }
         
         //#8
-        else if((layout[0][2] == layout[1][2] && layout[0][2]== layout[2][2]))
+        else if((layout[0][2] == layout[1][2] && layout[0][2]== layout[2][2]) && !layout[0][2].equals(" "))
         {
             if(layout[0][2].equals("X"))
             {
                 numWins++;
+                isTicTacToeComplete();
             }
 
             else if(layout[0][2].equals("O"))
@@ -398,6 +402,7 @@ public class Games
             
             //resetting the grid
             resetTicTacToe();
+            instantiateLayout();
             return true; 
         }
         
@@ -633,7 +638,7 @@ public class Games
     
     //SLIDING PUZZLE
     //fields
-    private static String[] currentPicOrder = new String[6];
+    private static String[] currentPicOrder = {"resources\\mapPiece5.jpg", "resources\\mapPiece2.jpg", "resources\\mapPiece1.jpg", "resources\\mapPiece4.jpg", "resources\\mapPiece4.jpg", "resources\\mapPiece6.jpg"};
     private static String[] buttonOrder = {"button1", "button2", "button3", "button4", "button5", "button6"};
     private boolean puzzleWin = false;
     
@@ -700,8 +705,6 @@ public class Games
                 circlePicPos = i;
             }
         }    
-        
-        
         return circlePicPos;
     }
     
@@ -728,9 +731,12 @@ public class Games
         currentPicOrder[btn2ScreenNumber] = button1Icon;
     }
     
+    
     //swaps the pics depending on which frame they are in
     public void buttonPicSwap(int buttonNum, int blankPicButton, JButton button0, JButton button1, JButton button2, JButton button3, JButton button4, JButton button5) throws IOException
     {
+        //making a swappics object
+        Games swapPics = new Games();      
         
         //only swapping pics if the blank space is next to button0 (button1, button3)
         if(buttonNum == 0)
@@ -738,9 +744,9 @@ public class Games
             switch (blankPicButton)
             {
                 case 1 -> //swapping the pictures
-                    pictureSwap(button0, button1, buttonOrder[0], buttonOrder[1]);
+                    swapPics.pictureSwap(button0, button1, buttonOrder[0], buttonOrder[1]);
                 case 3 -> //swapping the pictures
-                    pictureSwap(button0, button3, buttonOrder[0], buttonOrder[3]);
+                    swapPics.pictureSwap(button0, button3, buttonOrder[0], buttonOrder[3]);
             }
         }
         
@@ -750,11 +756,11 @@ public class Games
             switch (blankPicButton)
             {
                 case 0 -> //swapping the pictures
-                    pictureSwap(button1, button0, buttonOrder[1], buttonOrder[0]);
+                    swapPics.pictureSwap(button1, button0, buttonOrder[1], buttonOrder[0]);
                 case 2 -> //swapping the pictures
-                    pictureSwap(button1, button2, buttonOrder[1], buttonOrder[2]);
+                    swapPics.pictureSwap(button1, button2, buttonOrder[1], buttonOrder[2]);
                 case 4 -> //swapping the pictures
-                    pictureSwap(button1, button4, buttonOrder[1], buttonOrder[4]);
+                   swapPics. pictureSwap(button1, button4, buttonOrder[1], buttonOrder[4]);
             }
         }
         
@@ -764,9 +770,9 @@ public class Games
             switch (blankPicButton)
             {
                 case 1 -> //swapping the pictures
-                    pictureSwap(button2, button1, buttonOrder[2], buttonOrder[1]);
+                    swapPics.pictureSwap(button2, button1, buttonOrder[2], buttonOrder[1]);
                 case 5 -> //swapping the pictures
-                    pictureSwap(button2, button5, buttonOrder[2], buttonOrder[5]);
+                    swapPics.pictureSwap(button2, button5, buttonOrder[2], buttonOrder[5]);
             }
         }
         
@@ -776,9 +782,9 @@ public class Games
             switch (blankPicButton)
             {
                 case 0 -> //swapping the pictures
-                    pictureSwap(button3, button0, buttonOrder[3], buttonOrder[0]);
+                   swapPics.pictureSwap(button3, button0, buttonOrder[3], buttonOrder[0]);
                 case 4 -> //swapping the pictures
-                    pictureSwap(button3, button4, buttonOrder[3], buttonOrder[4]);
+                   swapPics.pictureSwap(button3, button4, buttonOrder[3], buttonOrder[4]);
             }
         }
         
@@ -788,11 +794,11 @@ public class Games
             switch (blankPicButton)
             {
                 case 1 -> //swapping the pictures
-                    pictureSwap(button4, button1, buttonOrder[4], buttonOrder[1]);
+                    swapPics.pictureSwap(button4, button1, buttonOrder[4], buttonOrder[1]);
                 case 3 -> //swapping the pictures
-                    pictureSwap(button4, button3, buttonOrder[4], buttonOrder[3]);
+                    swapPics.pictureSwap(button4, button3, buttonOrder[4], buttonOrder[3]);
                 case 5 -> //swapping the pictures
-                    pictureSwap(button4, button5, buttonOrder[4], buttonOrder[5]);
+                    swapPics.pictureSwap(button4, button5, buttonOrder[4], buttonOrder[5]);
             }        
         }
         
@@ -802,9 +808,9 @@ public class Games
             switch (blankPicButton)
             {
                 case 2 -> //swapping the pictures
-                    pictureSwap(button5, button2, buttonOrder[5], buttonOrder[2]);
+                    swapPics.pictureSwap(button5, button2, buttonOrder[5], buttonOrder[2]);
                 case 4 -> //swapping the pictures
-                    pictureSwap(button5, button4, buttonOrder[5], buttonOrder[4]);
+                    swapPics.pictureSwap(button5, button4, buttonOrder[5], buttonOrder[4]);
             }
         }
     }
@@ -816,12 +822,12 @@ public class Games
         //variables
         //the order that the pictures should be arranged in in order for the player to win
         String[] correctOrder = new String[6];
-        correctOrder[0] = "resources\\mapPiece1.jpg";
-        correctOrder[1] = "resources\\mapPiece2.jpg";
-        correctOrder[2] = "resources\\mapPiece3.jpg";
-        correctOrder[3] = "resources\\mapPiece4.jpg";
-        correctOrder[4] = "resources\\mapPiece5.jpg";
-        correctOrder[5] = "resources\\mapPiece6.jpg";
+        correctOrder[0] = "/resources/mapPiece1.jpg";
+        correctOrder[1] = "/resources/mapPiece2.jpg";
+        correctOrder[2] = "/resources/mapPiece3.jpg";
+        correctOrder[3] = "/resources/mapPiece4.jpg";
+        correctOrder[4] = "/resources/mapPiece5.jpg";
+        correctOrder[5] = "/resources/mapPiece6.jpg";
         //changeable variable
         int numCorrectPicPlace = 0;
         

@@ -146,11 +146,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="button0">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\mapPiece1.jpg"/>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button0ActionPerformed"/>
       </Events>
@@ -161,11 +156,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="button1">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\mapPiece2.jpg"/>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button1ActionPerformed"/>
       </Events>
@@ -176,11 +166,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="button2">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\mapPiece3.jpg"/>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2ActionPerformed"/>
       </Events>
@@ -191,11 +176,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="button3">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\mapPiece4.jpg"/>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button3ActionPerformed"/>
       </Events>
@@ -206,11 +186,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="button4">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\mapPiece5.jpg"/>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button4ActionPerformed"/>
       </Events>
@@ -221,11 +196,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="button5">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\mapPiece6.jpg"/>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button5ActionPerformed"/>
       </Events>
