@@ -6,8 +6,8 @@
 package Interface;
 
 import Backend.GameSwitchMethods;
-import static Backend.GameSwitchMethods.resetOptionVariables;
 import Backend.Games;
+import Backend.UserManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -19,8 +19,9 @@ import java.util.logging.Logger;
  */
 public class SeatCompartmentsScreen extends javax.swing.JFrame
 {
-
+    UserManager um = new UserManager();
     Games game = new Games();
+    
     /**
      * Creates new form SeatCompartmentsScreen
      */
@@ -32,6 +33,13 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
         
         //resetting the GameSwitch variables to all be false
         GameSwitchMethods.resetOptionVariables();
+        
+        //checks if the letter has already been found or not
+        if(um.getSelectedUser().isInvestigatedLetter())
+        {
+            letterButton.setIcon(null);
+            remove(letterButton);
+        }
     }
 
     /**
@@ -102,7 +110,13 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
         letterButton.setBorderPainted(false);
         letterButton.setContentAreaFilled(false);
         letterButton.setFocusPainted(false);
-        letterButton.setOpaque(false);
+        letterButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                letterButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(letterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 380, 120, 70));
 
         keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.png")); // NOI18N
@@ -169,6 +183,29 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
             Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_keyButtonActionPerformed
+
+    private void letterButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_letterButtonActionPerformed
+    {//GEN-HEADEREND:event_letterButtonActionPerformed
+        letterButton.setIcon(null);
+        remove(letterButton);
+        um.getSelectedUser().setInvestigatedLetterTrue();
+        um.updateCurrentArrayList();
+        try
+        {
+            um.save(um.getSelectedUser().getUserID(), "Letter", 1);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try
+        {
+            new DiaryScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_letterButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;

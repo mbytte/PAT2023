@@ -34,6 +34,13 @@ public class DiningRoom extends javax.swing.JFrame
         
         //resetting the GameSwitch variables to all be false
         GameSwitchMethods.resetOptionVariables();
+        
+        //checks if the knife  has already been found or not
+        if(userManager.getSelectedUser().isInvestigatedSwords())
+        {
+            swordsButton.setIcon(null);
+            remove(swordsButton);
+        }
     }
 
     /**
@@ -152,6 +159,13 @@ public class DiningRoom extends javax.swing.JFrame
         swordsButton.setBorder(null);
         swordsButton.setBorderPainted(false);
         swordsButton.setContentAreaFilled(false);
+        swordsButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                swordsButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(swordsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 230, 100, 130));
 
         backButton.setBackground(new java.awt.Color(15, 28, 33));
@@ -808,6 +822,29 @@ public class DiningRoom extends javax.swing.JFrame
             }
         }
     }//GEN-LAST:event_tommyWintersButtonActionPerformed
+
+    private void swordsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_swordsButtonActionPerformed
+    {//GEN-HEADEREND:event_swordsButtonActionPerformed
+        swordsButton.setIcon(null);
+        remove(swordsButton);
+        userManager.getSelectedUser().setInvestigatedSwordsTrue();
+        userManager.updateCurrentArrayList();
+        try
+        {
+            userManager.save(userManager.getSelectedUser().getUserID(), "Swords", 1);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try
+        {
+            new DiaryScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_swordsButtonActionPerformed
 
     
 

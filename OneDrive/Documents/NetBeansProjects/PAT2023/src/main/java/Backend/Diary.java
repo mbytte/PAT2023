@@ -141,7 +141,7 @@ public class Diary
             }
         }
         
-        else if(selectedClue.equals("Secret message"))
+        else if(selectedClue.equals("SecretMessage"))
         {
             //checking if the clue has been obtained
             if(CURRENT_USER.isCompletedWordGame())

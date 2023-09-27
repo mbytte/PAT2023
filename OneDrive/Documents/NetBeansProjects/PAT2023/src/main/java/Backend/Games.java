@@ -5,6 +5,8 @@
  */
 package Backend;
 
+import Interface.DiningRoom;
+import Interface.ObjectiveScreen;
 import Interface.SpeechMiniScreen;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -553,7 +555,7 @@ public class Games
         //the user only gets 5 chances
         if(numWrongAnswers  == 5)
         {
-            new SpeechMiniScreen().setVisible(true);
+            new DiningRoom().setVisible(true);
             //closing the screen
             closeScreen = true;
         }
@@ -896,9 +898,6 @@ public class Games
             //setting the speech
             SpeechMethods.setSpeech("Very much thanks for finding my map, but it still in pieces! ");
             
-            //opens the next stage of this game
-            new SlidingPuzzleScreen().setVisible(true);
-            
             //sets the user objects variable to be true
             currentUser.setCompletedFindMapTrue();
             userManager.updateCurrentArrayList();
@@ -907,7 +906,12 @@ public class Games
             
             //setting this variable to false so that the next screen opened is not a repeat of this game
             GameSwitchMethods gm = new GameSwitchMethods();
-            gm.setIsGameBeingOpened(false);
+            gm.setFindingMapSelected(false);
+            gm.setSlidingPuzzleSelected(true);
+            
+            //opens the next stage of this game
+            new ObjectiveScreen().setVisible(true);
+            new SlidingPuzzleScreen().setVisible(true);
         }
     }
     
@@ -1328,7 +1332,7 @@ public class Games
         //checks if all riddles have been answered correctly
         if(message.equals(completeMessage))
         {
-            new SpeechMiniScreen().setVisible(true);
+            new DiningRoom().setVisible(true);
             
             //sets the user objects variable to be true
             currentUser.setCompletedMagicSquareTrue();

@@ -41,6 +41,9 @@ public class UserScreen extends javax.swing.JFrame
         //resetting the GameSwitch variables to all be false
         GameSwitchMethods.resetOptionVariables();
         
+        GameSwitchMethods gm = new GameSwitchMethods();
+        gm.setIsGameBeingOpened(false);
+        
         //setting it to be in the centre of the screen
         setLocationRelativeTo (null);        
     }

@@ -8,6 +8,7 @@ package Interface;
 import Backend.GameSwitchMethods;
 import static Backend.GameSwitchMethods.*;
 import Backend.Games;
+import Backend.UserManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -20,6 +21,7 @@ import java.util.logging.Logger;
 public class LoungeScreen extends javax.swing.JFrame
 {
     Games game = new Games();
+    UserManager um = new UserManager();
     
     /**
      * Creates new form LoungeScreen
@@ -32,6 +34,20 @@ public class LoungeScreen extends javax.swing.JFrame
         
         //resetting the GameSwitch variables to all be false
         GameSwitchMethods.resetOptionVariables();
+        
+        //checks if the fire iron has already been found or not
+        if(um.getSelectedUser().isInvestigatedFireIron())
+        {
+            fireIronButton.setIcon(null);
+            remove(fireIronButton);
+        }
+        
+        //checks if the knife  has already been found or not
+        if(um.getSelectedUser().isInvestigatedKnife())
+        {
+            knifeButton.setIcon(null);
+            remove(knifeButton);
+        }
     }
 
     /**
@@ -104,6 +120,13 @@ public class LoungeScreen extends javax.swing.JFrame
         fireIronButton.setBorderPainted(false);
         fireIronButton.setContentAreaFilled(false);
         fireIronButton.setFocusPainted(false);
+        fireIronButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                fireIronButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(fireIronButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, -30, 50, 430));
 
         knifeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\knife.png")); // NOI18N
@@ -111,6 +134,13 @@ public class LoungeScreen extends javax.swing.JFrame
         knifeButton.setBorderPainted(false);
         knifeButton.setContentAreaFilled(false);
         knifeButton.setFocusPainted(false);
+        knifeButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                knifeButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(knifeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 640, 70, 70));
 
         picButton.setOpaque(false);
@@ -204,6 +234,52 @@ public class LoungeScreen extends javax.swing.JFrame
             Logger.getLogger(LoungeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_picButtonActionPerformed
+
+    private void fireIronButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_fireIronButtonActionPerformed
+    {//GEN-HEADEREND:event_fireIronButtonActionPerformed
+        fireIronButton.setIcon(null);
+        remove(fireIronButton);
+        um.getSelectedUser().setInvestigatedFireIronTrue();
+        um.updateCurrentArrayList();
+        try
+        {
+            um.save(um.getSelectedUser().getUserID(), "FireIron", 1);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try
+        {
+            new DiaryScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_fireIronButtonActionPerformed
+
+    private void knifeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_knifeButtonActionPerformed
+    {//GEN-HEADEREND:event_knifeButtonActionPerformed
+        knifeButton.setIcon(null);
+        remove(knifeButton);
+        um.getSelectedUser().setInvestigatedKnifeTrue();
+        um.updateCurrentArrayList();
+        try
+        {
+            um.save(um.getSelectedUser().getUserID(), "Knife", 1);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try
+        {
+            new DiaryScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SeatCompartmentsScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_knifeButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
