@@ -38,8 +38,22 @@ public class Games
     private int numWins;
     private int numLoses;
     private int numDraws;
-    private String[][] layout = new String[3][3];
+    private String[][] layout = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
     private ArrayList <String> openSpaces = new ArrayList<>();
+    
+    
+    //instantiates the layout 2d array
+    public void instantiateLayout()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 3; j++)
+            {
+                layout[i][j] = " ";
+            }
+        }
+    }
+    
     
     //instantiates the array list
     public void instantiateOpenSpaces()
@@ -71,7 +85,7 @@ public class Games
     //checks if the button pressed is free to be used
     public boolean isButtonUsed(String buttonText)
     {
-        if(buttonText == "-")
+        if(buttonText == " ")
         {
             return false;
         }
@@ -89,20 +103,21 @@ public class Games
         //checking if button is free
         if(!isButtonUsed(button.getText()))
         {
+            System.out.println("Made it");
+            System.out.println(symbol);
+            
             //adding symbol
             button.setText(symbol);
+            System.out.println(button.getText());
+            
            
             //removing this button from the buttons used
-//            int numButton = Integer.parseInt(numButton.substring(4));
-//            int index = openSpaces.indexOf("button" + numButton);
             openSpaces.remove("button" + numButton);
             
             //adding this symbol to the layout
             int[] buttonPos = getButtonPos(button, numButton);
             layout[buttonPos[0]][buttonPos[1]] = symbol;
-            
-            //checks if the game has been won
-            isTicTacToeWinCheck();
+            System.out.println(layout[buttonPos[0]][buttonPos[1]]);
         }
     }
     
@@ -188,225 +203,206 @@ public class Games
         //getting values
         //creating a defaultArrayList
         ArrayList<String> newAL = new ArrayList<>();
-        for(int i = 0; i < 9; i++)
+        for(int i = 1; i < 10; i++)
         {
-            newAL.add("button" + i+1);
+            newAL.add("button" + i);
+        }
+        
+        //creating a default array for the layout (need this because the winCheck needs the thingys to be not null)
+        String[][] newLayout = new String[3][3];
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 3; j++)
+            {
+                newLayout[i][j] = " ";
+            }
         }
         
         //setting values
-        numWins = 0;
-        numDraws = 0;
-        numLoses = 0;
-        layout = new String[3][3];
+        layout = newLayout;
         openSpaces = newAL;
     }
     
     
+    //checks if the whole game has been won
+    public void isTicTacToeComplete() throws SQLException, IOException
+    {
+        if(numWins == 3)
+        {
+            //opening the screens that are required
+            new SpeechMiniScreen().setVisible(true);
+            
+            //updating the variables
+            currentUser.setCompletedTicTacToeTrue();
+            userManager.updateCurrentArrayList();
+            userManager.setUsers(currentArrayList);
+            userManager.save(currentUser.getUserID(), "TicTacToe", 1);
+            
+        }
+    }
+    
     //checks if the round has been won and if the whole game is completed
-    public boolean isTicTacToeWinCheck()
+    //boolean to be used in the GUI to reset the UI version of the grid
+    public boolean isTicTacToeRoundComplete()
     {
         //all possible win scenarios
         //#1
         if((layout[0][0] == layout[0][1] && layout[0][0]== layout[0][2]))
         {
-            //resetTicTac
-            resetTicTacToe();
-            
             //checking who won
             if(layout[0][0].equals("X"))
             {
                 numWins++;
-                
-                //checking if the whole game is won
-                //WIN
-                if(numWins == 3)
-                {
-                    return true;
-                }
             }
             
             //LOSE
-            else
+            else if(layout[0][0].equals("O"))
             {
                 numLoses++;
             }
+            
+            //resetting the grid
+            resetTicTacToe();
+            return true; 
         }
         
         //#2
         else if(layout[1][0] == layout[1][1] && layout[1][0]== layout[1][2])
         {
-            //resetting the whole grid
-            resetTicTacToe();
-
             if(layout[1][0].equals("X"))
             {
                 numWins++;
-
-                //checking if the whole game is won
-                //WIN
-                if(numWins == 3)
-                {
-                    return true;
-                }
             }
 
-            else
+            else if(layout[1][0].equals("O")) 
             {
                 numLoses++;
             }
+            
+            //resetting the grid
+            resetTicTacToe();
+            return true; 
         }
         
         
         //#3
         else if((layout[2][0] == layout[2][1] && layout[2][0]== layout[2][2]))
         {
-            //resetting the whole grid
-            resetTicTacToe();
-
             if(layout[2][0].equals("X"))
             {
                 numWins++;
-
-                //checking if the whole game is won
-                //WIN
-                if(numWins == 3)
-                {
-                    return true;
-                }
             }
 
-            else
+            else if(layout[2][0].equals("O"))
             {
                 numLoses++;
             }
+            
+            //resetting the grid
+            resetTicTacToe();
+            return true; 
         }
         
         //#4
          else if((layout[0][0] == layout[1][1] && layout[0][0]== layout[2][2]))
         {
-            //resetting the whole grid
-            resetTicTacToe();
-
             if(layout[0][0].equals("X"))
             {
                 numWins++;
-
-                //checking if the whole game is won
-                //WIN
-                if(numWins == 3)
-                {
-                    return true;
-                }
             }
 
-            else
+            else if(layout[0][0].equals("O"))
             {
                 numLoses++;
             }
+            
+            //resetting the grid
+            resetTicTacToe();
+            return true; 
         }
          
         //#5 
         else if((layout[0][2] == layout[1][1] && layout[0][2]== layout[2][0]))
         {
-            //resetting the whole grid
-            resetTicTacToe();
-
             if(layout[0][2].equals("X"))
             {
                 numWins++;
-
-                //checking if the whole game is won
-                //WIN
-                if(numWins == 3)
-                {
-                    return true;
-                }
             }
 
-            else
+            else if(layout[0][2].equals("O"))
             {
                 numLoses++;
             }
+            
+            //resetting the grid
+            resetTicTacToe();
+            return true; 
         }
         
         //#6
         else if((layout[0][0] == layout[1][0] && layout[0][0]== layout[2][0]))
         {
-            //resetting the whole grid
-            resetTicTacToe();
-
             if(layout[0][0].equals("X"))
             {
                 numWins++;
-
-                //checking if the whole game is won
-                //WIN
-                if(numWins == 3)
-                {
-                    return true;
-                }
             }
 
-            else
+            else if(layout[0][0].equals("O"))
             {
                 numLoses++;
             }
+            
+            //resetting the grid
+            resetTicTacToe();
+            return true; 
         }
         
         //#7
         else if((layout[0][1] == layout[1][1] && layout[0][1]== layout[2][1]))
         {
-            //resetting the whole grid
-            resetTicTacToe();
-
             if(layout[0][1].equals("X"))
             {
                 numWins++;
-
-                //checking if the whole game is won
-                //WIN
-                if(numWins == 3)
-                {
-                    return true;
-                }
             }
 
-            else
+            else if(layout[0][1].equals("O"))
             {
                 numLoses++;
             }
+            
+            //resetting the grid
+            resetTicTacToe();
+            return true; 
         }
         
         //#8
         else if((layout[0][2] == layout[1][2] && layout[0][2]== layout[2][2]))
         {
-            //resetting the whole grid
-            resetTicTacToe();
-
             if(layout[0][2].equals("X"))
             {
                 numWins++;
-
-                //checking if the whole game is won
-                //WIN
-                if(numWins == 3)
-                {
-                    return true;
-                }
             }
 
-            else
+            else if(layout[0][2].equals("O"))
             {
                 numLoses++;
             }
+            
+            //resetting the grid
+            resetTicTacToe();
+            return true; 
         }
         
         //drawing
         else if(!checkIfOpenSpaces())
         {
             numDraws++;
+            //resetting the grid
+            resetTicTacToe();
+            return true; 
         }
         
+        //there is no win and there are still open spaces
         return false;
     }
     

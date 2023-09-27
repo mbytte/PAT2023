@@ -28,9 +28,26 @@ public class TicTacToeScreen extends javax.swing.JFrame
         
         //instantiating the openspaces arraylist
         game.instantiateOpenSpaces();
+        //game.instantiateLayout();
         
         //getting the results from all the matches
         statsTextArea.setText(game.ticTacToeToString());
+        //resetButtonValues();
+    }
+    
+    
+    //sets all the buttons to their default values
+    public void resetButtonValues()
+    {
+        button1.setText(" ");
+        button2.setText(" ");
+        button3.setText(" ");
+        button4.setText(" ");
+        button5.setText(" ");
+        button6.setText(" ");
+        button7.setText(" ");
+        button8.setText(" ");
+        button9.setText(" ");
     }
 
     /**
@@ -134,7 +151,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(infoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 110, -1, 60));
 
         button1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
-        button1.setText("-");
+        button1.setText(" ");
         button1.setBorder(null);
         button1.addActionListener(new java.awt.event.ActionListener()
         {
@@ -146,7 +163,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 120, 120));
 
         button2.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
-        button2.setText("-");
+        button2.setText(" ");
         button2.setBorder(null);
         button2.addActionListener(new java.awt.event.ActionListener()
         {
@@ -158,7 +175,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, 120, 120));
 
         button3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
-        button3.setText("-");
+        button3.setText(" ");
         button3.setBorder(null);
         button3.addActionListener(new java.awt.event.ActionListener()
         {
@@ -170,7 +187,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 120, 120));
 
         button4.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
-        button4.setText("-");
+        button4.setText(" ");
         button4.setBorder(null);
         button4.addActionListener(new java.awt.event.ActionListener()
         {
@@ -182,7 +199,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 120, 120));
 
         button5.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
-        button5.setText("-");
+        button5.setText(" ");
         button5.setBorder(null);
         button5.addActionListener(new java.awt.event.ActionListener()
         {
@@ -194,7 +211,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 120, 120));
 
         button6.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
-        button6.setText("-");
+        button6.setText(" ");
         button6.setBorder(null);
         button6.addActionListener(new java.awt.event.ActionListener()
         {
@@ -206,7 +223,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 320, 120, 120));
 
         button7.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
-        button7.setText("-");
+        button7.setText(" ");
         button7.setBorder(null);
         button7.addActionListener(new java.awt.event.ActionListener()
         {
@@ -218,7 +235,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 120, 120));
 
         button8.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
-        button8.setText("-");
+        button8.setText(" ");
         button8.setBorder(null);
         button8.addActionListener(new java.awt.event.ActionListener()
         {
@@ -230,6 +247,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         getContentPane().add(button8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 460, 120, 120));
 
         button9.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
+        button9.setText(" ");
         button9.setBorder(null);
         button9.addActionListener(new java.awt.event.ActionListener()
         {
@@ -286,8 +304,14 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button1ActionPerformed
         game.addSymbol(button1, 1, "X");
         
-        //reseting the statistics in case of a win or draw
-        statsTextArea.setText(game.ticTacToeToString());
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
+        }
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -323,14 +347,29 @@ public class TicTacToeScreen extends javax.swing.JFrame
         {
             game.addSymbol(button9, 9, "O");
         }
+        
+//        if(game.isTicTacToeRoundComplete())
+//        {
+//            //reseting the statistics in case of a win or draw
+//            statsTextArea.setText(game.ticTacToeToString());
+//            
+//            //resetting the display
+//            resetButtonValues();
+//        }
     }//GEN-LAST:event_button1ActionPerformed
 
     private void button2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button2ActionPerformed
     {//GEN-HEADEREND:event_button2ActionPerformed
         game.addSymbol(button2, 2, "X");
         
-        //reseting the statistics in case of a win or draw
-        statsTextArea.setText(game.ticTacToeToString());
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
+        }
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -366,14 +405,29 @@ public class TicTacToeScreen extends javax.swing.JFrame
         {
             game.addSymbol(button9, 9, "O");
         }
+        
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
+        }
     }//GEN-LAST:event_button2ActionPerformed
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button3ActionPerformed
     {//GEN-HEADEREND:event_button3ActionPerformed
         game.addSymbol(button3, 3, "X");
         
-        //reseting the statistics in case of a win or draw
-        statsTextArea.setText(game.ticTacToeToString());
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
+        }
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -408,6 +462,15 @@ public class TicTacToeScreen extends javax.swing.JFrame
         else
         {
             game.addSymbol(button9, 9, "O");
+        }
+        
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
         }
     }//GEN-LAST:event_button3ActionPerformed
 
@@ -415,8 +478,14 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button4ActionPerformed
         game.addSymbol(button4, 4, "X");
         
-        //reseting the statistics in case of a win or draw
-        statsTextArea.setText(game.ticTacToeToString());
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
+        }
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -451,6 +520,15 @@ public class TicTacToeScreen extends javax.swing.JFrame
         else
         {
             game.addSymbol(button9, 9, "O");
+        }
+        
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
         }
     }//GEN-LAST:event_button4ActionPerformed
 
@@ -458,8 +536,14 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button5ActionPerformed
         game.addSymbol(button5, 5, "X");
         
-        //reseting the statistics in case of a win or draw
-        statsTextArea.setText(game.ticTacToeToString());
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
+        }
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -494,6 +578,15 @@ public class TicTacToeScreen extends javax.swing.JFrame
         else
         {
             game.addSymbol(button9, 9, "O");
+        }
+        
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
         }
     }//GEN-LAST:event_button5ActionPerformed
 
@@ -501,8 +594,14 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button6ActionPerformed
         game.addSymbol(button6, 6, "X");
         
-        //reseting the statistics in case of a win or draw
-        statsTextArea.setText(game.ticTacToeToString());
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
+        }
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -537,6 +636,15 @@ public class TicTacToeScreen extends javax.swing.JFrame
         else
         {
             game.addSymbol(button9, 9, "O");
+        }
+        
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
         }
     }//GEN-LAST:event_button6ActionPerformed
 
@@ -544,8 +652,14 @@ public class TicTacToeScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_button7ActionPerformed
         game.addSymbol(button7, 7, "X");
         
-        //reseting the statistics in case of a win or draw
-        statsTextArea.setText(game.ticTacToeToString());
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
+        }
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -581,14 +695,29 @@ public class TicTacToeScreen extends javax.swing.JFrame
         {
             game.addSymbol(button9, 9, "O");
         }
+        
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
+        }
     }//GEN-LAST:event_button7ActionPerformed
 
     private void button8ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button8ActionPerformed
     {//GEN-HEADEREND:event_button8ActionPerformed
         game.addSymbol(button8, 8, "X");
         
-        //reseting the statistics in case of a win or draw
-        statsTextArea.setText(game.ticTacToeToString());
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
+        }
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -624,14 +753,29 @@ public class TicTacToeScreen extends javax.swing.JFrame
         {
             game.addSymbol(button9, 9, "O");
         }
+        
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
+        }
     }//GEN-LAST:event_button8ActionPerformed
 
     private void button9ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button9ActionPerformed
     {//GEN-HEADEREND:event_button9ActionPerformed
         game.addSymbol(button9, 9, "X");
         
-        //reseting the statistics in case of a win or draw
-        statsTextArea.setText(game.ticTacToeToString());
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
+        }
         
         //AI's turn
         String computerMove = game.computerMove();
@@ -666,6 +810,15 @@ public class TicTacToeScreen extends javax.swing.JFrame
         else
         {
             game.addSymbol(button8, 8, "O");
+        }
+        
+        if(game.isTicTacToeRoundComplete())
+        {
+            //reseting the statistics in case of a win or draw
+            statsTextArea.setText(game.ticTacToeToString());
+            
+            //resetting the display
+            resetButtonValues();
         }
     }//GEN-LAST:event_button9ActionPerformed
 
