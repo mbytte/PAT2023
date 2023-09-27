@@ -66,7 +66,9 @@ public class SpeechMiniScreen extends javax.swing.JFrame
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 900, 120));
 
+        characterPic.setBackground(new java.awt.Color(139, 118, 82));
         characterPic.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
+        characterPic.setOpaque(true);
         getContentPane().add(characterPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 30, 150, 170));
 
         nextButton.setBackground(new java.awt.Color(15, 28, 33));
@@ -92,12 +94,26 @@ public class SpeechMiniScreen extends javax.swing.JFrame
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_nextButtonActionPerformed
     {//GEN-HEADEREND:event_nextButtonActionPerformed
+        GameSwitchMethods gm = new GameSwitchMethods(); 
+        //closing the screens that are open
+        gm.closeScreens();
+
         //opens the next relative screen
-        GameSwitchMethods gm = new GameSwitchMethods();
         try
         {
-            new ObjectiveScreen().setVisible(true);
-            gm.openGameScreen();
+            //game is started and therefore being opened
+            if(gm.isIsGameBeingOpened())
+            {
+                new ObjectiveScreen().setVisible(true);
+                gm.openGameScreen();
+            }
+            //game has ended and therefore the next screen opened is the dining room
+            else
+            {
+                new DiningRoom().setVisible(true);
+            }
+            
+            
         } catch (IOException ex)
         {
             Logger.getLogger(SpeechMiniScreen.class.getName()).log(Level.SEVERE, null, ex);
@@ -105,9 +121,6 @@ public class SpeechMiniScreen extends javax.swing.JFrame
         {
             Logger.getLogger(SpeechMiniScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        //closing screens
-        this.dispose();
     }//GEN-LAST:event_nextButtonActionPerformed
 
 

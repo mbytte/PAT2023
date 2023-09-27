@@ -297,7 +297,13 @@ public class TicTacToeScreen extends javax.swing.JFrame
 
     private void infoButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_infoButtonActionPerformed
     {//GEN-HEADEREND:event_infoButtonActionPerformed
-        new ObjectiveScreen().setVisible(true);
+        try
+        {
+            new ObjectiveScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TicTacToeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_infoButtonActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_button1ActionPerformed

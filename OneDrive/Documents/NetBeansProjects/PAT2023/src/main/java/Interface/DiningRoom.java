@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Backend.GameSwitchMethods;
 import static Backend.GameSwitchMethods.*;
 import Backend.Games;
 import static Backend.SpeechMethods.*;
@@ -31,8 +32,8 @@ public class DiningRoom extends javax.swing.JFrame
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH); 
         
-        //ensuring all the games are false
-        resetOptionVariables();
+        //resetting the GameSwitch variables to all be false
+        GameSwitchMethods.resetOptionVariables();
     }
 
     /**

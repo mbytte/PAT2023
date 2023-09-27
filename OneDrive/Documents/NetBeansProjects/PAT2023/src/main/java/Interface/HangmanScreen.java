@@ -150,7 +150,7 @@ public class HangmanScreen extends javax.swing.JFrame
                 hangmanTextFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(hangmanTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 340, 70));
+        getContentPane().add(hangmanTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 500, 70));
 
         answerTextField.setBackground(new java.awt.Color(15, 28, 33));
         answerTextField.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
@@ -216,7 +216,13 @@ public class HangmanScreen extends javax.swing.JFrame
 
     private void infoButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_infoButtonActionPerformed
     {//GEN-HEADEREND:event_infoButtonActionPerformed
-        new ObjectiveScreen().setVisible(true);
+        try
+        {
+            new ObjectiveScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(HangmanScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_infoButtonActionPerformed
 
     private void answerButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerButtonActionPerformed

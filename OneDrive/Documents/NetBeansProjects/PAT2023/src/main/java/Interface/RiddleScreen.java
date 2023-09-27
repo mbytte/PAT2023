@@ -200,7 +200,13 @@ public class RiddleScreen extends javax.swing.JFrame
 
     private void infoButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_infoButtonActionPerformed
     {//GEN-HEADEREND:event_infoButtonActionPerformed
-        new ObjectiveScreen().setVisible(true);
+        try
+        {
+            new ObjectiveScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(RiddleScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_infoButtonActionPerformed
 
     private void answerTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerTextFieldActionPerformed

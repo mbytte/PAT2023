@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Backend.GameSwitchMethods;
 import Backend.Games;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -346,13 +347,22 @@ public class MagicSquareScreen extends javax.swing.JFrame
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_homeButtonActionPerformed
     {//GEN-HEADEREND:event_homeButtonActionPerformed
-        this.dispose();
+        //closing all the screens because they will not longer be needed
+        GameSwitchMethods gm = new GameSwitchMethods();
+        gm.closeScreens();
+        
         new UserScreen().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void infoButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_infoButtonActionPerformed
     {//GEN-HEADEREND:event_infoButtonActionPerformed
-        new ObjectiveScreen().setVisible(true);
+        try
+        {
+            new ObjectiveScreen().setVisible(true);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(MagicSquareScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_infoButtonActionPerformed
 
     private void answerButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerButtonActionPerformed

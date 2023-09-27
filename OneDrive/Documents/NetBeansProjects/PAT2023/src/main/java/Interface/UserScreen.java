@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Backend.GameSwitchMethods;
 import Backend.SceneMethods;
 import Backend.UserManager;
 import java.io.IOException;
@@ -37,6 +38,8 @@ public class UserScreen extends javax.swing.JFrame
         listModel.addAll(usersNames);
         userList.setModel(listModel);
         
+        //resetting the GameSwitch variables to all be false
+        GameSwitchMethods.resetOptionVariables();
         
         //setting it to be in the centre of the screen
         setLocationRelativeTo (null);        

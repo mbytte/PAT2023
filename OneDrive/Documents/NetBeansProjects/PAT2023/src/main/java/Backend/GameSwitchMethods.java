@@ -16,6 +16,7 @@ import Interface.SceneScreen;
 import Interface.SlidingPuzzleScreen;
 import Interface.TicTacToeScreen;
 import Interface.WordGameScreen;
+import java.awt.Window;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,46 +41,74 @@ public class GameSwitchMethods
     private static boolean sceneGameSelected;
     private static boolean diningRoomSelected;
     private static boolean loungeSelected;
+    private static boolean findKeysSelected;
+    private static boolean findCaneSelected;
+    private static boolean isGameBeingOpened;
+    
+    
+    //checks if a game is about to be playyed or not -> this is needed because SpeechScreen deals with both the before and after text of the game and as such needs an indication of what to open
+    private static void isGameBeingOpened(boolean game)
+    {        
+        //a game variable being set to true means that a game is about to be played
+        if(game)
+        {
+            isGameBeingOpened = true;
+        }
+        
+        else
+        {
+            isGameBeingOpened = false;
+        }
+    }
+    
     
     //setters
     public static void setFindingMapSelected(boolean findingMapSelected)
     {
         GameSwitchMethods.findingMapSelected = findingMapSelected;
+        isGameBeingOpened(findingMapSelected);
     }
 
     public static void setRiddleSelected(boolean riddleSelected)
     {
         GameSwitchMethods.riddleSelected = riddleSelected;
+        isGameBeingOpened(riddleSelected);
     }
 
     public static void setHangmanSelected(boolean hangmanSelected)
     {
         GameSwitchMethods.hangmanSelected = hangmanSelected;
+        isGameBeingOpened(hangmanSelected);
     }
 
     public static void setSlidingPuzzleSelected(boolean slidingPuzzleSelected)
     {
         GameSwitchMethods.slidingPuzzleSelected = slidingPuzzleSelected;
+        isGameBeingOpened(slidingPuzzleSelected);
     }
 
     public static void setMagicSquareSelected(boolean magicSquareSelected)
     {
         GameSwitchMethods.magicSquareSelected = magicSquareSelected;
+        isGameBeingOpened(magicSquareSelected);
     }
 
     public static void setTicTacToeSelected(boolean ticTacToeSelected)
     {
         GameSwitchMethods.ticTacToeSelected = ticTacToeSelected;
+        isGameBeingOpened(ticTacToeSelected);
     }
 
     public static void setCrosswordSelected(boolean crosswordSelected)
     {
         GameSwitchMethods.crosswordSelected = crosswordSelected;
+        isGameBeingOpened(crosswordSelected);
     }
 
     public static void setWordGameSelected(boolean wordGameSelected)
     {
         GameSwitchMethods.wordGameSelected = wordGameSelected;
+        isGameBeingOpened(wordGameSelected);
     }
 
     public static void setSceneGameSelected(boolean sceneGameSelected)
@@ -96,6 +125,32 @@ public class GameSwitchMethods
     {
         GameSwitchMethods.loungeSelected = loungeSelected;
     }
+
+    public static void setFindKeysSelected(boolean findKeysSelected)
+    {
+        GameSwitchMethods.findKeysSelected = findKeysSelected;
+    }
+
+    public static void setFindCaneSelected(boolean findCaneSelected)
+    {
+        GameSwitchMethods.findCaneSelected = findCaneSelected;
+    }
+
+    public static void setIsGameBeingOpened(boolean isGameBeingOpened)
+    {
+        GameSwitchMethods.isGameBeingOpened = isGameBeingOpened;
+    }
+    
+    
+
+    
+    //getters
+    public boolean isIsGameBeingOpened()
+    {
+        return isGameBeingOpened;
+    }
+    
+    
     
     
     //resets all the variables to false
@@ -110,6 +165,8 @@ public class GameSwitchMethods
         crosswordSelected = false;
         wordGameSelected = false;
         sceneGameSelected = false;
+        findCaneSelected = false;
+        findKeysSelected = false;
         diningRoomSelected = false;
         loungeSelected = false;
     }
@@ -161,6 +218,16 @@ public class GameSwitchMethods
         else if(sceneGameSelected)
         {
             return "FinalScene";
+        }
+        
+        else if(findCaneSelected)
+        {
+            return "FindMap";
+        }
+        
+        else if(findKeysSelected)
+        {
+            return "FindKeys";
         }
         
         return "none selected";
@@ -259,6 +326,18 @@ public class GameSwitchMethods
         }
         
         //the tasks that do not have a screen will not open a screen
+    }
+    
+    
+    //checks if loungeScreen is still open and closes it
+    public void closeScreens()
+    {
+        //closing screens
+        Window[] windowsOpen = Window.getWindows();
+        for(int i = 0; i < windowsOpen.length; i++)
+        {
+            windowsOpen[i].dispose();
+        }
     }
 }
 

@@ -6,6 +6,7 @@
 package Interface;
 
 import Backend.Diary;
+import Backend.GameSwitchMethods;
 import Backend.UserManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -177,7 +178,10 @@ public class DiaryScreen extends javax.swing.JFrame
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_homeButtonActionPerformed
     {//GEN-HEADEREND:event_homeButtonActionPerformed
-        this.dispose();
+        //closing all the screens because they will not longer be needed
+        GameSwitchMethods gm = new GameSwitchMethods();
+        gm.closeScreens();
+        
         new UserScreen().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 

@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Backend.GameSwitchMethods;
 import static Backend.GameSwitchMethods.resetOptionVariables;
 import Backend.Games;
 import java.io.IOException;
@@ -29,8 +30,8 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
         //setting full screen
         this.setExtendedState(this.MAXIMIZED_BOTH);
         
-        //ensuring all the games are false
-        resetOptionVariables();
+        //resetting the GameSwitch variables to all be false
+        GameSwitchMethods.resetOptionVariables();
     }
 
     /**

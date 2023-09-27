@@ -117,10 +117,11 @@ public class ObjectiveScreen extends javax.swing.JFrame
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_homeButtonActionPerformed
     {//GEN-HEADEREND:event_homeButtonActionPerformed
-        this.dispose();
+        //closing all the screens because they will not longer be needed
+        GameSwitchMethods gm = new GameSwitchMethods();
+        gm.closeScreens();
+        
         new UserScreen().setVisible(true);
-        
-        
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void hintButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_hintButtonActionPerformed

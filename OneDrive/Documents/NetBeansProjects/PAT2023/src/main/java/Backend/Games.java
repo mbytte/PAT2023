@@ -241,6 +241,9 @@ public class Games
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "TicTacToe", 1);
             
+            //setting this variable to false so that the next screen opened is not a repeat of this game
+            GameSwitchMethods gm = new GameSwitchMethods();
+            gm.setIsGameBeingOpened(false);
         }
     }
     
@@ -459,8 +462,7 @@ public class Games
     public boolean isCloseScreen()
     {
         return closeScreen;
-    }
-    
+    }  
     
     
     //resets to original values
@@ -541,6 +543,10 @@ public class Games
             userManager.updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "Hangman", 1);
+            
+            //setting this variable to false so that the next screen opened is not a repeat of this game
+            GameSwitchMethods gm = new GameSwitchMethods();
+            gm.setIsGameBeingOpened(false);
         }
         
         //lose
@@ -613,6 +619,10 @@ public class Games
             userManager.updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "Riddle", 1);
+            
+            //setting this variable to false so that the next screen opened is not a repeat of this game
+            GameSwitchMethods gm = new GameSwitchMethods();
+            gm.setIsGameBeingOpened(false);
         }
     }
     
@@ -836,6 +846,10 @@ public class Games
             //sets the user objects variable to be true
             currentUser.setCompletedSlidingPuzzleTrue();
             userManager.save(currentUser.getUserID(), "SlidingPuzzle", 1);
+            
+            //setting this variable to false so that the next screen opened is not a repeat of this game
+            GameSwitchMethods gm = new GameSwitchMethods();
+            gm.setIsGameBeingOpened(false);
         }
     }
     
@@ -880,7 +894,7 @@ public class Games
         if(mapFragmentsLeft == 0)
         {
             //setting the speech
-            SpeechMethods.getSpeechDB("InformationSpeech");
+            SpeechMethods.setSpeech("Very much thanks for finding my map, but it still in pieces! ");
             
             //opens the next stage of this game
             new SlidingPuzzleScreen().setVisible(true);
@@ -890,6 +904,10 @@ public class Games
             userManager.updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "FindMap", 1);
+            
+            //setting this variable to false so that the next screen opened is not a repeat of this game
+            GameSwitchMethods gm = new GameSwitchMethods();
+            gm.setIsGameBeingOpened(false);
         }
     }
     
@@ -929,6 +947,10 @@ public class Games
                 userManager.updateCurrentArrayList();
                 userManager.setUsers(currentArrayList);
                 userManager.save(currentUser.getUserID(), "FindKeys", 1);
+                
+                //setting this variable to false so that the next screen opened is not a repeat of this game
+                GameSwitchMethods gm = new GameSwitchMethods();
+                gm.setIsGameBeingOpened(false);
             }
         }
     }
@@ -959,6 +981,10 @@ public class Games
         userManager.updateCurrentArrayList();
         userManager.setUsers(currentArrayList);
         userManager.save(currentUser.getUserID(), "FindCane", 1);
+        
+        //setting this variable to false so that the next screen opened is not a repeat of this game
+        GameSwitchMethods gm = new GameSwitchMethods();
+        gm.setIsGameBeingOpened(false);
     }
     
     
@@ -1085,6 +1111,10 @@ public class Games
                     userManager.updateCurrentArrayList();
                     userManager.setUsers(currentArrayList);
                     userManager.save(currentUser.getUserID(), "Crossword", 1);
+                    
+                    //setting this variable to false so that the next screen opened is not a repeat of this game
+                    GameSwitchMethods gm = new GameSwitchMethods();
+                    gm.setIsGameBeingOpened(false);
                 }
                 
                 return true; //this will then be used to make the answer block either red or green in the UI
@@ -1193,6 +1223,11 @@ public class Games
             userManager.updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "MagicSquare", 1);
+            
+            //setting this variable to false so that the next screen opened is not a repeat of this game
+            GameSwitchMethods gm = new GameSwitchMethods();
+            gm.setIsGameBeingOpened(false);
+            
             return true;
         }
         
@@ -1300,6 +1335,11 @@ public class Games
             userManager.updateCurrentArrayList();
             userManager.setUsers(currentArrayList);
             userManager.save(currentUser.getUserID(), "WordGame", 1);
+            
+            //setting this variable to false so that the next screen opened is not a repeat of this game
+            GameSwitchMethods gm = new GameSwitchMethods();
+            gm.setIsGameBeingOpened(false);
+            
             return true;
         }
         
