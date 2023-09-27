@@ -8,6 +8,7 @@ package Interface;
 import Backend.GameSwitchMethods;
 import Backend.SpeechMethods;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -95,8 +96,12 @@ public class SpeechMiniScreen extends javax.swing.JFrame
         GameSwitchMethods gm = new GameSwitchMethods();
         try
         {
+            new ObjectiveScreen().setVisible(true);
             gm.openGameScreen();
         } catch (IOException ex)
+        {
+            Logger.getLogger(SpeechMiniScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
         {
             Logger.getLogger(SpeechMiniScreen.class.getName()).log(Level.SEVERE, null, ex);
         }

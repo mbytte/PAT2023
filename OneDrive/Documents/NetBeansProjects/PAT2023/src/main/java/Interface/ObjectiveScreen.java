@@ -5,6 +5,11 @@
  */
 package Interface;
 
+import Backend.GameSwitchMethods;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author megan
@@ -12,15 +17,19 @@ package Interface;
 public class ObjectiveScreen extends javax.swing.JFrame
 {
 
+    GameSwitchMethods gm = new GameSwitchMethods();
     /**
      * Creates new form ObjectiveScreen
      */
-    public ObjectiveScreen()
+    public ObjectiveScreen() throws SQLException
     {
         initComponents();
         
         //setting it to be in the centre of the screen
         setLocationRelativeTo (null);  
+        
+        //resetting all the game variables to be false
+        infoTextArea.setText(gm.getData("HowToPlay"));
     }
 
     /**
@@ -41,14 +50,14 @@ public class ObjectiveScreen extends javax.swing.JFrame
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1110, 580));
+        setAlwaysOnTop(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         infoTextArea.setEditable(false);
         infoTextArea.setBackground(new java.awt.Color(15, 28, 33));
         infoTextArea.setColumns(20);
-        infoTextArea.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
-        infoTextArea.setForeground(new java.awt.Color(139, 118, 82));
+        infoTextArea.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        infoTextArea.setForeground(new java.awt.Color(234, 232, 231));
         infoTextArea.setLineWrap(true);
         infoTextArea.setRows(5);
         infoTextArea.setWrapStyleWord(true);
@@ -110,11 +119,20 @@ public class ObjectiveScreen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_homeButtonActionPerformed
         this.dispose();
         new UserScreen().setVisible(true);
+        
+        
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void hintButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_hintButtonActionPerformed
     {//GEN-HEADEREND:event_hintButtonActionPerformed
-        //adds information to the text area
+        try
+        {
+            //resetting all the game variables to be false
+            infoTextArea.setText(gm.getData("Help"));
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(ObjectiveScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_hintButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_closeButtonActionPerformed

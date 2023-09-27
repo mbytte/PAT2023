@@ -6,8 +6,10 @@
 package Backend;
 
 import Interface.CrosswordScreen;
+import Interface.DiningRoom;
 import Interface.FindingGameScreen;
 import Interface.HangmanScreen;
+import Interface.LoungeScreen;
 import Interface.MagicSquareScreen;
 import Interface.RiddleScreen;
 import Interface.SceneScreen;
@@ -36,6 +38,8 @@ public class GameSwitchMethods
     private static boolean crosswordSelected;
     private static boolean wordGameSelected;
     private static boolean sceneGameSelected;
+    private static boolean diningRoomSelected;
+    private static boolean loungeSelected;
     
     //setters
     public static void setFindingMapSelected(boolean findingMapSelected)
@@ -82,8 +86,17 @@ public class GameSwitchMethods
     {
         GameSwitchMethods.sceneGameSelected = sceneGameSelected;
     }
-    
 
+    public static void setDiningRoomSelected(boolean diningRoomSelected)
+    {
+        GameSwitchMethods.diningRoomSelected = diningRoomSelected;
+    }
+
+    public static void setLoungeSelected(boolean loungeSelected)
+    {
+        GameSwitchMethods.loungeSelected = loungeSelected;
+    }
+    
     
     //resets all the variables to false
     public static void resetOptionVariables()
@@ -97,236 +110,98 @@ public class GameSwitchMethods
         crosswordSelected = false;
         wordGameSelected = false;
         sceneGameSelected = false;
+        diningRoomSelected = false;
+        loungeSelected = false;
+    }
+    
+    
+    //gets the current game
+    private String getSelectedGame()
+    {
+        if(findingMapSelected)
+        {
+            return "FindMap";
+        }
+        
+        else if(riddleSelected)
+        {
+            return "Riddle";
+        }
+        
+        else if(hangmanSelected)
+        {
+            return "Hangman";
+        }
+        
+        else if(slidingPuzzleSelected)
+        {
+            return "SlidingPuzzle";
+        }
+        
+        else if(magicSquareSelected)
+        {
+            return "MagicSquare";
+        }
+        
+        else if(ticTacToeSelected)
+        {
+            return "TicTacToe";
+        }
+        
+        else if(crosswordSelected)
+        {
+            return "Crossword";
+        }
+        
+        else if(wordGameSelected)
+        {
+            return "WordGame";
+        }
+        
+        else if(sceneGameSelected)
+        {
+            return "FinalScene";
+        }
+        
+        return "none selected";
+    }
+    
+    
+    //fetches the data from the db
+    private String fetchData(String col) throws SQLException
+    {
+        //variables
+        String output = "";
+        String game = getSelectedGame();
+
+        //running a query to fetch the data
+        UserManager userManager = new UserManager();
+        String query = "SELECT " + col + " FROM tblTaskMessages WHERE Task = \"" + game + "\"";
+        ResultSet results = userManager.query(query);
+
+        //changing it into a string
+        try
+        {
+            results.next();
+            output = results.getString(col);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return output;
     }
     
     
     //gets whatever info is needed for this game
     public String getData(String infoNeeded) throws SQLException
     {
-        if(findingMapSelected)
-        {
-            //variables
-            String output = "";
-            
-            //running a query to fetch the data
-            UserManager userManager = new UserManager();
-            String query = ""; //use th infoNeeded variable here
-            ResultSet results = userManager.query(query);
-            
-            //changing it into a string
-            try
-            {
-                output = results.getString("Data");
-            } catch (SQLException ex)
-            {
-                Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            return output;
-        }
-        
-        else if(riddleSelected)
-        {
-            //variables
-            String output = "";
-            
-            //running a query to fetch the data
-            UserManager userManager = new UserManager();
-            String query = "";
-            ResultSet results = userManager.query(query);
-            
-            //changing it into a string
-            try
-            {
-                output = results.getString("Data");
-            } catch (SQLException ex)
-            {
-                Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            return output;
-        }
-        
-        else if(hangmanSelected)
-        {
-            //variables
-            String output = "";
-            
-            //running a query to fetch the data
-            UserManager userManager = new UserManager();
-            String query = "";
-            ResultSet results = userManager.query(query);
-            
-            //changing it into a string
-            try
-            {
-                output = results.getString("Data");
-            } catch (SQLException ex)
-            {
-                Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            return output;
-        }
-        
-        else if(slidingPuzzleSelected)
-        {
-            //variables
-            String output = "";
-            
-            //running a query to fetch the data
-            UserManager userManager = new UserManager();
-            String query = "";
-            ResultSet results = userManager.query(query);
-            
-            //changing it into a string
-            try
-            {
-                output = results.getString("Data");
-            } catch (SQLException ex)
-            {
-                Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            return output;
-        }
-        
-        else if(magicSquareSelected)
-        {
-            //variables
-            String output = "";
-            
-            //running a query to fetch the data
-            UserManager userManager = new UserManager();
-            String query = "";
-            ResultSet results = userManager.query(query);
-            
-            //changing it into a string
-            try
-            {
-                output = results.getString("Data");
-            } catch (SQLException ex)
-            {
-                Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            return output;
-        }
-        
-        else if(ticTacToeSelected)
-        {
-            //variables
-            String output = "";
-            
-            //running a query to fetch the data
-            UserManager userManager = new UserManager();
-            String query = "";
-            ResultSet results = userManager.query(query);
-            
-            //changing it into a string
-            try
-            {
-                output = results.getString("Data");
-            } catch (SQLException ex)
-            {
-                Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            return output;
-        }
-        
-        else if(crosswordSelected)
-        {
-            //variables
-            String output = "";
-            
-            //running a query to fetch the data
-            UserManager userManager = new UserManager();
-            String query = "";
-            ResultSet results = userManager.query(query);
-            
-            //changing it into a string
-            try
-            {
-                output = results.getString("Data");
-            } catch (SQLException ex)
-            {
-                Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            return output;
-        }
-        
-        else if(wordGameSelected)
-        {
-            //variables
-            String output = "";
-            
-            //running a query to fetch the data
-            UserManager userManager = new UserManager();
-            String query = "";
-            ResultSet results = userManager.query(query);
-            
-            //changing it into a string
-            try
-            {
-                output = results.getString("Data");
-            } catch (SQLException ex)
-            {
-                Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            return output;
-        }
-        
-        else if(sceneGameSelected)
-        {
-            //variables
-            String output = "";
-            
-            //running a query to fetch the data
-            UserManager userManager = new UserManager();
-            String query = "";
-            ResultSet results = userManager.query(query);
-            
-            //changing it into a string
-            try
-            {
-                output = results.getString("Data");
-            } catch (SQLException ex)
-            {
-                Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            return output;
-        }
-        
-        else
-        {
-            //variables
-            String output = "";
-            
-            //running a query to fetch the data
-            UserManager userManager = new UserManager();
-            String query = "";
-            ResultSet results = userManager.query(query);
-            
-            //changing it into a string
-            try
-            {
-                output = results.getString("Data");
-            } catch (SQLException ex)
-            {
-                Logger.getLogger(GameSwitchMethods.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            return output;
-        }
+        return fetchData(infoNeeded);
     } 
     
     
     //opens the next game screen required based off of what the user's previous choices were
-    public void openGameScreen() throws IOException
+    public void openGameScreen() throws IOException, SQLException
     {
         if(findingMapSelected)
         {
@@ -371,6 +246,16 @@ public class GameSwitchMethods
         else if(wordGameSelected)
         {
             new WordGameScreen().setVisible(true);
+        }
+        
+        else if(diningRoomSelected)
+        {
+            new DiningRoom().setVisible(true);
+        }
+        
+        else if(loungeSelected)
+        {
+            new LoungeScreen().setVisible(true);
         }
         
         //the tasks that do not have a screen will not open a screen

@@ -199,6 +199,9 @@ public class LoungeScreen extends javax.swing.JFrame
         } catch (IOException ex)
         {
             Logger.getLogger(LoungeScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(LoungeScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_picButtonActionPerformed
 

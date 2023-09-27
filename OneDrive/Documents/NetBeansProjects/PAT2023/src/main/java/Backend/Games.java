@@ -229,6 +229,9 @@ public class Games
     {
         if(numWins == 3)
         {
+            //setting the speech
+            SpeechMethods.getSpeechDB("InformationSpeech");
+            
             //opening the screens that are required
             new SpeechMiniScreen().setVisible(true);
             
@@ -526,6 +529,9 @@ public class Games
         //win
         if(Arrays.equals(correctWordArray, usersWordArray))
         {
+            //setting the speech
+            SpeechMethods.getSpeechDB("InformationSpeech");
+            
             new SpeechMiniScreen().setVisible(true);
             //closing the screen
             closeScreen = true;
@@ -597,6 +603,9 @@ public class Games
         //right answer
         if(userInput.equals(riddleAnswer))
         {
+            //setting the speech
+            SpeechMethods.getSpeechDB("InformationSpeech");
+            
             new SpeechMiniScreen().setVisible(true);
             
             //sets the user objects variable to be true
@@ -817,6 +826,9 @@ public class Games
         //winning screen displayed if all the pictures were in the same place
         if(numCorrectPicPlace == 6)
         {
+            //setting the speech
+            SpeechMethods.getSpeechDB("InformationSpeech");
+            
             new Interface.SpeechMiniScreen().setVisible(true);
 
             //setting the win variable to true to be used to close the screen
@@ -867,6 +879,9 @@ public class Games
         //checking to see if the game has been won or not yet
         if(mapFragmentsLeft == 0)
         {
+            //setting the speech
+            SpeechMethods.getSpeechDB("InformationSpeech");
+            
             //opens the next stage of this game
             new SlidingPuzzleScreen().setVisible(true);
             
@@ -903,6 +918,10 @@ public class Games
             //checking to see if the game has been won or not yet
             if(keysLeft == 0)
             {
+                //setting the speech and character (have to for this game because the user can complete other games while this one is still ongoing)
+                SpeechMethods.setCharacterSelected("Astrid Berg");
+                SpeechMethods.getSpeechDB("InformationSpeech");
+                
                 new SpeechMiniScreen().setVisible(true);
 
                 //sets the user objects variable to be true
@@ -1056,6 +1075,9 @@ public class Games
                 //checking if the game is won
                 if(checkGameWin())
                 {
+                    //setting the speech
+                    SpeechMethods.getSpeechDB("InformationSpeech");
+                    
                     new SpeechMiniScreen().setVisible(true);
 
                     //sets the user objects variable to be true
