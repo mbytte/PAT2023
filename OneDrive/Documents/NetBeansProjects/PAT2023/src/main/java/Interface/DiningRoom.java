@@ -35,6 +35,9 @@ public class DiningRoom extends javax.swing.JFrame
         //resetting the GameSwitch variables to all be false
         GameSwitchMethods.resetOptionVariables();
         
+        GameSwitchMethods gm = new GameSwitchMethods();
+        gm.setIsGameBeingOpened(false);
+        
         //checks if the knife  has already been found or not
         if(userManager.getSelectedUser().isInvestigatedSwords())
         {
@@ -782,7 +785,7 @@ public class DiningRoom extends javax.swing.JFrame
         {
             //checking if the game has been completed yet or not
             //uncompleted
-            if(!userManager.getSelectedUser().isCompletedFindKeys())
+            if(!userManager.getSelectedUser().isCompletedFindCane())
             {
                 try
                 {
