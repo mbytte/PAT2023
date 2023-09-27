@@ -73,7 +73,7 @@ public class UserScreen extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        title.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\title.png")); // NOI18N
+        title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/title.png"))); // NOI18N
         getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 560, -1));
 
         userList.setBackground(new java.awt.Color(15, 28, 33));
@@ -156,7 +156,7 @@ public class UserScreen extends javax.swing.JFrame
         selectUserMessage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(selectUserMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 180, 20));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\A-1920s-style-sleeper-train-with-an-image-size-of-1920x1080.png")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/A-1920s-style-sleeper-train-with-an-image-size-of-1920x1080.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -30, 1920, 1020));
 
         jList1.setModel(new javax.swing.AbstractListModel<String>()

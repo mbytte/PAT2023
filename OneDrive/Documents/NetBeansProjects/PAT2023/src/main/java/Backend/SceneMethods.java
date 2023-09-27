@@ -101,32 +101,37 @@ public class SceneMethods
         BufferedImage img;
         if(characterSelected.equals("Tommy Winters"))
         {
-            img = ImageIO.read(new File( "resources\\tommyWintersCloseUp.png"));
+            img = ImageIO.read(new File( "/resources/tommyWintersCloseUp.png"));
         }
         
         else if(characterSelected.equals("Astrid Berg"))
         {
-            img = ImageIO.read(new File( "resources\\astridBergCloseUp.png"));
+            img = ImageIO.read(new File( "/resources/astridBergCloseUp.png"));
         }
         
         else if(characterSelected.equals("Emile Beaufoy"))
         {
-            img = ImageIO.read(new File( "resources\\emileBeaufoyCloseUp.png"));
+            img = ImageIO.read(new File( "/resources/emileBeaufoyCloseUp.png"));
         }
         
         else  if(characterSelected.equals("Camila Morea"))
         {
-            img = ImageIO.read(new File( "resources\\camilaMoreaCloseUp.png"));
+            img = ImageIO.read(new File( "/resources/camilaMoreaCloseUp.png"));
         }
         
         else if(characterSelected.equals("Ara Bozoyan"))
         {
-            img = ImageIO.read(new File( "resources\\araBozoyanCloseUp.png"));
+            img = ImageIO.read(new File( "/resources/araBozoyanCloseUp.png"));
+        }
+        
+        else if(characterSelected.equals("Nicolas Peeters"))
+        {
+            img = ImageIO.read(new File( "/resources/nicoasPeeters.png"));
         }
         
         else
         {
-            img = ImageIO.read(new File( "resources\\mylanMoreaCloseUp.png"));
+            img = ImageIO.read(new File( "/resources/mylanMoreaCloseUp.png"));
         }
         
         ImageIcon icon = new ImageIcon(img);

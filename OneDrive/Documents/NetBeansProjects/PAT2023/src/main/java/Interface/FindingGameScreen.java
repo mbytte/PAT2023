@@ -59,7 +59,7 @@ public class FindingGameScreen extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        spriteButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\picture.jpg")); // NOI18N
+        spriteButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/picture.jpg"))); // NOI18N
         spriteButton1.setBorder(null);
         spriteButton1.addActionListener(new java.awt.event.ActionListener()
         {
@@ -70,7 +70,7 @@ public class FindingGameScreen extends javax.swing.JFrame
         });
         getContentPane().add(spriteButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 310, -1, 30));
 
-        spriteButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\picture.jpg")); // NOI18N
+        spriteButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/picture.jpg"))); // NOI18N
         spriteButton2.setBorder(null);
         spriteButton2.addActionListener(new java.awt.event.ActionListener()
         {
@@ -81,7 +81,7 @@ public class FindingGameScreen extends javax.swing.JFrame
         });
         getContentPane().add(spriteButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 650, 30, 30));
 
-        spriteButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\picture.jpg")); // NOI18N
+        spriteButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/picture.jpg"))); // NOI18N
         spriteButton3.setBorder(null);
         spriteButton3.addActionListener(new java.awt.event.ActionListener()
         {
@@ -92,7 +92,7 @@ public class FindingGameScreen extends javax.swing.JFrame
         });
         getContentPane().add(spriteButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 30, 30));
 
-        spriteButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\picture.jpg")); // NOI18N
+        spriteButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/picture.jpg"))); // NOI18N
         spriteButton4.setBorder(null);
         spriteButton4.addActionListener(new java.awt.event.ActionListener()
         {
@@ -103,7 +103,7 @@ public class FindingGameScreen extends javax.swing.JFrame
         });
         getContentPane().add(spriteButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 20, 30));
 
-        spriteButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\picture.jpg")); // NOI18N
+        spriteButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/picture.jpg"))); // NOI18N
         spriteButton5.setBorder(null);
         spriteButton5.addActionListener(new java.awt.event.ActionListener()
         {
@@ -114,7 +114,7 @@ public class FindingGameScreen extends javax.swing.JFrame
         });
         getContentPane().add(spriteButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 140, 10, 20));
 
-        spriteButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\picture.jpg")); // NOI18N
+        spriteButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/picture.jpg"))); // NOI18N
         spriteButton6.setBorder(null);
         spriteButton6.addActionListener(new java.awt.event.ActionListener()
         {
@@ -128,7 +128,7 @@ public class FindingGameScreen extends javax.swing.JFrame
         infoButton.setBackground(new java.awt.Color(15, 28, 33));
         infoButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         infoButton.setForeground(new java.awt.Color(139, 118, 82));
-        infoButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\infoIcon.png")); // NOI18N
+        infoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/infoIcon.png"))); // NOI18N
         infoButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         infoButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -170,7 +170,7 @@ public class FindingGameScreen extends javax.swing.JFrame
         diaryButton.setBackground(new java.awt.Color(15, 28, 33));
         diaryButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         diaryButton.setForeground(new java.awt.Color(139, 118, 82));
-        diaryButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\diaryIcon.jpg")); // NOI18N
+        diaryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/diaryIcon.jpg"))); // NOI18N
         diaryButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         diaryButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -189,7 +189,7 @@ public class FindingGameScreen extends javax.swing.JFrame
         spritesFoundLabel.setOpaque(true);
         getContentPane().add(spritesFoundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 30, 70, 70));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\sleepingCompartmentBackground.png")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sleepingCompartmentBackground.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -330, 1400, 1200));
 
         pack();

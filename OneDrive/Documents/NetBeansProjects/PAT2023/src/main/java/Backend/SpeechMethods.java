@@ -70,38 +70,38 @@ public class SpeechMethods
     //gets the picture filepath of the character
     public Icon getCharacterPic() throws IOException
     {
-        BufferedImage img;
+        ImageIcon img;
         if(characterSelected.equals("Tommy Winters"))
         {
-            img = ImageIO.read(new File( "resources\\tommyWintersCloseUp.png"));
+            img = new ImageIcon(getClass().getResource("/images/tommyWintersCloseUp.png"));
+            return img;
         }
         
         else if(characterSelected.equals("Astrid Berg"))
         {
-            img = ImageIO.read(new File( "resources\\astridBergCloseUp.png"));
+            img = new ImageIcon(getClass().getResource("/images/astridBergCloseUp.png"));
         }
         
         else if(characterSelected.equals("Emile Beaufoy"))
         {
-            img = ImageIO.read(new File( "resources\\emileBeaufoyCloseUp.png"));
+            img = new ImageIcon(getClass().getResource("/images/emileBeaufoyCloseUp.png"));
         }
         
         else  if(characterSelected.equals("Camila Morea"))
         {
-            img = ImageIO.read(new File( "resources\\camilaMoreaCloseUp.png"));
+            img = new ImageIcon(getClass().getResource("/images/camilaMoreaCloseUp.png"));
         }
         
         else if(characterSelected.equals("Ara Bozoyan"))
         {
-            img = ImageIO.read(new File( "resources\\araBozoyanCloseUp.png"));
+            img = new ImageIcon(getClass().getResource("/images/araBozoyanCloseUp.png"));
         }
         
         else
         {
-            img = ImageIO.read(new File( "resources\\mylanMoreaCloseUp.png"));
+            img = new ImageIcon(getClass().getResource("/images/mylanMoreaCloseUp.png"));
         }
         
-        ImageIcon icon = new ImageIcon(img);
-        return icon;
+        return img;
     }
 }

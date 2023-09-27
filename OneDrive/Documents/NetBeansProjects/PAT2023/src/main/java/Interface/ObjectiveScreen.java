@@ -108,7 +108,7 @@ public class ObjectiveScreen extends javax.swing.JFrame
         });
         getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 40, 50, 40));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\redBackground.png")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/redBackground.png"))); // NOI18N
         background.setPreferredSize(new java.awt.Dimension(1110, 580));
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 

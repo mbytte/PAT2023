@@ -80,7 +80,7 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
         diaryButton.setBackground(new java.awt.Color(15, 28, 33));
         diaryButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         diaryButton.setForeground(new java.awt.Color(139, 118, 82));
-        diaryButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\diaryIcon.jpg")); // NOI18N
+        diaryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/diaryIcon.jpg"))); // NOI18N
         diaryButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         diaryButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -105,7 +105,7 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
         });
         getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 30, 110, 70));
 
-        letterButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\letter.jpg")); // NOI18N
+        letterButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/letter.jpg"))); // NOI18N
         letterButton.setBorder(null);
         letterButton.setBorderPainted(false);
         letterButton.setContentAreaFilled(false);
@@ -119,7 +119,7 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
         });
         getContentPane().add(letterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 380, 120, 70));
 
-        keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.png")); // NOI18N
+        keyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/key.png"))); // NOI18N
         keyButton.setBorder(null);
         keyButton.setContentAreaFilled(false);
         keyButton.addActionListener(new java.awt.event.ActionListener()
@@ -134,7 +134,7 @@ public class SeatCompartmentsScreen extends javax.swing.JFrame
         keyFoundMessage.setBackground(new java.awt.Color(139, 118, 82));
         getContentPane().add(keyFoundMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 100, 20));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\seatingBackground.jpg")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seatingBackground.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-270, -450, 1760, 1200));
 
         pack();

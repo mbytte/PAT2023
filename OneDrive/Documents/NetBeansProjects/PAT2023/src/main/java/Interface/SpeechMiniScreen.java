@@ -85,7 +85,7 @@ public class SpeechMiniScreen extends javax.swing.JFrame
         });
         getContentPane().add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 160, 110, 40));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\redBackground.png")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/redBackground.png"))); // NOI18N
         background.setPreferredSize(new java.awt.Dimension(1110, 580));
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 230));
 

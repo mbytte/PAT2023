@@ -126,7 +126,7 @@ public class MagicSquareScreen extends javax.swing.JFrame
         diaryButton.setBackground(new java.awt.Color(15, 28, 33));
         diaryButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         diaryButton.setForeground(new java.awt.Color(139, 118, 82));
-        diaryButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\diaryIcon.jpg")); // NOI18N
+        diaryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/diaryIcon.jpg"))); // NOI18N
         diaryButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         diaryButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -154,7 +154,7 @@ public class MagicSquareScreen extends javax.swing.JFrame
         infoButton.setBackground(new java.awt.Color(15, 28, 33));
         infoButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         infoButton.setForeground(new java.awt.Color(139, 118, 82));
-        infoButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\infoIcon.png")); // NOI18N
+        infoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/infoIcon.png"))); // NOI18N
         infoButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         infoButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -304,10 +304,8 @@ public class MagicSquareScreen extends javax.swing.JFrame
         jLabel4.setText("3");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, 30, 70));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\magicSquareGrid.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magicSquareGrid.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 430, 430));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\tommyAstridPic.png")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, 470));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -322,7 +320,7 @@ public class MagicSquareScreen extends javax.swing.JFrame
         notCompleteMessage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(notCompleteMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 520, 30));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\redBackground.png")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/redBackground.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -330, 1400, 1200));
 
         pack();

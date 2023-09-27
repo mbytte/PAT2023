@@ -72,7 +72,7 @@ public class WordGameScreen extends javax.swing.JFrame
         diaryButton.setBackground(new java.awt.Color(15, 28, 33));
         diaryButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         diaryButton.setForeground(new java.awt.Color(139, 118, 82));
-        diaryButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\diaryIcon.jpg")); // NOI18N
+        diaryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/diaryIcon.jpg"))); // NOI18N
         diaryButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         diaryButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -100,7 +100,7 @@ public class WordGameScreen extends javax.swing.JFrame
         infoButton.setBackground(new java.awt.Color(15, 28, 33));
         infoButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         infoButton.setForeground(new java.awt.Color(139, 118, 82));
-        infoButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\infoIcon.png")); // NOI18N
+        infoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/infoIcon.png"))); // NOI18N
         infoButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         infoButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -242,7 +242,7 @@ public class WordGameScreen extends javax.swing.JFrame
         });
         getContentPane().add(answerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 610, 170, 70));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\redBackground.png")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/redBackground.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -340, 1400, 1200));
 
         pack();

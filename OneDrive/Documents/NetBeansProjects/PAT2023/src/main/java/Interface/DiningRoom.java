@@ -74,7 +74,7 @@ public class DiningRoom extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tommyWintersButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\tommyWinters.png")); // NOI18N
+        tommyWintersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tommyWinters.png"))); // NOI18N
         tommyWintersButton.setBorder(null);
         tommyWintersButton.setBorderPainted(false);
         tommyWintersButton.setContentAreaFilled(false);
@@ -88,7 +88,7 @@ public class DiningRoom extends javax.swing.JFrame
         });
         getContentPane().add(tommyWintersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 250, 130, 360));
 
-        emileBeaufoyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\emileBeaufoyFullShot.png")); // NOI18N
+        emileBeaufoyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/emileBeaufoyFullShot.png"))); // NOI18N
         emileBeaufoyButton.setBorder(null);
         emileBeaufoyButton.setBorderPainted(false);
         emileBeaufoyButton.setContentAreaFilled(false);
@@ -102,7 +102,7 @@ public class DiningRoom extends javax.swing.JFrame
         });
         getContentPane().add(emileBeaufoyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 290, 70, 110));
 
-        araBozoyanButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\araBozoyanFullShot.png")); // NOI18N
+        araBozoyanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/araBozoyanFullShot.png"))); // NOI18N
         araBozoyanButton.setBorder(null);
         araBozoyanButton.setBorderPainted(false);
         araBozoyanButton.setContentAreaFilled(false);
@@ -116,7 +116,7 @@ public class DiningRoom extends javax.swing.JFrame
         });
         getContentPane().add(araBozoyanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 90, 130));
 
-        camilaMoreaButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\camilaMoreaFullShot.png")); // NOI18N
+        camilaMoreaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/camilaMoreaFullShot.png"))); // NOI18N
         camilaMoreaButton.setBorder(null);
         camilaMoreaButton.setBorderPainted(false);
         camilaMoreaButton.setContentAreaFilled(false);
@@ -130,7 +130,7 @@ public class DiningRoom extends javax.swing.JFrame
         });
         getContentPane().add(camilaMoreaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 330, 100, 140));
 
-        mylanMoreaButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\mylanMoreaFullShot2.png")); // NOI18N
+        mylanMoreaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mylanMoreaFullShot2.png"))); // NOI18N
         mylanMoreaButton.setBorder(null);
         mylanMoreaButton.setBorderPainted(false);
         mylanMoreaButton.setContentAreaFilled(false);
@@ -144,7 +144,7 @@ public class DiningRoom extends javax.swing.JFrame
         });
         getContentPane().add(mylanMoreaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 140, 150));
 
-        astridBergButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\astridBergFullShot.png")); // NOI18N
+        astridBergButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/astridBergFullShot.png"))); // NOI18N
         astridBergButton.setBorder(null);
         astridBergButton.setBorderPainted(false);
         astridBergButton.setContentAreaFilled(false);
@@ -158,7 +158,7 @@ public class DiningRoom extends javax.swing.JFrame
         });
         getContentPane().add(astridBergButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 300, 60, 160));
 
-        swordsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\swords.png")); // NOI18N
+        swordsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/swords.png"))); // NOI18N
         swordsButton.setBorder(null);
         swordsButton.setBorderPainted(false);
         swordsButton.setContentAreaFilled(false);
@@ -188,7 +188,7 @@ public class DiningRoom extends javax.swing.JFrame
         diaryButton.setBackground(new java.awt.Color(15, 28, 33));
         diaryButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         diaryButton.setForeground(new java.awt.Color(139, 118, 82));
-        diaryButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\diaryIcon.jpg")); // NOI18N
+        diaryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/diaryIcon.jpg"))); // NOI18N
         diaryButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         diaryButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -213,14 +213,14 @@ public class DiningRoom extends javax.swing.JFrame
         });
         getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 30, 110, 70));
 
-        boxButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\box.png")); // NOI18N
+        boxButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/box.png"))); // NOI18N
         boxButton.setBorder(null);
         boxButton.setBorderPainted(false);
         boxButton.setContentAreaFilled(false);
         boxButton.setFocusPainted(false);
         getContentPane().add(boxButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, 90, 70));
 
-        keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.png")); // NOI18N
+        keyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/key.png"))); // NOI18N
         keyButton.setBorder(null);
         keyButton.setBorderPainted(false);
         keyButton.setContentAreaFilled(false);
@@ -236,7 +236,7 @@ public class DiningRoom extends javax.swing.JFrame
         keyFoundMessage.setBackground(new java.awt.Color(139, 118, 82));
         getContentPane().add(keyFoundMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 550, 100, 20));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\diningRoomBackground.jpg")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/diningRoomBackground.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -30, 1490, 750));
 
         pack();

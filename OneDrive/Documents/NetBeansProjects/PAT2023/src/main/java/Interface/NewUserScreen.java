@@ -47,8 +47,6 @@ public class NewUserScreen extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        title.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\title.png")); // NOI18N
         getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 560, -1));
 
         backButton.setBackground(new java.awt.Color(15, 28, 33));
@@ -93,7 +91,7 @@ public class NewUserScreen extends javax.swing.JFrame
         getContentPane().add(createUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 450, 170, 50));
 
         background.setBackground(new java.awt.Color(15, 28, 33));
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\trainTicket.png")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trainTicket.png"))); // NOI18N
         background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(15, 28, 33), 10, true));
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 1220, 650));
 

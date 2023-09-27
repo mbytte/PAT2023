@@ -41,24 +41,12 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
             System.out.println(picSetup[i]);
         }
         
-        BufferedImage img;
-        img = ImageIO.read(new File(picSetup[0]));        
-        button0.setIcon(new ImageIcon(img));
-        
-        img = ImageIO.read(new File(picSetup[1]));        
-        button1.setIcon(new ImageIcon(img));
-        
-        img = ImageIO.read(new File(picSetup[2]));        
-        button2.setIcon(new ImageIcon(img));
-        
-        img = ImageIO.read(new File(picSetup[3]));        
-        button3.setIcon(new ImageIcon(img));
-        
-        img = ImageIO.read(new File(picSetup[4]));        
-        button4.setIcon(new ImageIcon(img));
-        
-        img = ImageIO.read(new File(picSetup[5]));        
-        button5.setIcon(new ImageIcon(img));
+        button0.setIcon(new ImageIcon(getClass().getResource(picSetup[0])));
+        button1.setIcon(new ImageIcon(getClass().getResource(picSetup[1])));
+        button2.setIcon(new ImageIcon(getClass().getResource(picSetup[2])));
+        button3.setIcon(new ImageIcon(getClass().getResource(picSetup[3])));
+        button4.setIcon(new ImageIcon(getClass().getResource(picSetup[4])));
+        button5.setIcon(new ImageIcon(getClass().getResource(picSetup[5])));
     }
 
     /**
@@ -103,7 +91,7 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
         diaryButton.setBackground(new java.awt.Color(15, 28, 33));
         diaryButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         diaryButton.setForeground(new java.awt.Color(139, 118, 82));
-        diaryButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\diaryIcon.jpg")); // NOI18N
+        diaryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/diaryIcon.jpg"))); // NOI18N
         diaryButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         diaryButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -131,7 +119,7 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
         infoButton.setBackground(new java.awt.Color(15, 28, 33));
         infoButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         infoButton.setForeground(new java.awt.Color(139, 118, 82));
-        infoButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\infoIcon.png")); // NOI18N
+        infoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/infoIcon.png"))); // NOI18N
         infoButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         infoButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -196,7 +184,7 @@ public class SlidingPuzzleScreen extends javax.swing.JFrame
         });
         getContentPane().add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 350, 270, 316));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\redBackground.png")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/redBackground.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -320, 1400, 1200));
 
         pack();

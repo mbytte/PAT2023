@@ -28,7 +28,7 @@
     <Component class="javax.swing.JLabel" name="title">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\title.png"/>
+          <Image iconType="3" name="/images/title.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -225,7 +225,7 @@
     <Component class="javax.swing.JLabel" name="background">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\megan\OneDrive\Documents\NetBeansProjects\PAT2023\resources\A-1920s-style-sleeper-train-with-an-image-size-of-1920x1080.png"/>
+          <Image iconType="3" name="/images/A-1920s-style-sleeper-train-with-an-image-size-of-1920x1080.png"/>
         </Property>
       </Properties>
       <Constraints>

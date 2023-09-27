@@ -112,7 +112,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         diaryButton.setBackground(new java.awt.Color(15, 28, 33));
         diaryButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         diaryButton.setForeground(new java.awt.Color(139, 118, 82));
-        diaryButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\diaryIcon.jpg")); // NOI18N
+        diaryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/diaryIcon.jpg"))); // NOI18N
         diaryButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         diaryButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -140,7 +140,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         infoButton.setBackground(new java.awt.Color(15, 28, 33));
         infoButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         infoButton.setForeground(new java.awt.Color(139, 118, 82));
-        infoButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\infoIcon.png")); // NOI18N
+        infoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/infoIcon.png"))); // NOI18N
         infoButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         infoButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -154,6 +154,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         button1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button1.setText(" ");
         button1.setBorder(null);
+        button1.setContentAreaFilled(false);
         button1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -166,6 +167,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         button2.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button2.setText(" ");
         button2.setBorder(null);
+        button2.setContentAreaFilled(false);
         button2.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -178,6 +180,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         button3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button3.setText(" ");
         button3.setBorder(null);
+        button3.setContentAreaFilled(false);
         button3.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -190,6 +193,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         button4.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button4.setText(" ");
         button4.setBorder(null);
+        button4.setContentAreaFilled(false);
         button4.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -202,6 +206,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         button5.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button5.setText(" ");
         button5.setBorder(null);
+        button5.setContentAreaFilled(false);
         button5.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -214,6 +219,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         button6.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button6.setText(" ");
         button6.setBorder(null);
+        button6.setContentAreaFilled(false);
         button6.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -226,6 +232,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         button7.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button7.setText(" ");
         button7.setBorder(null);
+        button7.setContentAreaFilled(false);
         button7.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -238,6 +245,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         button8.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button8.setText(" ");
         button8.setBorder(null);
+        button8.setContentAreaFilled(false);
         button8.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -250,6 +258,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         button9.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         button9.setText(" ");
         button9.setBorder(null);
+        button9.setContentAreaFilled(false);
         button9.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -259,7 +268,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         });
         getContentPane().add(button9, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 120, 120));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\ticTacToeGrid.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ticTacToeGrid.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 430, 430));
 
         jLabel2.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
@@ -267,7 +276,7 @@ public class TicTacToeScreen extends javax.swing.JFrame
         jLabel2.setText("STATISTICS");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\redBackground.png")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/redBackground.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -330, 1400, 1200));
 
         pack();

@@ -94,7 +94,7 @@ public class HallwayScreen extends javax.swing.JFrame
         jLabel5.setOpaque(true);
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 100, 40));
 
-        diningButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\door - Copy.png")); // NOI18N
+        diningButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/door - Copy.png"))); // NOI18N
         diningButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -104,7 +104,7 @@ public class HallwayScreen extends javax.swing.JFrame
         });
         getContentPane().add(diningButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 350, 640));
 
-        loungeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\door - Copy.png")); // NOI18N
+        loungeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/door - Copy.png"))); // NOI18N
         loungeButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -114,7 +114,7 @@ public class HallwayScreen extends javax.swing.JFrame
         });
         getContentPane().add(loungeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 60, 350, 640));
 
-        seatingButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\door - Copy.png")); // NOI18N
+        seatingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/door - Copy.png"))); // NOI18N
         seatingButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -124,21 +124,20 @@ public class HallwayScreen extends javax.swing.JFrame
         });
         getContentPane().add(seatingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 350, 640));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\plant.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plant.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 390, 150, 320));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\plant.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plant.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 150, 320));
 
         walkingStickFoundMessage.setBackground(new java.awt.Color(139, 118, 82));
         getContentPane().add(walkingStickFoundMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 330, 100, 20));
 
-        walkingStickButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\walking_stick.png")); // NOI18N
+        walkingStickButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/walking_stick.png"))); // NOI18N
         walkingStickButton.setBorder(null);
         walkingStickButton.setBorderPainted(false);
         walkingStickButton.setContentAreaFilled(false);
         walkingStickButton.setFocusPainted(false);
-        walkingStickButton.setOpaque(false);
         walkingStickButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -148,15 +147,13 @@ public class HallwayScreen extends javax.swing.JFrame
         });
         getContentPane().add(walkingStickButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, 100, 320));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\woodPanel.jpg")); // NOI18N
-        jLabel6.setText("jLabel6");
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/woodPanel.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 1200, 770));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\woodPanel.jpg")); // NOI18N
-        jLabel7.setText("jLabel7");
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/woodPanel.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 310, 650, 780));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\whiteBackground.jpg")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whiteBackground.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -30, 1490, 750));
 
         pack();

@@ -638,8 +638,8 @@ public class Games
     
     //SLIDING PUZZLE
     //fields
-    private static String[] currentPicOrder = {"resources\\mapPiece5.jpg", "resources\\mapPiece2.jpg", "resources\\mapPiece1.jpg", "resources\\mapPiece4.jpg", "resources\\mapPiece4.jpg", "resources\\mapPiece6.jpg"};
-    private static String[] buttonOrder = {"button1", "button2", "button3", "button4", "button5", "button6"};
+    private static String[] currentPicOrder = new String[6];
+    private static String[] buttonOrder = {"button0", "button1", "button2", "button3", "button4", "button5"};
     private boolean puzzleWin = false;
     
     
@@ -694,7 +694,7 @@ public class Games
     {
         //variables
         int circlePicPos = 0;
-        String circlePicPath = "resources\\mapPiece6.jpg";  //what the circle pic is saved as
+        String circlePicPath = "/images/mapPiece6.jpg";  //what the circle pic is saved as
         
         //looking through all the positions in the ray to find which one is the blank picture
         //loops 6 times because there are 6 positions
@@ -718,11 +718,8 @@ public class Games
         String button2Icon = getPic(button2Str);
         
         //setting the icons
-        BufferedImage img = ImageIO.read(new File(button1Icon)); 
-        button2.setIcon(new ImageIcon(img));
-        
-        img = ImageIO.read(new File(button2Icon)); 
-        button1.setIcon(new ImageIcon(img));
+        button2.setIcon(new ImageIcon(getClass().getResource(button1Icon)));
+        button1.setIcon(new ImageIcon(getClass().getResource(button2Icon)));
         
         //setting the current image array to be updated according to what images are there
         int btn1ScreenNumber = getButtonNumber(button1Str);
@@ -822,12 +819,12 @@ public class Games
         //variables
         //the order that the pictures should be arranged in in order for the player to win
         String[] correctOrder = new String[6];
-        correctOrder[0] = "/resources/mapPiece1.jpg";
-        correctOrder[1] = "/resources/mapPiece2.jpg";
-        correctOrder[2] = "/resources/mapPiece3.jpg";
-        correctOrder[3] = "/resources/mapPiece4.jpg";
-        correctOrder[4] = "/resources/mapPiece5.jpg";
-        correctOrder[5] = "/resources/mapPiece6.jpg";
+        correctOrder[0] = "/images/mapPiece1.jpg";
+        correctOrder[1] = "/images/mapPiece2.jpg";
+        correctOrder[2] = "/images/mapPiece3.jpg";
+        correctOrder[3] = "/images/mapPiece4.jpg";
+        correctOrder[4] = "/images/mapPiece5.jpg";
+        correctOrder[5] = "/images/mapPiece6.jpg";
         //changeable variable
         int numCorrectPicPlace = 0;
         
@@ -871,9 +868,11 @@ public class Games
         //making the array list
         for(int i = 1; i < 7; i++)
         {
-            picsInOrder.add("resources\\mapPiece" + i + ".jpg");
+            picsInOrder.add("/images/mapPiece" + i + ".jpg");
+
         }
-        
+            
+        System.out.println(picsInOrder + "");       
         //assigning the new order to be solved
         for(int i = 0; i < 6; i++)
         {
@@ -1106,8 +1105,6 @@ public class Games
                 answeredQuestions.add(ans);
                 numCorrectAnswers++;
                 
-                System.out.println("YAY");
-                
                 //checking if the game is won
                 if(checkGameWin())
                 {
@@ -1162,8 +1159,8 @@ public class Games
         //getting the crosswords
         if(index == 0)
         {
-            crosswordPicturePathway = "resources\\crossword2.png";
-            crosswordHintPathway = "resources\\crossword2Clues.png";           
+            crosswordPicturePathway = "/images/crossword2.png";
+            crosswordHintPathway = "/images/crossword2Clues.png";           
             crosswordAnswers[0] = "comb";
             crosswordAnswers[1] = "towel";
             crosswordAnswers[2] = "library";
@@ -1173,8 +1170,8 @@ public class Games
         
         else
         {
-            crosswordPicturePathway = "resources\\crossword1.png";
-            crosswordHintPathway = "resources\\crossword1Clues.png";           
+            crosswordPicturePathway = "/images/crossword1.png";
+            crosswordHintPathway = "/images/crossword1Clues.png";           
             crosswordAnswers[0] = "sponge";
             crosswordAnswers[1] = "dictionary";
             crosswordAnswers[2] = "candle";

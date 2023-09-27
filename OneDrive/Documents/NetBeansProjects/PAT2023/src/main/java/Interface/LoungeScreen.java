@@ -90,7 +90,7 @@ public class LoungeScreen extends javax.swing.JFrame
         diaryButton.setBackground(new java.awt.Color(15, 28, 33));
         diaryButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         diaryButton.setForeground(new java.awt.Color(139, 118, 82));
-        diaryButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\diaryIcon.jpg")); // NOI18N
+        diaryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/diaryIcon.jpg"))); // NOI18N
         diaryButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(139, 118, 82), 5, true));
         diaryButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -115,7 +115,7 @@ public class LoungeScreen extends javax.swing.JFrame
         });
         getContentPane().add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 30, 110, 70));
 
-        fireIronButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\fireIron.png")); // NOI18N
+        fireIronButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fireIron.png"))); // NOI18N
         fireIronButton.setBorder(null);
         fireIronButton.setBorderPainted(false);
         fireIronButton.setContentAreaFilled(false);
@@ -129,7 +129,7 @@ public class LoungeScreen extends javax.swing.JFrame
         });
         getContentPane().add(fireIronButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, -30, 50, 430));
 
-        knifeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\knife.png")); // NOI18N
+        knifeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/knife.png"))); // NOI18N
         knifeButton.setBorder(null);
         knifeButton.setBorderPainted(false);
         knifeButton.setContentAreaFilled(false);
@@ -143,7 +143,7 @@ public class LoungeScreen extends javax.swing.JFrame
         });
         getContentPane().add(knifeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 640, 70, 70));
 
-        picButton.setOpaque(false);
+        picButton.setContentAreaFilled(false);
         picButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -153,7 +153,7 @@ public class LoungeScreen extends javax.swing.JFrame
         });
         getContentPane().add(picButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 110, 90));
 
-        keyButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\key.png")); // NOI18N
+        keyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/key.png"))); // NOI18N
         keyButton.setBorder(null);
         keyButton.setContentAreaFilled(false);
         keyButton.addActionListener(new java.awt.event.ActionListener()
@@ -168,7 +168,7 @@ public class LoungeScreen extends javax.swing.JFrame
         keyFoundMessage.setBackground(new java.awt.Color(139, 118, 82));
         getContentPane().add(keyFoundMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 480, 100, 20));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\megan\\OneDrive\\Documents\\NetBeansProjects\\PAT2023\\resources\\loungeBackground.jpeg")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/loungeBackground.jpeg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -30, 1490, 750));
 
         pack();
