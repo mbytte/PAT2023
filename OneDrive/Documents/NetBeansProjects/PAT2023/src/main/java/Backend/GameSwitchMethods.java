@@ -12,7 +12,7 @@ import Interface.HangmanScreen;
 import Interface.LoungeScreen;
 import Interface.MagicSquareScreen;
 import Interface.RiddleScreen;
-import Interface.SceneScreen;
+import Interface.FirstSceneScreen;
 import Interface.SlidingPuzzleScreen;
 import Interface.TicTacToeScreen;
 import Interface.WordGameScreen;
@@ -297,7 +297,7 @@ public class GameSwitchMethods
         
         else if(sceneGameSelected)
         {
-            new SceneScreen().setVisible(true);
+            new FirstSceneScreen().setVisible(true);
         }
         
         else if(slidingPuzzleSelected)

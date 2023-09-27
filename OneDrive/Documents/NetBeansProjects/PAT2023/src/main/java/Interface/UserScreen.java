@@ -6,7 +6,6 @@
 package Interface;
 
 import Backend.GameSwitchMethods;
-import Backend.SceneMethods;
 import Backend.UserManager;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -221,9 +220,7 @@ public class UserScreen extends javax.swing.JFrame
             {
                 try
                 {
-                    SceneMethods sm = new SceneMethods();
-                    sm.setFirstScene(true);
-                    new SceneScreen().setVisible(true); // will change when there is a new room to go to
+                    new FirstSceneScreen().setVisible(true); // will change when there is a new room to go to
                 } catch (SQLException ex)
                 {
                     Logger.getLogger(UserScreen.class.getName()).log(Level.SEVERE, null, ex);

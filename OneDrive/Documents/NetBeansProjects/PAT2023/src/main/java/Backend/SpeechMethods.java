@@ -5,14 +5,10 @@
  */
 package Backend;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -68,7 +64,7 @@ public class SpeechMethods
     
     
     //gets the picture filepath of the character
-    public Icon getCharacterPic() throws IOException
+    public Icon getCharacterPic()
     {
         ImageIcon img;
         if(characterSelected.equals("Tommy Winters"))
