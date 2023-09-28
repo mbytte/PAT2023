@@ -104,6 +104,7 @@ public class NewUserScreen extends javax.swing.JFrame
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_backButtonActionPerformed
     {//GEN-HEADEREND:event_backButtonActionPerformed
+        new UserScreen().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 

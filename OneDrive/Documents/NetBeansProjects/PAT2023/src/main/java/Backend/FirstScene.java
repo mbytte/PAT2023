@@ -6,12 +6,8 @@
 package Backend;
 
 import Interface.DiningRoom;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

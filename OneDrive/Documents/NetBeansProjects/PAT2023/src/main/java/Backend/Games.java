@@ -15,9 +15,6 @@ import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import Interface.SlidingPuzzleScreen;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
 
 /**
  *
@@ -412,6 +409,7 @@ public class Games
             numDraws++;
             //resetting the grid
             resetTicTacToe();
+            instantiateLayout();
             return true; 
         }
         
@@ -617,7 +615,7 @@ public class Games
         if(userInput.equals(riddleAnswer))
         {
             //setting the speech
-            SpeechMethods.getSpeechDB("InformationSpeech");
+            SpeechMethods.setSpeech("The Berg family is a very proud family, but that pride has not helped them. The train is a legacy in their family, and who knows what lengths they may go to to protect what is theirs.");
             
             new SpeechMiniScreen().setVisible(true);
             

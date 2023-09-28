@@ -36,10 +36,10 @@ public class CrosswordScreen extends javax.swing.JFrame
         
         //selecting a crossword
         game.setCrossword();
-        BufferedImage crosswordImg = ImageIO.read(new File(game.getCrosswordPicturePathway()));
-        crosswordPic.setIcon(new ImageIcon(crosswordImg));
-        BufferedImage cluesImg = ImageIO.read(new File(game.getCrosswordAnswerPathway()));
-        crosswordCluesPic.setIcon(new ImageIcon(cluesImg));
+        crosswordPic.setIcon(new ImageIcon(getClass().getResource(game.getCrosswordPicturePathway())));
+        crosswordCluesPic.setIcon(new ImageIcon(getClass().getResource(game.getCrosswordAnswerPathway())));
+        
+        
     }
 
     /**

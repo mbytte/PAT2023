@@ -27,18 +27,6 @@ public class Diary
     }
     
     
-    //setters
-//    public void setSelectedClue(String clue)
-//    {
-//        selectedClue = clue;
-//    }
-//
-//    public void setSelectedCharacter(String character)
-//    {
-//        selectedCharacter = character;
-//    }
-    
-    
     //gets a list of all the clue names
     public ArrayList<String> getListClues() throws SQLException
     {
@@ -264,6 +252,7 @@ public class Diary
     {
         return "Personal evaluation - " + selectedCharacter.toUpperCase() + " \n\n" + getData("CharInfo", selectedCharacter);
     }
+    
     
     //helper method to the getCharacterInfo method
     private String getData(String dataNeeded, String subject) throws SQLException
